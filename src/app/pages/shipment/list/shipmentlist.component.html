@@ -1,0 +1,179 @@
+<div class="shipmentbox">
+  <div class="contentit-l">
+    <mat-card-title>订单配载列表</mat-card-title>
+    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+  </div>
+  <div [hidden]="fiststdisplyanindex"  class="contenttex-r">
+    <button ejs-dropdownbutton cssClass="e-info mat-width" [items]="taskitems"  (select)="delegateorder($event)">任务委派</button>
+    <button ejs-button cssClass="e-info mat-width" disabled="disabled" >中转外包</button>
+    <button ejs-dropdownbutton cssClass="e-info mat-width" [items]='items' content="运单动作" (select)="changeorderstatued($event)">运单动作</button>
+    <!--<button ejs-button cssClass="e-info" (click)="undelegateorder()" class="mat-reject">取消委派</button>-->
+    <button ejs-button cssClass="e-info mat-width"  disabled="disabled" >打印标签</button>
+  </div>
+</div>
+  <form class="shipmentform" [formGroup]="searchp" >
+  <mat-form-field class="col-md-3 col-lefty">
+    <input matInput  formControlName="serverTrackId"/>
+    <span  matPrefix style="color: #888">物流跟踪号：&nbsp;</span>
+  </mat-form-field>
+  <mat-form-field class="col-md-3 col-lefty">
+
+    <!--<mat-select placeholder="状态选择" formControlName="shipmentstatued"   multiple>-->
+      <!--<mat-option  [value]="10">未提货</mat-option>-->
+      <!--<mat-option  [value]="11">提货中</mat-option>-->
+      <!--<mat-option  [value]="19">已提货</mat-option>-->
+      <!--<mat-option  [value]="20">卸货中</mat-option>-->
+      <!--<mat-option  [value]="29">已卸货</mat-option>-->
+      <!--<mat-option  [value]="51">配送中</mat-option>-->
+      <!--<mat-option  [value]="100">已完成</mat-option>-->
+    <!--</mat-select>-->
+
+    <select matNativeControl  formControlName="shipmentstatued">
+      <option label="--状态选择 --"></option>
+      <option value="10">未提货</option>
+      <option value="11">提货中</option>
+      <option value="19">已提货</option>
+      <option value="20">卸货中</option>
+      <option value="29">已卸货</option>
+      <option value="51">配送中</option>
+      <option value="100">已完成</option>
+    </select>
+    <span  matPrefix style="color: #888">运单状态：&nbsp;</span>
+  </mat-form-field>
+  <div [hidden]="!searchbtndisplay" class="col-lefty2">
+    <button  ejs-button cssClass="e-info mat-width" (click)="searchingtrack(true)">配载查询</button>
+  </div>
+  <div [hidden]="searchbtndisplay" class="col-lefty2">
+    <button   ejs-button cssClass="e-info mat-width" (click)="searchingplan()">计划查询</button>
+  </div>
+
+</form>
+
+
+<ejs-grid #grid1  id='Grid' allowResizing='false'
+          (dataStateChange)="dataStateChange($event,'1')"
+          [allowExcelExport]='true'  allowSorting='false'
+          [allowSelection]="true"
+          [enableHover]="false"
+          allowPaging='true' height="{{gridheight}}"  class="contlistbox">
+  <e-columns >
+    <e-column type='checkbox' width='50'></e-column>
+    <e-column field='ServerTrackId'  headerText='物流跟踪号' isPrimaryKey='false' width='170' style="border: 1px #ccc solid">
+      <ng-template #template let-data>
+        <a routerLink="/orders/{{data.SystemOrderId}}">{{data.ServerTrackId}}</a>
+      </ng-template>
+    </e-column>
+    <e-column field='ServerTrackId'  headerText='配载编号' isPrimaryKey='true' width='200' style="border: 1px #ccc solid">
+      <ng-template #template let-data>
+        <a routerLink="/orders/{{data.ShipmentId}}">{{data.ShipmentId}}</a>
+      </ng-template>
+    </e-column>
+    <e-column field='ReceivedTotalCount' headerText='接单件数'  width=120></e-column>
+    <e-column field='SendTotalCount' headerText='已配载件数'  width=120></e-column>
+    <e-column field='ShipmentStatued' headerText='运单状态'  width=120></e-column>
+    <e-column field='DestCity' headerText='到货城市'  width=120></e-column>
+    <e-column field='Destarea' headerText='到货区域'  width=120></e-column>
+    <e-column field='AcceptOrderStore' headerText='接单网点'  width=120></e-column>
+    <e-column field='NexReceiveStoreName' headerText='转运网点'  width=120></e-column>
+    <e-column field='EndSendStoreName' headerText='配送网点'  width=120></e-column>
+    <e-column field='AcceptDateTime' headerText='接单时间' format='yMd' width=120>
+      <ng-template #template let-data>
+        {{data.AcceptDateTime | date: 'yyyy-MM-dd HH:mm:ss'}}
+      </ng-template>
+    </e-column>
+    <e-column field='OrderSendMark' headerText='托运备注' width=150></e-column>
+  </e-columns>
+
+</ejs-grid>
+
+  <!--<mat-tab-group (selectedIndexChange)="tabselect($event)" class="contlistbox">-->
+  <!--<mat-tab label="配载">-->
+    <!--<ejs-grid #grid3  id='Grid3' allowResizing='false'-->
+              <!--(dataStateChange)="dataStateChange($event,'1')"-->
+              <!--[allowExcelExport]='true'  allowSorting='false'-->
+              <!--[allowSelection]="true"-->
+              <!--[enableHover]="false"-->
+              <!--allowPaging='true' height="{{gridheight}}">-->
+      <!--<e-columns >-->
+        <!--<e-column type='checkbox' width='50'></e-column>-->
+        <!--<e-column field='ServerTrackId'  headerText='物流跟踪号' isPrimaryKey='false' width='170' style="border: 1px #ccc solid">-->
+          <!--<ng-template #template let-data>-->
+            <!--<a routerLink="/orders/{{data.SystemOrderId}}">{{data.ServerTrackId}}</a>-->
+          <!--</ng-template>-->
+        <!--</e-column>-->
+        <!--<e-column field='ServerTrackId'  headerText='配载编号' isPrimaryKey='true' width='200' style="border: 1px #ccc solid">-->
+          <!--<ng-template #template let-data>-->
+            <!--<a routerLink="/orders/{{data.ShipmentId}}">{{data.ShipmentId}}</a>-->
+          <!--</ng-template>-->
+        <!--</e-column>-->
+        <!--<e-column field='ReceivedTotalCount' headerText='接单件数'  width=120></e-column>-->
+        <!--<e-column field='SendTotalCount' headerText='已配载件数'  width=120></e-column>-->
+        <!--<e-column field='ShipmentStatued' headerText='运单状态'  width=120></e-column>-->
+        <!--<e-column field='DestCity' headerText='到货城市'  width=120></e-column>-->
+        <!--<e-column field='Destarea' headerText='到货区域'  width=120></e-column>-->
+        <!--<e-column field='AcceptOrderStore' headerText='接单网点'  width=120></e-column>-->
+        <!--<e-column field='NexReceiveStoreName' headerText='转运网点'  width=120></e-column>-->
+        <!--<e-column field='EndSendStoreName' headerText='配送网点'  width=120></e-column>-->
+        <!--<e-column field='AcceptDateTime' headerText='接单时间' format='yMd' width=120>-->
+          <!--<ng-template #template let-data>-->
+            <!--{{data.AcceptDateTime | date: 'yyyy-MM-dd HH:mm:ss'}}-->
+          <!--</ng-template>-->
+        <!--</e-column>-->
+        <!--<e-column field='OrderSendMark' headerText='托运备注' width=150></e-column>-->
+      <!--</e-columns>-->
+
+    <!--</ejs-grid>-->
+  <!--</mat-tab>-->
+  <!--<mat-tab label="计划" disabled="disabled">-->
+    <!--<ejs-grid #grid2  id='Grid2'-->
+              <!--(dataStateChange)="dataStateChange($event,'2')"-->
+              <!--allowResizing= 'true'-->
+              <!--[allowExcelExport]='true'  allowSorting='true'-->
+              <!--[allowSelection]="true"-->
+              <!--[enableHover]="false"-->
+              <!--allowPaging='true'  height='{{gridheight2}}'>-->
+      <!--<e-columns >-->
+        <!--<e-column type='checkbox' width='50'></e-column>-->
+        <!--<e-column field='shipplanid'  headerText='物流计划编号' isPrimaryKey='true' width='170' style="border: 1px #ccc solid">-->
+          <!--<ng-template #template let-data>-->
+            <!--<a routerLink="/orders/{{data.shipplanid}}">{{data.shipplanid}}</a>-->
+          <!--</ng-template>-->
+        <!--</e-column>-->
+        <!--<e-column field='serverTrackId' headerText='物流跟踪号'  width=120></e-column>-->
+        <!--<e-column field='TaskType' headerText='任务类型'  width=120>-->
+          <!--<ng-template #template let-data>-->
+            <!--{{data.TaskType | carryingtasktypePipe :'1'}}-->
+          <!--</ng-template>-->
+        <!--</e-column>-->
+        <!--<e-column field='ShipmentPeopleDesc' headerText='运输方'  width=120></e-column>-->
+        <!--<e-column field='CarryingToolName' headerText='车牌号'  width=120></e-column>-->
+        <!--<e-column field='CarryingStatuedId' headerText='司机状态'  width=120>-->
+          <!--<ng-template #template let-data>-->
+            <!--{{data.CarryingStatuedId | carryingStatuedPipe :'1'}}-->
+          <!--</ng-template>-->
+        <!--</e-column>-->
+        <!--<e-column field='PublishTaskCount' headerText='委托数量'  width=120></e-column>-->
+        <!--<e-column field='DestArea' headerText='到货地'  width=120></e-column>-->
+        <!--<e-column field='PublishDateTime' headerText='委派时间' format='yMd' width=120>-->
+          <!--<ng-template #template let-data>-->
+            <!--{{data.PublishDateTime | date: 'yyyy-MM-dd HH:mm:ss'}}-->
+          <!--</ng-template>-->
+        <!--</e-column>-->
+        <!--<e-column field='AcceptDateTime' headerText='接单时间' format='yMd' width=120>-->
+        <!--<ng-template #template let-data>-->
+          <!--{{data.AcceptDateTime | date: 'yyyy-MM-dd HH:mm:ss'}}-->
+        <!--</ng-template>-->
+      <!--</e-column>-->
+        <!--<e-column field='FinishDateTime' headerText='完成时间' format='yMd' width=120>-->
+          <!--<ng-template #template let-data>-->
+            <!--{{data.FinishDatetime | date: 'yyyy-MM-dd HH:mm:ss'}}-->
+          <!--</ng-template>-->
+        <!--</e-column>-->
+        <!--<e-column field='OrderSendMark' headerText='托运备注' width=150></e-column>-->
+      <!--</e-columns>-->
+
+    <!--</ejs-grid>-->
+  <!--</mat-tab>-->
+<!--</mat-tab-group>-->
+
+

@@ -1,0 +1,34 @@
+<ng-container *ngIf="orderAbnormalProcessResultModel.ResultId==null">
+  <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_10">
+    <div fxFlex="100">处理意见：<ejs-textbox   [(ngModel)]="orderAbnormalProcessResultModel.AbIdea" multiline="true" rows="2"></ejs-textbox></div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_10">
+    <div fxFlex="93">处理结果：<ejs-textbox  [(ngModel)]="orderAbnormalProcessResultModel.AbResult" multiline="true" rows="2">></ejs-textbox></div>
+    <div fxFlex="7" class="margin_015"><b>*(必填)</b></div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_10">
+    <div fxFlex="100">客户意见：<ejs-textbox  [(ngModel)]="orderAbnormalProcessResultModel.AbCustomerIdea" multiline="true" rows="2">></ejs-textbox></div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_10">
+    <div fxFlex="93">改进措施：<ejs-textbox  [(ngModel)]="orderAbnormalProcessResultModel.UptoChangeIdea" multiline="true" rows="2"></ejs-textbox></div>
+    <div fxFlex="7" class="margin_015"><button   ejs-button cssClass="e-info pagebtn" type="button"  (click)="finishtask()">结案</button></div>
+  </div>
+</ng-container>
+<ng-container *ngIf="orderAbnormalProcessResultModel.ResultId!=null">
+  <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_10">
+    <div fxFlex="100">处理意见：<ejs-textbox   [(ngModel)]="orderAbnormalProcessResultModel.AbIdea" multiline="true" rows="2" readonly="readonly"></ejs-textbox></div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_10">
+    <div fxFlex="100">处理结果：<ejs-textbox  [(ngModel)]="orderAbnormalProcessResultModel.AbResult" multiline="true" rows="2" readonly="readonly"></ejs-textbox></div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_10">
+    <div fxFlex="100">客户意见：<ejs-textbox  [(ngModel)]="orderAbnormalProcessResultModel.AbCustomerIdea" multiline="true" rows="2" readonly="readonly">></ejs-textbox></div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_10">
+    <div fxFlex="100">改进措施：<ejs-textbox  [(ngModel)]="orderAbnormalProcessResultModel.UptoChangeIdea" multiline="true" rows="2" readonly="readonly"></ejs-textbox></div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_10">
+    <div fxFlex="100">结案时间：<ejs-textbox  [(ngModel)]="orderAbnormalProcessResultModel.CreateDateTime" multiline="true" rows="2" readonly="readonly"></ejs-textbox></div>
+  </div>
+</ng-container>
+

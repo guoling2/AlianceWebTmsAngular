@@ -1,0 +1,100 @@
+<form id="customerid" [formGroup]="form" >
+
+
+
+  <mat-form-field>
+    <label><input matInput placeholder="客户名称" formControlName="name"></label>
+    <mat-error>
+      客户名称是
+      <strong>必须的</strong>
+    </mat-error>
+    <mat-hint align="start">请输入
+      <strong>客户名称</strong>
+    </mat-hint>
+  </mat-form-field>
+
+  <mat-form-field>
+    <label><input matInput placeholder="编码" formControlName="code"></label>
+
+    <mat-hint align="start">
+      客户编码
+    </mat-hint>
+  </mat-form-field>
+
+  <mat-form-field>
+    <label><input matInput placeholder="客户简称" formControlName="simplename"></label>
+
+    <mat-hint align="start">
+      客户简称
+    </mat-hint>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select formControlName="customType"  id="customType" placeholder="客户性质">
+      <mat-option value="公司">公司</mat-option>
+      <mat-option value="个人">个人</mat-option>
+    </mat-select>
+    <mat-error>
+      客户性质
+      <strong>必须的</strong>
+    </mat-error>
+    <mat-hint align="start">请选择
+      <strong>客户性质</strong>
+    </mat-hint>
+  </mat-form-field>
+  <mat-form-field>
+
+    <mat-select formControlName="customleavel"  id="customleavel" placeholder="客户级别">
+      <mat-option value="普通">普通</mat-option>
+      <mat-option value="高级">高级</mat-option>
+    </mat-select>
+    <mat-error>
+      客户级别
+      <strong>必须的</strong>
+    </mat-error>
+    <mat-hint align="start">请选择
+      <strong>客户级别</strong>
+    </mat-hint>
+  </mat-form-field>
+  <mat-form-field>
+    <label><input matInput placeholder="业务员" formControlName="emp"></label>
+
+    <mat-hint align="start">
+      业务员
+    </mat-hint>
+  </mat-form-field>
+
+  <mat-form-field>
+
+    <mat-select  placeholder="从属机构"  formControlName="partyto">
+      <option value="" selected></option>
+      <mat-option value="{{store.StoreId}}" *ngFor="let store of logistticstores;">{{store.StoreName}}</mat-option>
+    </mat-select>
+    <mat-hint align="start">
+      请选择从属机构
+    </mat-hint>
+    <mat-error>
+      从属机构
+      <strong>必须的</strong>
+    </mat-error>
+  </mat-form-field>
+
+
+  <div>状态:</div>
+  <mat-radio-group formControlName="enabel">
+    <mat-radio-button value="true">启用</mat-radio-button>
+    <mat-radio-button  value="false">禁用</mat-radio-button>
+  </mat-radio-group>
+
+  <mat-checkbox formControlName="Canmonthlysettle">是否可月结</mat-checkbox>
+  <mat-checkbox formControlName="Ismonth">默认月结</mat-checkbox>
+
+  <mat-form-field>
+    <label><input matInput placeholder="创建人"  formControlName="createuser" disabled="true"></label>
+
+    <mat-hint align="start">
+      创建人
+    </mat-hint>
+  </mat-form-field>
+
+
+</form>

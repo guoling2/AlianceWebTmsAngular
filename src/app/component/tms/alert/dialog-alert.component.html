@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Hi {{data.Title}}</h1>
+<div mat-dialog-content class="dialogcontents">
+  <p>{{data.Message}}</p>
+
+</div>
+<mat-dialog-actions align="end">
+
+
+  <button *ngIf="data.ConfirmModel" class="heibtns" color="cancel" mat-button mat-raised-button  (click)="onNoClick(false)">取消</button>
+
+
+  <button mat-button mat-raised-button (click)="onNoClick(true)" class="heibtns"  color="reject">确定</button>
+
+
+</mat-dialog-actions>

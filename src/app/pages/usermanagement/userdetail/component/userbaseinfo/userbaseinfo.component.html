@@ -1,0 +1,12 @@
+<div *ngIf="emplayeeUser" class="emplaybox">
+  <div fxLayout="row" fxLayoutAlign="space-between none">
+    <div fxFlex="32" class="userimg"><img src="{{emplayeeUser.UserHeadUrl}}"  alt="用户头像"></div>
+    <div fxFlex="65" class="commarginL">
+      <span class="textboxline">登录账号：<ejs-textbox  placeholder="员工工号" ngModel="{{emplayeeUser.WorkNumber}}" readonly></ejs-textbox></span>
+      <span class="textboxline">员工姓名：<ejs-textbox  placeholder="员工姓名" ngModel="{{emplayeeUser.RealName}}" readonly></ejs-textbox></span>
+      <span class="textboxline">联系手机：<ejs-textbox  placeholder="联系手机" ngModel="{{emplayeeUser.PhoneNumber}}" readonly></ejs-textbox></span>
+      <span class="textboxline">联系邮箱：<ejs-textbox  placeholder="联系邮箱" ngModel="{{emplayeeUser.Email}}" readonly></ejs-textbox></span>
+      <span class="textboxline">入职日期：<ejs-textbox  placeholder="入职日期" ngModel="{{emplayeeUser.CreateDateTime}}" readonly></ejs-textbox></span>
+    </div>
+  </div>
+</div>

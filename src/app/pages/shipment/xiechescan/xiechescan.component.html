@@ -1,0 +1,44 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <div><i class="fas fa-compass"></i> 当前位置：<a [routerLink]="['/biz/shipment/xieche']" >卸车列表</a>  / <b>卸车扫描</b></div>
+  </div>
+  <div class="contenttex-r"></div>
+</div>
+<form [formGroup]="saveform" class="listfrom" >
+  <div fxLayout="row" fxLayoutAlign="center end">
+    <div fxFlex="40"><app-bin-mylogisticstore formControlName="ActionStoreId"></app-bin-mylogisticstore></div>
+    <div fxFlex="60" class="margin-l_015">
+      <div class="choosemode"><p>请选择扫描模式：</p><ejs-checkbox #sannmodel label="目前为单行扫描，点击选择多行扫描"  [checked]="true" (change)="changeHandler()" ></ejs-checkbox></div>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center end" class="margin_t_10">
+    <div fxFlex="1 1" [hidden]="!multilinehidden" >
+      <div style="width:40%;float:left"><ejs-textbox #singelsearch placeholder="单行扫描" floatLabelType="Auto" (keypress)="singelseatch($event)" formControlName="SearchValue" showclearbutton="true" ></ejs-textbox></div>
+      <div style="width:58%;float:left;padding-top:25px;padding-left:15px">(扫描枪)</div>
+    </div>
+  </div>
+</form>
+  <div fxLayout="row" fxLayoutAlign="center end" class="margin_t_10">
+    <div fxFlex="1 1" [hidden]="multilinehidden">
+      <div style="width:40%;float:left"><ejs-textbox  rows="5" placeholder="多行输入(回车换行)" floatLabelType="Auto" [multiline]="true" [(ngModel)]="MultilineInpuntValue"></ejs-textbox></div>
+      <div style="width:58%;float:left;padding-top:86px;padding-left:5px"><button ejs-button cssClass="e-info mat-width" (click)="Searchmultilie()">查询</button></div>
+    </div>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="end end" class="margin_t_10">
+    <div fxFlex="1 1" class="buttontos">
+      <span class="searchspans">查询结果 共扫描<b> {{XieCheScanResponses.length}} </b>单</span>
+      <button ejs-button cssClass="e-info mat-width" (click)="confirmxieche()" class="mat-green">确认卸车</button>
+      <button ejs-button cssClass="e-info mat-width" (click)="clearrecords()"  class="mat-reject">清除结果</button>
+    </div>
+  </div>
+<ejs-grid #grid  [dataSource]="XieCheScanResponses" height="300" [editSettings]='editSettings' class="contlistbox">
+  <e-columns >
+    <e-column field='XieCheId'  headerText='卸车编号' isPrimaryKey='true' width='150'></e-column>
+    <e-column field='XieCheCode' headerText='扫描单号'  width=150></e-column>
+    <e-column field='OrderCount' headerText='卸车件数'  width=120></e-column>
+    <e-column field='ProcessMsg' headerText='处理结果'  width=120></e-column>
+    <e-column headerText='操 作' width='160' [commands]='commands'></e-column>
+  </e-columns>
+</ejs-grid>
+

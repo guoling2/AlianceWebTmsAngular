@@ -1,0 +1,44 @@
+<mat-sidenav-container [class.boxed]="layoutMode">
+
+  <mat-sidenav class="customizer" [position]="customizerSidenavAlign" mode="over" #customizer >
+  </mat-sidenav>
+
+  <mat-sidenav class="sidenav" [position]="sidenavAlign" [mode]="sidenavMode" [opened]="sidenavOpen" #sidenav>
+    <app-brand class="stbui-background-material"></app-brand>
+    <app-navigation></app-navigation>
+  </mat-sidenav>
+
+  <div class="sidenav-container" fxLayout="column">
+   <!--<app-head [customizer]="customizer" [sidenav]="sidenav" [ngClass]="settings.colorClasses.header"-->
+             <!--*ngIf="settings.layout.header=='below'"></app-head>-->
+
+    <app-head [customizer]="customizer" [sidenav]="sidenav" class="stbui-background-material"></app-head>
+    <div class="main-container" #scrollContainer>
+
+      <!--增加可以切换tab的功能-->
+<!--      <nav mat-tab-nav-bar>-->
+
+
+<!--        <a mat-tab-link-->
+<!--           *ngFor="let link of navLinks"-->
+<!--           [routerLink]="link.module"-->
+<!--           routerLinkActive #rla="routerLinkActive"-->
+<!--           [active]="rla.isActive">-->
+<!--          <span>-->
+<!--             {{link.title}}-->
+<!--              <mat-icon class="example-tab-icon tabclosebtn" (click)="closeurl(link.title)">closed</mat-icon>-->
+<!--          </span>-->
+
+<!--        </a>-->
+
+<!--      </nav>-->
+      <app-alert  #alert></app-alert>
+      <ejs-toast #toasttype id='toasttype' [position]="position"   [showCloseButton]="true"></ejs-toast>
+      <router-outlet (activate)="onActivate($event, scrollContainer)"></router-outlet>
+    </div>
+
+    <app-footer class="stbui-background-material"></app-footer>
+    <!--<stbui-footer *ngIf="settings.layout.footer=='below'"></stbui-footer>-->
+  </div>
+
+</mat-sidenav-container>

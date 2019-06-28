@@ -1,0 +1,51 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <mat-card-title>网点签收列表</mat-card-title>
+    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+  </div>
+  <div class="contenttex-r"></div>
+</div>
+<div fxLayout="row" fxLayoutAlign="none">
+  <div [fxFlex]="isselect?65:100" >
+    <form class="listfrom" [formGroup]="searchp" >
+      <mat-form-field class="col-md-3">
+        <input matInput formControlName="OrderTrackServerId" />
+        <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
+      </mat-form-field>
+
+      <mat-form-field class="col-md-3">
+        <select matNativeControl  formControlName="IsSign">
+          <option value="-1">全部</option>
+          <option value="0">未签收</option>
+          <option value="1">已签收</option>
+        </select>
+        <span  matPrefix style="color: #888">签收状态：&nbsp;</span>
+      </mat-form-field>
+      <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+    </form>
+    <ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
+              (dataStateChange)="dataStateChange($event)"
+              (rowSelected)="rowselect($event)"
+              [allowExcelExport]='true'  allowSorting='true'
+              [allowSelection]="true"
+              [enableHover]="true"
+              allowPaging='true'  class="contlistbox">
+      <e-columns >
+        <e-column field='OrderTrackServerId' headerText='物流单号'  width=120></e-column>
+        <e-column field='DestLinkman' headerText='到货联系'  width=110></e-column>
+        <e-column field='Desttel' headerText='联系电话' textAlign="left"  width='110'></e-column>
+        <e-column field='IsSign' headerText='签收状态' textAlign="left"  width='100'></e-column>
+        <e-column field='IfDesctPickUpMySelf' headerText='是否自提'  textAlign="left" width=120></e-column>
+        <e-column field='CreateDatetime' headerText='下单时间'  width=120></e-column>
+      </e-columns>
+    </ejs-grid>
+  </div>
+  <div [fxFlex]="isselect?35:0" style="margin-right:15px" >
+    <ng-container><ng-template  sign-change-host></ng-template></ng-container>
+<!--    <ng-container [ngSwitch]="SignStatued">-->
+<!--      <app-sign-add   [OrderTrackServerId]="selectdata['OrderTrackServerId']"  [OrderLogisticDetailId]="selectdata['OrderLogisticDetailId']" #signaddcomponsent *ngSwitchCase="'未签收'"></app-sign-add>-->
+<!--      <app-sign-detail [orderLogisticDetailId]="selectdata['OrderLogisticDetailId']" #signdetailcomponsent *ngSwitchCase="'签收'"></app-sign-detail>-->
+<!--      <app-sign-noselected  *ngSwitchDefault></app-sign-noselected>-->
+<!--    </ng-container>-->
+  </div>
+</div>

@@ -1,0 +1,18 @@
+
+    <ng-container *ngIf="Documents!=null">
+    <table class="matTables"  style="width: 100%;margin-top:10px">
+      <thead>
+      <tr>
+        <th>附件名称</th> <th>上传日期</th> <th>操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr  *ngFor="let file of Documents">
+        <td>   {{ file.FileName }}</td>
+        <td>   {{ file.UploadDateTime }}</td>
+        <td>     <a href="{{file.DownLink}}" target="_blank" title="{{ file.FileName }}">预览</a>  <a>下载</a></td>
+      </tr>
+      </tbody>
+    </table>
+    </ng-container>
+

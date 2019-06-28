@@ -1,0 +1,18 @@
+:host {
+  z-index: 4;
+}
+
+.main-toolbar {
+  height: 50px;
+  padding-left: 0px;
+}
+
+.more-btn {
+  height: 100%;
+  min-width: 70px;
+}
+
+.mat-icon-button {
+  margin-right: 10px;
+  margin-top:-5px
+}

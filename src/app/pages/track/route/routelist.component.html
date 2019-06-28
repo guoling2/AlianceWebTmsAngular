@@ -1,0 +1,54 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <mat-card-title>运单时效</mat-card-title>
+    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+  </div>
+  <div class="contenttex-r"></div>
+</div>
+<form class="listfrom" [formGroup]="searchp" >
+
+
+  <mat-form-field class="col-md-3">
+    <select matNativeControl  formControlName="IsSign">
+      <option value="" label=""></option>
+      <option value="0" selected="selected">未签收</option>
+      <option value="1">已签收</option>
+    </select>
+    <span  matPrefix style="color: #888">是否签收：&nbsp;</span>
+  </mat-form-field>
+
+  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+</form>
+<ejs-grid #grid  id='Grid' allowResizing= 'true' height="{{gridheight}}"
+          [allowExcelExport]='true'  allowSorting='false'
+          [allowSelection]="true"
+          [enableHover]="false"
+          (dataStateChange)="dataStateChange($event)"
+          allowPaging='true' class="contlistbox">
+  <e-columns >
+
+    <e-column field='OrderTrackNumber' headerText='物流单号' textAlign="left"  width='220'>
+      <ng-template #template let-data>
+
+        <a (click)="opentrackmessage(data.OrderTrackNumber)" >{{data.OrderTrackServerId}}</a>
+
+      </ng-template>
+
+    </e-column>
+    <e-column field='Origincustomname' headerText='发货客户'  textAlign="left" width=200></e-column>
+    <e-column field='DesctcustomName' headerText='收货客户'  textAlign="left" width=200></e-column>
+    <e-column field='DestLinkman' headerText='收货联系' textAlign="left"  width=120></e-column>
+    <e-column field='Desttel' headerText='收货电话' textAlign="left"  width=150></e-column>
+    <e-column field='IfCargoFromOrigin' headerText='发货服务'  textAlign="left" width=120></e-column>
+    <e-column field='FirstReceiveOrderDeportment' headerText='接单部门' textAlign="left"  width=180></e-column>
+    <e-column field='NowOrderLocatioOrCompany' headerText='正在处理部门/外包公司' textAlign="left"  width=200></e-column>
+    <e-column field='NextOrderLocation' headerText='到货下一部门' textAlign="left"  width=150></e-column>
+    <e-column field='UpdateDateTime' headerText='更新时间'  width=150></e-column>
+    <e-column field='RuleForSeleOrDeliverorTime' headerText='规定自提/配送时效'  width=180></e-column>
+    <e-column field='IsSign' headerText='签收'  width=120></e-column>
+    <e-column field='IsUnNormal' headerText='异常'  width=120></e-column>
+    <e-column field='LogisticOrderStatuedId' headerText='订单状态'  width=120></e-column>
+    <e-column field='CreateDatetime' headerText='创建时间'  width=150></e-column>
+    <e-column field='FinallyOrderForSendOrDeliverDeportOrCompany' headerText='末端配送/自提部门' width=180></e-column>
+  </e-columns>
+</ejs-grid>

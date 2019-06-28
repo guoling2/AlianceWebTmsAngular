@@ -1,0 +1,9 @@
+<mat-card   style="padding:0;box-shadow: none;width:100%;margin-bottom:5px;" class="stbuidiv">
+  <stbui-message *ngIf="alertlabel"  #message label="{{alertlabel}}" sublabel="{{alertsublabel}}"
+                 color="{{alertcolor}}" icon="{{alerticon}}"  >
+    <button stbui-message-actions mat-icon-button (click)="cclose()">
+      <mat-icon>cancel</mat-icon>
+    </button>
+  </stbui-message>
+
+</mat-card>

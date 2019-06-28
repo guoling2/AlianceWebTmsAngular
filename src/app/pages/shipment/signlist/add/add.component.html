@@ -1,0 +1,65 @@
+<div class="control-section">
+  <div class="col-lg-12">
+    <div class="control_wrapper" id="control_wrapper">
+      <h4 class="form-title"><mat-icon fontSet="fontawesome" fontIcon="fa-info-circle"></mat-icon>签收信息</h4>
+      <form id="reactive" [formGroup]="form" >
+        <div class="form-group" style="padding-top:6px;">
+          <div class="e-float-input">
+            <input type="text" id="OrderTrackServerId" name="OrderTrackServerId" class="required"  value="{{OrderTrackServerId}}" readonly>
+            <span class="e-float-line"></span>
+            <label class="e-float-text e-label-top" for="OrderTrackServerId">物流单号</label>
+          </div>
+          <app-field-error-display  [inform]="form" field="OrderLogisticDetailId"  [formSumitAttempt]="formSumitAttempt" errorMsg="* 物流单号不能为空">
+          </app-field-error-display>
+        </div>
+        <div class="form-group" style="padding-top:6px;">
+          <div class="e-float-input">
+            <input type="text" id="SignUserName" name="SignUserName" class="required" formControlName="SignUserName" >
+            <span class="e-float-line"></span>
+            <label class="e-float-text e-label-top" for="SignUserName">签收人</label>
+          </div>
+          <app-field-error-display  [inform]="form" field="SignUserName"  [formSumitAttempt]="formSumitAttempt" errorMsg="* 签收人姓名不能为空">
+          </app-field-error-display>
+        </div>
+        <div class="form-group" style="padding-top:6px;">
+          <div class="e-float-input">
+            <ejs-dropdownlist style="border:none" id="SingaMemberType" formControlName="SingaMemberType" name="SingaMemberType"  [dataSource]='SignTypeDataSource'></ejs-dropdownlist>
+            <span class="e-float-line"></span>
+            <label class="e-float-text e-label-top" for="SingaMemberType" style="margin-top:-20px;">签收类型</label>
+          </div>
+          <app-field-error-display  [inform]="form" field="SingaMemberType"  [formSumitAttempt]="formSumitAttempt" errorMsg="* 请选择签收类型">
+          </app-field-error-display>
+        </div>
+        <div class="form-group" style="padding-top:6px;">
+          <div class="e-float-input">
+            <ejs-datetimepicker format='yyyy-MM-dd HH:mm' id="SignDateTime" name="SignDateTime"  formControlName="SignUserName"></ejs-datetimepicker>
+            <span class="e-float-line"></span>
+            <label class="e-float-text e-label-top" for="SignDateTime" style="margin-top:-20px">签收时间</label>
+          </div>
+        </div>
+        <div class="form-group" style="padding-top:6px;">
+          <div class="e-float-input upload-area">
+
+            <input type="text" id="OrderBackFile" name="OrderBackFile" [(ngModel)]="uploadInput" readonly formControlName="OrderBackFile" class="required">
+            <button id="browse" class="e-control e-btn e-info" (click)='browseClick()'>浏览...</button>
+            <span class="e-float-line"></span>
+            <label class="e-float-text e-label-top" for="OrderBackFile">回单图片</label>
+          </div>
+          <ejs-uploader #defaultupload id='fileupload' allowedExtensions = "image/*" [autoUpload]=false [multiple]='multiple'    (selected)='onFileSelect($event)'></ejs-uploader>
+          <app-field-error-display  [inform]="form" field="OrderBackFile"  [formSumitAttempt]="formSumitAttempt"  errorMsg="* 选择回单图片">
+          </app-field-error-display>
+
+        </div>
+        <div class="form-group template">
+          <div class="submitBtn">
+            <button class="submit-btn e-btn" id="submit-btn" [disabled]="form.invalid" (click)= "Submit()">签收</button>
+          </div>
+        </div>
+
+      </form>
+<!--      <ejs-dialog id="confirmationDialog" #Dialog [buttons]='dlgButtons' [animationSettings]='animationSettings' [header]='formHeader' [showCloseIcon]='showCloseIcon' [content]='content'  [target]='target' [width]='width' [visible]="visible" [isModal]="isModal" >-->
+<!--      </ejs-dialog>-->
+    </div>
+  </div>
+</div>
+

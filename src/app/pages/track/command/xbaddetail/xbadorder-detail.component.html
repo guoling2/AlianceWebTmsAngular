@@ -1,0 +1,92 @@
+
+<
+  <div fxLayout="column" fxLayoutAlign=" none">
+    <div fxFlex="40">
+      <mat-card class="cardmargin">
+      <mat-card-title class="cardborder">
+        <mat-icon fontSet="fontawesome" fontIcon="fa-file-alt" class="fontacommon"></mat-icon>
+        <b class="mat_tit_b">订单信息-{{OrderAbnormalMessageViewModel.HasExceptionOrderViewModel.TrackServerId}}</b>
+      </mat-card-title>
+      <mat-card-content>
+        <div>
+          <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_10">
+            <div fxFlex="32">异常编号：<span>{{OrderAbnormalMessageViewModel.MessageId}}</span></div>
+            <div fxFlex="23" class="margin_010"> 发货客户：<span>{{OrderAbnormalMessageViewModel.HasExceptionOrderViewModel.OriginCustomer}}</span></div>
+            <div fxFlex="17">运单状态：<span>{{OrderAbnormalMessageViewModel.HasExceptionOrderViewModel.LogisticOrderStatuedDesc}}</span></div>
+            <div fxFlex="28" class="margin_010">运输线路：<span>{{OrderAbnormalMessageViewModel.HasExceptionOrderViewModel.TransportLine}}</span></div>
+          </div>
+            <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_10">
+              <div fxFlex="29.5">到货客户：<span>{{OrderAbnormalMessageViewModel.HasExceptionOrderViewModel.DestCustomer}}</span></div>
+              <div fxFlex="23" class="margin_010">到货联系：<span>{{OrderAbnormalMessageViewModel.HasExceptionOrderViewModel.DestCustomerLinkTel}}</span></div>
+              <div fxFlex="50">到货地址：<span>{{OrderAbnormalMessageViewModel.HasExceptionOrderViewModel.DestCustomerAddress}}</span></div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_10">
+              <div fxFlex="32">录单网点：<span>{{OrderAbnormalMessageViewModel.HasExceptionOrderViewModel.OriginStation}}</span></div>
+              <div fxFlex="23" class="margin_010">到货方式：<span>{{OrderAbnormalMessageViewModel.HasExceptionOrderViewModel.OrderDestServices}}</span></div>
+              <div fxFlex="17"> 录 单 人 &nbsp;：<span>{{OrderAbnormalMessageViewModel.HasExceptionOrderViewModel.OriginCreateUserName}}</span></div>
+              <div fxFlex="28" class="margin_010">录单时间：<span>{{OrderAbnormalMessageViewModel.HasExceptionOrderViewModel.OrderCreateDateTime}}</span></div>
+
+            </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    </div>
+    <div fxFlex="40">
+      <mat-card class="cardmargin">
+      <mat-card-title class="cardborder">
+        <mat-icon fontSet="fontawesome" fontIcon="fa-exclamation-circle" class="fontacommon"></mat-icon>
+        <b class="mat_tit_b">异常信息</b>
+      </mat-card-title>
+      <mat-card-content>
+          <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_5">
+            <div fxFlex="1 2">发生时间：<ejs-datetimepicker  readonly="true" format='yyyy-MM-dd HH:mm'  [ngModel]="OrderAbnormalMessageViewModel.HappendTime" ></ejs-datetimepicker></div>
+            <div fxFlex="1 3" class="margin_015">关联网点：<ejs-textbox readonly="true"  [ngModel]="OrderAbnormalMessageViewModel.ResponseLogisticStoreName" ></ejs-textbox></div>
+            <div fxFlex="1 3">关联方：<ejs-textbox readonly="true"  [ngModel]="OrderAbnormalMessageViewModel.LinlkPeople"></ejs-textbox></div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_5">
+            <div fxFlex="1 3">异常问题：<ejs-textbox readonly="true"  [ngModel]="OrderAbnormalMessageViewModel.QuestionMsg"></ejs-textbox></div>
+            <div fxFlex="1 3" class="margin_015">异常品相：<ejs-textbox  readonly="true"  [ngModel]="OrderAbnormalMessageViewModel.OrderItemName"></ejs-textbox></div>
+            <div fxFlex="1 3">异常件数：<ejs-numerictextbox step='1' min="0" readonly="true"  [ngModel]="OrderAbnormalMessageViewModel.OrderItemCount"></ejs-numerictextbox></div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_5">
+            <div fxFlex="1 3">发生环节：<ejs-textbox readonly="true"  [ngModel]="OrderAbnormalMessageViewModel.OrderModule"></ejs-textbox></div>
+            <div fxFlex="1 3" class="margin_015"> 提报人：<ejs-textbox readonly="true"  [ngModel]="OrderAbnormalMessageViewModel.SubmitUserName"></ejs-textbox></div>
+            <div fxFlex="1 3"> 异常描述：<ejs-textbox readonly="true"  [ngModel]="OrderAbnormalMessageViewModel.MsgMark"></ejs-textbox></div>
+          </div>
+        <ng-container *ngIf="!quectioncliamreadonly">
+          <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_5">
+            <div fxFlex="70">异常分类：<ejs-textbox [readonly]="quectioncliamreadonly"   [(ngModel)]="OrderAbnormalMessageViewModel.QuestionCliam"></ejs-textbox></div>
+            <div fxFlex="30" class="margin_015"><button  ejs-button cssClass="e-info mat-width" type="button" (click)="MotifyQuestionCliam()">分类修改</button></div>
+          </div>
+        </ng-container>
+      </mat-card-content>
+    </mat-card>
+    </div>
+    <div fxFlex="20">
+      <mat-card class="cardmargin" *ngIf="OrderAbnormalMessageViewModel.Documents&&showdocument==true">
+    <mat-card-title class="cardborder">
+      <mat-icon fontSet="fontawesome" fontIcon="fa-link" class="fontacommon"></mat-icon>
+      <b class="mat_tit_b">附件信息</b>
+    </mat-card-title>
+    <mat-card-content>
+
+     <table class="matTables"  style="width: 100%">
+              <thead>
+              <tr>
+                <th>附件名称</th> <th>上传日期</th> <th>操作</th>
+              </tr>
+              </thead>
+               <tbody>
+               <tr *ngFor="let file of OrderAbnormalMessageViewModel.Documents">
+                 <td>   {{ file.FileName }}</td>
+                 <td>   {{ file.UploadDateTime }}</td>
+                 <td>     <a href="{{file.DownLink}}" target="_blank" title="{{ file.FileName }}">预览</a>  <a>下载</a></td>
+               </tr>
+               </tbody>
+     </table>
+    </mat-card-content>
+  </mat-card>
+    </div>
+  </div>
+
+

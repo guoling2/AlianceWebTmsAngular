@@ -1,0 +1,74 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <mat-card-title>{{title}}</mat-card-title>
+    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+  </div>
+  <div class="contenttex-r">
+    <button ejs-button cssClass="e-info mat-width" (click)="backorder()" class="mat-reject">退单</button>
+    <button ejs-button cssClass="e-info mat-width" (click)="acceptorder(false)" class="mat-green">接单</button>
+    <!--<button ejs-button cssClass="e-info" (click)="acceptorder(true)"  hidden="hidden">接单&安排司机</button>-->
+  </div>
+</div>
+
+<form class="listfrom" [formGroup]="searchp" >
+<mat-form-field class="col-md-3">
+  <input matInput  formControlName="serverTrackId"/>
+  <span  matPrefix style="color: #888">物流跟踪号：&nbsp;</span>
+</mat-form-field>
+
+  <mat-form-field class="col-md-3">
+    <select matNativeControl  formControlName="customerOrderStatus">
+      <option label="--状态选择 --"></option>
+      <option value="10">未接单</option>
+      <option value="20">处理中</option>
+    </select>
+    <span  matPrefix style="color: #888">运单状态：&nbsp;</span>
+  </mat-form-field>
+
+  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+  <button ejs-button cssClass="e-info" (click)="searching1(1)"   style="display: none">Error</button>
+  <button ejs-button cssClass="e-info" (click)="searching1(2)" style="display: none">Info</button>
+  <button ejs-button cssClass="e-info" (click)="searching1(3)" style="display: none">Succeed</button>
+</form>
+
+<ejs-grid #grid  id='Grid' allowResizing= 'true' height="{{gridheight}}"
+          (dataStateChange)="dataStateChange($event)"
+          [allowExcelExport]='true'  allowSorting='false'
+          [allowSelection]="true"
+          [enableHover]="false"
+          allowPaging='true' class="contlistbox">
+  <e-columns >
+
+    <e-column type='checkbox' width='50'></e-column>
+
+    <e-column field='ServerTrackId'  headerText='物流跟踪号' isPrimaryKey='true' width='170' style="border: 1px #ccc solid">
+      <ng-template #template let-data>
+        <a routerLink="/orders/{{data.SystemOrderId}}">{{data.ServerTrackId}}</a>
+      </ng-template>
+    </e-column>
+    <e-column field='OrigincustomLinkman' headerText='发货联系人' textAlign="left"  width='110'></e-column>
+    <e-column field='Origintel' headerText='发货联系电话' textAlign="left"  width='130'></e-column>
+    <e-column field='OriginatorPhysicalDepotName' headerText='提货物理库位'  textAlign="left" width=150></e-column>
+    <e-column field='OriginAddress' headerText='提货地址'  textAlign="left" width=180></e-column>
+    <e-column field='Destlinkman' headerText='到货客户' textAlign="left"  width=110></e-column>
+    <e-column field='Desttel' headerText='到货联系' textAlign="left"  width=130></e-column>
+    <e-column field='Destarea' headerText='到货区域' textAlign="left"  width=150></e-column>
+    <e-column field='DestAddress' headerText='到货地址' textAlign="left"  width=150></e-column>
+    <e-column field='OrderItemCounts' headerText='件数'  width=120></e-column>
+    <e-column field='Grosston' headerText='重货重量'  width=120></e-column>
+    <e-column field='GrossVol' headerText='重货体积'  width=90></e-column>
+    <e-column field='Phton' headerText='泡货重量'  width=120></e-column>
+    <e-column field='PhVol' headerText='泡货体积'  width=90></e-column>
+    <e-column field='CreateUserName' headerText='下单客户'  width=120></e-column>
+    <e-column field='DelegateDateTime' headerText='下单时间' format='yMd' width=120>
+      <ng-template #template let-data>
+        {{data.DelegateDateTime | date: 'yyyy-MM-dd HH:mm:ss'}}
+      </ng-template>
+    </e-column>
+    <e-column field='OrderSendMark' headerText='托运备注' width=150></e-column>
+  </e-columns>
+</ejs-grid>
+
+
+
+

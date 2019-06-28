@@ -1,0 +1,128 @@
+<div class="header" fxLayout="column" fxLayoutAlign="center start">
+  <h3>
+    托运单 {{ordermodel.ReceivingBillId}} 信息
+  </h3>
+</div>
+
+<div class="m-content">
+  <mat-card class="example-card">
+      <h3 class="examcardh3"><i class="fas fa-plus-square"></i>基本信息</h3>
+    <mat-card-content class="m--margin-top-15">
+      <div class="container contadeatia" >
+        <div class="row"  fxLayout="row" fxLayout.xs="column">
+          <div class="col" fxFlex="25">
+            <label>托运单编号：</label>{{ordermodel.ReceivingBillId}}
+          </div>
+          <div class="col" fxFlex="25">
+            <label>客户单号：</label>{{ordermodel.CustomerOrderId}}
+          </div>
+          <div class="col" fxFlex="50">
+            <label>发货方：</label>{{ordermodel.Origincustomname}}
+          </div>
+        </div>
+        <div class="row"  fxLayout="row" fxLayout.xs="column">
+          <div class="col bordertnone" fxFlex="25">
+            <label>发货联系人：</label>{{ordermodel.Originlinkman}}
+          </div>
+          <div class="col bordertnone" fxFlex="25">
+            <label>发货联系电话：</label>{{ordermodel.Originlinktel}}
+          </div>
+          <div class="col bordertnone" fxFlex="50">
+            <label>发货区域：</label>{{ordermodel.Originarea}}
+          </div>
+        </div>
+        <div class="row"  fxLayout="row" fxLayout.xs="column">
+          <div class="col col-7 bordertnone" fxFlex="50">
+            <label>发货地址：</label>{{ordermodel.OriginAddress}}
+          </div>
+          <div class="col col-5 bordertnone" fxFlex="50">
+            <label>收货方：</label>{{ordermodel.Destcustomname}}
+          </div>
+
+        </div>
+        <div class="row"  fxLayout="row" fxLayout.xs="column">
+          <div class="col col-4  bordertnone" fxFlex="25">
+            <label>收货联系人：</label>{{ordermodel.Destlinkman}}
+          </div>
+          <div class="col col-3  bordertnone" fxFlex="25">
+            <label>收货联系电话：</label>{{ordermodel.Desttel}}
+          </div>
+          <div class="col col-5  bordertnone" fxFlex="50">
+            <label>收货区域：</label>{{ordermodel.Destarea}}
+          </div>
+        </div>
+        <div class="row"  fxLayout="row" fxLayout.xs="column">
+          <div class="col col-7 bordertnone" fxFlex="50">
+            <label>收货地址：</label>{{ordermodel.DestAddress}}
+          </div>
+          <div class="col col-5 bordertnone" fxFlex="50"> </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="example-card" style="padding:0px 24px;box-shadow: none!important;">
+    <h3 class="examcardh3"><i class="fas fa-plus-square"></i>运输品相</h3>
+    <mat-card-content class="m--margin-top-15">
+      <div class="container contadeatia2"  *ngFor="let orderitem of ordermodel.ReceivingBillItemCollections">
+        <div class="row"  fxLayout="row" fxLayout.xs="column">
+          <div class="col col-4" fxFlex="30">
+            <label class="labesvhorts">品相名称：</label>{{orderitem.PackageName}}
+          </div>
+          <div class="col col-2" fxFlex="15">
+            <label class="labesvhorts">件数：</label>{{orderitem.TotalQty}}
+          </div>
+          <div class="col col-2" fxFlex="17.5">
+            <label class="labesvhorts">重量(T)：</label>{{orderitem.TotalWeight}}
+          </div>
+          <div class="col col-2" fxFlex="17.5">
+            <label class="labesvhorts">体积(M3)：</label>{{orderitem.TotalVol}}
+          </div>
+          <div class="col col-2" fxFlex="20">
+            <label class="labesvhorts">包装类型：</label>{{orderitem.PackageType}}
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="example-cardb">
+    <h3 class="examcardh3"><i class="fas fa-plus-square"></i>其他信息</h3>
+    <mat-card-content class="m--margin-top-15">
+      <div class="container contadeatia">
+        <div class="row"  fxLayout="row" fxLayout.xs="column">
+          <div class="col" fxFlex="25">
+            <label class="labeshorts">托运重量(T)：</label>{{ordermodel.TotalWeight}}
+          </div>
+          <div class="col" fxFlex="25">
+            <label class="labeshorts">托运体积(M3)：</label>{{ordermodel.TotalVolume}}
+          </div>
+          <div class="col" fxFlex="25">
+            <label class="labeshorts">托运件数：</label>{{ordermodel.TotalCount}}
+          </div>
+          <div class="col" fxFlex="25">
+            <label class="labeshorts">运费：</label>{{ordermodel.DisAmount}}
+          </div>
+        </div>
+        <div class="row"  fxLayout="row" fxLayout.xs="column">
+          <div class="col col-3 bordertnone" fxFlex="25">
+            <label class="labeshorts">创建时间：</label> {{ordermodel.CreateDatetime | date: 'yyyy-MM-dd'}}
+          </div>
+          <div class="col col-3 bordertnone" fxFlex="25">
+            <label class="labelongs">订单状态：</label>{{ordermodel.OrderStatued}}
+          </div>
+          <div class="col col-3 bordertnone" fxFlex="25">
+            <label class="labelongs">是否自提：</label>{{ordermodel.IsMySelfOrder}}
+          </div>
+          <div class="col col-3 bordertnone" fxFlex="25">
+            <label class="labeshorts">财务状态：</label>未结算
+          </div>
+        </div>
+        <div class="row"  fxLayout="row" fxLayout.xs="column">
+          <div class="col-12 bordertnone" fxFlex="100">
+            <label class="labeshorts">订单备注：</label>{{ordermodel.DisMark}}
+          </div>
+        </div>
+
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,115 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <div style="margin-left:10px"><i class="fas fa-compass"></i> 当前位置：<a  [routerLink]="['/biz/base/stores/list']" >网点列表</a>  / <b>新增</b></div>
+  </div>
+</div>
+<div style="width:80%;height:auto;margin:0 auto;color:#666">
+  <form [formGroup]="saveform">
+  <mat-card class="cardmargin">
+    <mat-card-title class="cardborder">
+      <mat-icon fontSet="fontawesome" fontIcon="fa-plus-square" class="fontacommon_18"></mat-icon>
+      <b class="mat_tit_b">网点新增</b>
+    </mat-card-title>
+    <mat-card-content>
+      <div>
+        <div>
+          <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_10">
+             <div fxFlex="6 6"><ejs-textbox placeholder="网点名称" formControlName="StoreName" required floatLabelType="Auto"></ejs-textbox>
+              <div *ngIf="StoreNamedcheck.invalid && (StoreNamedcheck.dirty || StoreNamedcheck.touched)" class="invalid-alerts">
+                <div *ngIf="StoreNamedcheck.errors.required">
+                  <i class="fas fa-exclamation-triangle"></i> 请输入网点名称，网点名称不能未空
+                </div>
+              </div>
+             </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_10">
+            <div fxFlex="3 6">
+              <ejs-textbox placeholder="网点联系人"  formControlName="LinkMan" floatLabelType="Auto"></ejs-textbox>
+              <div *ngIf="LinkMancheck.invalid && (LinkMancheck.dirty || LinkMancheck.touched)" class="invalid-alerts">
+                <div *ngIf="LinkMancheck.errors.required">
+                  <i class="fas fa-exclamation-triangle"></i> 请输入网点联系人，网点联系人不能未空
+                </div>
+              </div>
+            </div>
+            <div fxFlex="3 6" class="margin-l_015">
+              <ejs-textbox placeholder="网点联系电话"  formControlName="LinkTel" floatLabelType="Auto"></ejs-textbox>
+              <div *ngIf="LinkTelcheck.invalid && (LinkTelcheck.dirty || LinkTelcheck.touched)" class="invalid-alerts">
+                <div *ngIf="LinkTelcheck.errors.required">
+                  <i class="fas fa-exclamation-triangle"></i> 请输入联系电话，联系电话不能未空
+                </div>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_10">
+            <div fxFlex="2 6">
+              <app-bin-storeleave [FirstIsSelect]="false" formControlName="BranchLevel"></app-bin-storeleave>
+            </div>
+            <div fxFlex="2 6" class="margin_015">
+              <app-bin-storetype [FirstIsSelect]="false" formControlName="StoreTypeId"></app-bin-storetype>
+            </div>
+            <div fxFlex="2 6" style="margin-bottom:3px">
+              <ejs-checkbox label="是否是总部" formControlName="IsManageBranch"  floatLabelType="Auto"></ejs-checkbox>
+              <div *ngIf="IsManageBranchcheck.invalid && (IsManageBranchcheck.dirty || IsManageBranchcheck.touched)" class="invalid-alerts">
+                <div *ngIf="IsManageBranchcheck.errors.required">
+                  <i class="fas fa-exclamation-triangle"></i> 请输入是否是总部，是否是总部不能未空
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="margin_t_10">
+             <app-bin-areacascading formControlName="StoreArea"></app-bin-areacascading>
+            <div *ngIf="StoreAreacheck.invalid && (StoreAreacheck.dirty || StoreAreacheck.touched)" class="invalid-alerts">
+              <div *ngIf="StoreAreacheck.errors.required">
+                <i class="fas fa-exclamation-triangle"></i> 请输入地址，地址不能未空
+              </div>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_10">
+            <div fxFlex="4 6 calc(27.5em + 20px)">
+              <ejs-textbox placeholder="发货网点地址"  formControlName="StoreAddessDetail" floatLabelType="Auto"></ejs-textbox>
+              <div *ngIf="StoreAddessDetailcheck.invalid && (StoreAddessDetailcheck.dirty || StoreAddessDetailcheck.touched)" class="invalid-alerts">
+                <div *ngIf="StoreAddessDetailcheck.errors.required">
+                  <i class="fas fa-exclamation-triangle"></i> 请输入网点地址，网点地址不能未空
+                </div>
+              </div>
+            </div>
+            <div fxFlex="1 6 calc(5em + 20px)" class="margin_015">
+              <ejs-textbox placeholder="经度"  formControlName="Lng" floatLabelType="Auto"></ejs-textbox>
+            </div>
+            <div fxFlex="1 6 calc(5em + 20px)">
+              <ejs-textbox placeholder="纬度"  formControlName="Lat" floatLabelType="Auto"></ejs-textbox>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_10">
+            <div fxFlex="6 6">
+              <ejs-textbox formControlName="BuinessContent" #default rows="2" placeholder="业务信息" floatLabelType="Auto" [multiline]="true"></ejs-textbox>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_10">
+            <div fxFlex="6 6">
+              <ejs-textbox formControlName="GoodsSendAreaMsg" #default rows="2" placeholder="发货区域信息" floatLabelType="Auto" [multiline]="true"></ejs-textbox>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_10">
+            <div fxFlex="6 6">
+              <ejs-textbox formControlName="Desc" #default rows="2" placeholder="服务描述" floatLabelType="Auto" [multiline]="true"></ejs-textbox>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_10">
+            <div fxFlex="6 6">
+              <ejs-textbox formControlName="BuinessTimeMsg" #default rows="2" placeholder="营业时间信息" floatLabelType="Auto" [multiline]="true"></ejs-textbox>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  </form>
+</div>
+<div class="pagebtnbox">
+  <button ejs-button cssClass="e-info pagebtn" type="button" (click)="saveforms()" class="mat-green"><i class="fas fa-save"></i>
+    确认保存</button>
+</div>
+
+
+

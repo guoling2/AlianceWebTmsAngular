@@ -1,0 +1,24 @@
+<div>
+  <div class="inptbox" fxLayout="row" fxLayoutAlign="none" *ngIf="unassignedStore.length>0"> <!--数组有数据在显示 -->
+    <div fxFlex="32">
+      <ejs-dropdownlist  #unassignedStorelist floatLabelType="Auto"
+                         [dataSource]='unassignedStore'
+                         [fields]='storefields'
+                         placeholder='网点'
+                         popupHeight='200'></ejs-dropdownlist>
+    </div>
+    <div fxFlex="30" class="btnbox"> <button ejs-button cssClass="e-info mat-width" (click)="addstore()" >添加</button></div>
+  </div>
+  <div class="authbox"><h2 *ngIf="assignedStores.length > 0">授权网点:</h2></div>
+  <div>
+    <div *ngFor="let _store of assignedStores" class="linebox">
+      <span class="pots-blue"></span>
+      <span class="texbox" [ngClass]="{'deldata':_store.UpdateModelType ==3}">{{_store.StoreName}}</span>
+      <span>
+        <button mat-icon-button color="warn" matTooltip="删除网点" type="button" (click)="remorestore(_store)" >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </span>
+    </div>
+  </div>
+</div>

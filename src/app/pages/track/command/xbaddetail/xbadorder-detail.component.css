@@ -1,0 +1,28 @@
+.margin_t_10 {margin-top:10px}
+.margin_t_5 {margin-top:5px}
+.margin_10 {margin:10px}
+.cardborder {border-bottom: 1px #ccc solid;padding-bottom:10px}
+.margin_015 {margin:0 15px}
+.margin_010 {margin-left:10px}
+.margin_dis {margin-top:10px;display: block}
+.cardmargin {margin:10px 10px 0px 10px}
+.fontacommon {color:#333;font-size:18px;width:25px}
+.fontacommon_18 {color:#333;font-size:18px;width:18px}
+.mat_tit_b {font-size: 18px;color:#333}
+.contentbox {padding:10px 15px 10px 15px;wdith:100%;height:auto;clear:both;overflow:hidden;margin:0 10px 0 10px;background:#fff;border-bottom:1px #e1e1e1 solid}
+.contentit-l {width:40%;height:auto;float: left;}
+.contenttex-r {width:60%;height:auto;float: right;}
+.pagebtnbox {width:280px;margin:0 auto;text-align: center}
+.pagebtn {margin:20px 10px;font-size:18px;padding:8px 10px!important;border:none}
+.pagebtn i {margin-right:2px;}
+.contentit-l div {width:100%;height:auto;margin:0;font-size:16px;color:#666}
+.contentit-l a {color:#666;text-decoration: none}
+.contentit-l a:hover {color:#111;text-decoration: underline}
+.contentit-l b {font-weight: normal;color:#111}
+.matTables {border:none;border-collapse:collapse;background:#fff;}
+.matTables th {padding:5px 10px;border-bottom:1px #ccc solid;color:#666;text-align:left}
+.matTables td {border-bottom:1px #ccc solid;padding:5px 10px;color:#000;text-align:left}
+.matTables td a {margin-right:10px;text-decoration:none}
+.matTables td a:hover {text-decoration: underline}
+.matTables tr:hover {background:#eee}
+.matTables thead tr:hover {background:#fff}

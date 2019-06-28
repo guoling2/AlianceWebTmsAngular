@@ -1,0 +1,47 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <div><i class="fas fa-compass"></i> 当前位置：<a>异常处理</a></div>
+  </div>
+  <div class="contenttex-r"></div>
+</div>
+<div fxLayout="row" fxLayoutAlign="space-around start" class="padding10">
+  <div fxFlex="25">
+    <mat-card class="paddingb_10">
+      <mat-card-title class="cardborder">
+        <mat-icon fontSet="fontawesome" fontIcon="fa-file-alt" class="fontacommon_18"></mat-icon>
+        <b class="mat_tit_b">待办事项</b>
+      </mat-card-title>
+      <mat-card-content class="margin_t_10">
+        <form class="listfrom" [formGroup]="searchp" >
+          <mat-form-field class="col-md-2">
+            <input matInput  formControlName="messageid" />
+            <span  matPrefix style="color: #888">消息编号：&nbsp;</span>
+          </mat-form-field>
+          <mat-form-field class="col-md-2">
+            <select matNativeControl  formControlName="statued">
+              <option value="20" selected>处理中</option>
+              <option value="30">处理结束</option>
+            </select>
+            <span  matPrefix style="color: #888">处理状态：&nbsp;</span>
+          </mat-form-field>
+          <div style="text-align:center;"><button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button></div>
+        </form>
+        <ul class="heroes" *ngIf="tips">
+          <li *ngFor="let tip of tips"
+              [class.selected]="tip === selectedtip"
+              (click)="onSelect(tip)">
+            <i class="fas fa-exclamation-triangle"></i>
+            <a [routerLink]="['/biz/orderserver/badorderprocess',{ outlets: { ptd: tip.MessageId } }]">
+              <span class="badge">{{tip.MessageId}}</span>
+              <p>{{tip.ProcessDate}} - {{tip.QuestionMsg}}</p>
+            </a>
+          </li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div fxFlex="75" style="margin-top:-10px!important; ">
+    <router-outlet  name="ptd"></router-outlet>
+<!--  <app-bin-taskdateil  *ngIf="selectedtip"  [messageId]="selectedtip.MessageId"></app-bin-taskdateil>-->
+  </div>
+</div>

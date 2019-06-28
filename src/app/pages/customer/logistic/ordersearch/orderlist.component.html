@@ -1,0 +1,62 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <mat-card-title>订单查询</mat-card-title>
+    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+  </div>
+  <div class="contenttex-r"></div>
+</div>
+<form class="listfrom" [formGroup]="searchp" >
+  <mat-form-field class="col-md-3">
+    <input matInput  formControlName="OrderTrackServerId"/>
+    <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
+  </mat-form-field>
+
+  <mat-form-field class="col-md-3">
+    <select matNativeControl  formControlName="OrderStatusId">
+      <option label="--状态选择 --"></option>
+      <option value="-1">拒绝接单</option>
+      <option value="1">已创建</option>
+      <option value="10">已委派</option>
+      <option value="20">运输方接单</option>
+      <option value="30">订单在途</option>
+      <option value="40">已签收</option>
+      <option value="50">已回单</option>
+    </select>
+
+    <span  matPrefix style="color: #888">运单状态：&nbsp;</span>
+  </mat-form-field>
+  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+</form>
+<ejs-grid #grid  id='Grid' allowResizing= 'true' height="{{gridheight}}"
+          [allowExcelExport]='true'  allowSorting='false'
+          [allowSelection]="true"
+          [enableHover]="false"
+          (dataStateChange)="dataStateChange($event)"
+          allowPaging='true' class="contlistbox">
+  <e-columns >
+<!--    <e-column field='SystemOrderId' headerText='系统编号' textAlign="left"  width='220' hidden="true"></e-column>-->
+    <e-column field='CustomerOrderId' headerText='交货单号'  textAlign="left" width=200>
+      <ng-template #template let-data>
+        <a routerLink="/customer/orders/detail/{{data.SystemOrderId}}">{{data.CustomerOrderId}}</a>
+      </ng-template>
+    </e-column>
+    <e-column field='OrderTrackServerId' headerText='物流单号'  textAlign="left" width=200>
+      <ng-template #template let-data>
+
+        <a (click)="opentrackmessage(data.OrderTrackServerId)" class="severclick">{{data.OrderTrackServerId}} </a>
+
+      </ng-template>
+    </e-column>
+    <e-column field='OrderStatusId' headerText='订单状态' textAlign="left"  width=120></e-column>
+    <e-column field='IsSign' headerText='是否签收' textAlign="left"  width=150></e-column>
+    <e-column field='TotalCount' headerText='订单件数'  textAlign="left" width=120></e-column>
+    <e-column field='TotalVolume' headerText='订单体积' textAlign="left"  width=180></e-column>
+    <e-column field='TotalWeight' headerText='订单重量' textAlign="left"  width=200></e-column>
+    <e-column field='DesctcustomName' headerText='到户客户'  width=180></e-column>
+    <e-column field='DestCity' headerText='到货城市'  width=120></e-column>
+    <e-column field='Destarea' headerText='到货区域'  width=120></e-column>
+    <e-column field='CreateDatetime' headerText='创建时间'  width=120></e-column>
+    <e-column field='BindLogisticCompany' headerText='委派运输商'  width=150></e-column>
+    <e-column field='BindLogisticDateTime' headerText='委派时间' width=180></e-column>
+  </e-columns>
+</ejs-grid>

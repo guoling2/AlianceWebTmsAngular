@@ -1,0 +1,59 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <mat-card-title>物流单号管理</mat-card-title>
+    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+  </div>
+  <div class="contenttex-r">
+    <button ejs-button cssClass="e-info mat-width" (click)="excelout()" class="mat-blue">导出Excel</button>
+<!--    <button ejs-button cssClass="e-info mat-width" (click)="opengenerctrackforms()" class="mat-green">单号生成</button>-->
+    <button ejs-button cssClass="e-info mat-width" (click)="deleteorder()" class="mat-reject">单号作废</button>
+    <!--<button ejs-button cssClass="e-info" (click)="acceptorder(true)"  hidden="hidden">接单&安排司机</button>-->
+  </div>
+</div>
+<form class="listfrom" [formGroup]="searchp" >
+  <mat-form-field class="col-md-3">
+    <input matInput  formControlName="serverTrackId"/>
+    <span  matPrefix style="color: #888">物流跟踪号：&nbsp;</span>
+  </mat-form-field>
+  <mat-form-field class="col-md-3">
+    <input matInput  formControlName="bindlogistic"/>
+    <span  matPrefix style="color: #888">绑定运输商：&nbsp;</span>
+  </mat-form-field>
+  <mat-form-field class="col-md-3">
+    <select matNativeControl  formControlName="isued">
+      <option label="--状态选择 --"></option>
+      <option value="0">没使用</option>
+      <option value="1">已使用</option>
+    </select>
+    <span  matPrefix style="color: #888">是否使用：&nbsp;</span>
+  </mat-form-field>
+
+  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+
+</form>
+<ejs-grid #grid  id='Grid' allowResizing= 'true' height="{{gridheight}}"
+          [allowExcelExport]='true'  allowSorting='false'
+          [allowSelection]="true"
+          [enableHover]="false"
+          allowPaging='true' class="contlistbox">
+  <e-columns >
+    <e-column type='checkbox' width='50'></e-column>
+    <e-column field='TrackOrderNumber'  headerText='物流跟踪号' isPrimaryKey='true' width='170' style="border: 1px #ccc solid">
+    </e-column>
+    <e-column field='BindLogisticCompanyName' headerText='物流商' textAlign="left"  width='120'></e-column>
+    <e-column field='IsUsed' headerText='是否使用' textAlign="left"  width='120'></e-column>
+    <!--<e-column field='UsedDatetime' headerText='使用日期'  textAlign="left" width=150></e-column>-->
+    <!--<e-column field='OriginAddress' headerText='绑定订单号'  textAlign="left" width=120 [hidden]="true"></e-column>-->
+    <e-column field='CreateDatetime' headerText='使用日期' format='yMd' width=120>
+      <ng-template #template let-data>
+        {{data.UsedDatetime | date: 'yyyy-MM-dd HH:mm:ss'}}
+      </ng-template>
+    </e-column>
+    <e-column field='CreateDatetime' headerText='创建日期' format='yMd' width=120>
+      <ng-template #template let-data>
+        {{data.CreateDatetime | date: 'yyyy-MM-dd HH:mm:ss'}}
+      </ng-template>
+    </e-column>
+  </e-columns>
+</ejs-grid>
+

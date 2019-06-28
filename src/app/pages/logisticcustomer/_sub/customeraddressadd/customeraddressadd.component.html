@@ -1,0 +1,37 @@
+<form [formGroup]="form" >
+
+  <mat-form-field>
+    <label><input matInput placeholder="联系人" formControlName="LinkMan"></label>
+    <mat-error>
+      联系人
+      <strong>必须的</strong>
+    </mat-error>
+    <mat-hint align="start">请输入
+      <strong>联系人</strong>
+    </mat-hint>
+  </mat-form-field>
+
+  <mat-form-field>
+    <label><input matInput placeholder="联系手机" formControlName="LinkTel"></label>
+    <mat-hint align="start">请输入
+      <strong>联系手机</strong>
+    </mat-hint>
+  </mat-form-field>
+
+
+  <app-bin-areacascading formControlName="Area"></app-bin-areacascading>
+
+
+  <mat-form-field>
+    <label><input matInput placeholder="联系地址" formControlName="LinkAddress"></label>
+    <mat-error>
+      联系地址
+      <strong>必须的</strong>
+    </mat-error>
+    <mat-hint align="start">请输入
+      <strong>联系地址</strong>
+    </mat-hint>
+  </mat-form-field>
+
+</form>
+<button ejs-button cssClass="e-info mat-width"  (click)="saveaction()" >创建</button>

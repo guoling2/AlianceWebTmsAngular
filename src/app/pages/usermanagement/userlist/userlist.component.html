@@ -1,0 +1,68 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <mat-card-title>企业员工列表</mat-card-title>
+    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+  </div>
+  <div class="contenttex-r"></div>
+</div>
+
+
+<div *ngIf="adminuser">
+  <h1>系统拥有者</h1>
+  <div>
+    <span>
+      <a [routerLink]="['/biz/user-management/users/edit', adminuser.name]">
+              <img height="35" width="35" src="{{adminuser.userheadimage}}?imageMogr2/thumbnail/50x50/format/webp/blur/1x0/quality/75|imageslim" alt="用户头像" />
+      <span style="margin-left: 5px;">{{adminuser.realname}}</span>
+      </a>
+    </span>
+    <span> {{adminuser.phone_number}}</span>
+    <span> {{adminuser.storename}}</span>
+  </div>
+</div>
+
+
+<form class="listfrom" [formGroup]="searchp" >
+  <mat-form-field class="col-md-3">
+  <input matInput formControlName="worknumber" />
+  <span  matPrefix style="color: #888">工号：&nbsp;</span>
+</mat-form-field>
+  <mat-form-field class="col-md-3">
+    <input matInput formControlName="realname" />
+    <span  matPrefix style="color: #888">姓名：&nbsp;</span>
+  </mat-form-field>
+  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+</form>
+
+<ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
+          (dataStateChange)="dataStateChange($event)"
+          [allowExcelExport]='true'  allowSorting='false'
+          [allowSelection]="true"
+          [enableHover]="false"
+          allowPaging='false'  class="contlistbox">
+  <e-columns >
+    <e-column field='UserId' [visible]='false' headerText='系统用户编号' width='130' [isPrimaryKey]='true'></e-column>
+    <e-column field='WorkNumber' headerText='登录账号'  width=100>
+      <ng-template #template let-data>
+        <div>
+          <div class="userimgs">
+            <a [routerLink]="['/biz/user-management/users/edit', data.UserId]">
+              <img height="35" width="35" src="{{data.UserHeadUrl}}?imageMogr2/thumbnail/50x50/format/webp/blur/1x0/quality/75|imageslim" alt="用户头像" />
+               <span style="margin-left: 5px;">{{data.WorkNumber}}</span>
+            </a>
+          </div>
+          <span>
+           </span>
+        </div>
+      </ng-template>
+    </e-column>
+    <e-column field='RealName' headerText='姓名'  width=120></e-column>
+    <e-column field='PhoneNumber' headerText='联系手机'  width=120></e-column>
+    <e-column field='Email' headerText='邮箱' textAlign="left"  width='120'></e-column>
+    <e-column field='CreateDateTime' headerText='注册日期' textAlign="left"  width='120'></e-column>
+  </e-columns>
+</ejs-grid>
+
+
+
+

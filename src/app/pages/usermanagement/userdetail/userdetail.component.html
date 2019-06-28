@@ -1,0 +1,29 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <div><i class="fas fa-compass"></i> 当前位置：<a [routerLink]="['/biz/user-management/users']" >企业员工列表</a>  / <b>用户编辑 - {{emplayeeUser?.RealName}}</b></div>
+  </div>
+  <div class="contenttex-r">
+    <button ejs-button cssClass="e-info mat-width"  (click)="saveaction()" >保存</button>
+  </div>
+</div>
+<mat-card class="userbox">
+  <mat-card-content>
+    <mat-tab-group dynamicHeight="true" (selectedIndexChange)="changefunmodule($event)">
+      <mat-tab label="基础信息">
+        <app-user-info [emplayeeUser]="emplayeeUser"></app-user-info>
+      </mat-tab>
+      <mat-tab label="网点授权">
+        <ng-template matTabContent>
+          <app-user-store [logisticStoreSubject]="userstores"></app-user-store>
+        </ng-template>
+
+      </mat-tab>
+
+    </mat-tab-group>
+
+  </mat-card-content>
+</mat-card>
+
+
+
+

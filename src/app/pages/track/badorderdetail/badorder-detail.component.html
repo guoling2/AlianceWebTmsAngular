@@ -1,0 +1,19 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <div><i class="fas fa-compass"></i> 当前位置：<a  [routerLink]="['/biz/orderserver/newbadorderlist']" >异常件</a> / <b>明细</b></div>
+  </div>
+  <div class="contenttex-r"></div>
+</div>
+<div style="width:100%;height:auto;color:#666">
+
+  <app-xbadorder-detail #xbadorder [quectioncliamreadonly]="true" [showdocument]="true"></app-xbadorder-detail>
+
+  <div class="pagebtnbox">
+    <button  [disabled]="btnstatued" ejs-button cssClass="e-success pagebtn" type="button" (click)="ProcessOrder()"><i class="fas fa-clipboard-check"></i>
+      接单受理</button>
+    <button  [disabled]="true"  ejs-button cssClass="e-danger pagebtn" type="button" ><i class="fas fa-trash-alt"></i>删除</button>
+
+  </div>
+
+</div>
+

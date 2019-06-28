@@ -1,0 +1,44 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <mat-card-title>异常件列表</mat-card-title>
+    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+  </div>
+</div>
+<form class="listfrom" [formGroup]="searchp" >
+  <mat-form-field class="col-md-3">
+    <input matInput  formControlName="OrderTrackServerId" />
+    <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
+  </mat-form-field>
+  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+</form>
+
+<ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
+          (dataStateChange)="dataStateChange($event)"
+          [allowExcelExport]='true'  allowSorting='false'
+          [allowSelection]="true"
+          [enableHover]="false"
+          allowPaging='true'  class="contlistbox">
+  <e-columns >
+
+
+    <e-column field='OrderTrackServerId' headerText='物流单号'  width=160>
+      <ng-template #template let-data>
+        <a [routerLink]="['/biz/orderserver/badorderdetail', data.MessageId]">{{data.OrderTrackServerId}}</a>
+      </ng-template>
+    </e-column>
+    <e-column field='QuestionMsg' headerText='异常问题' textAlign="left"  width='130'></e-column>
+    <e-column field='OrderModule' headerText='异常模块'  textAlign="left" width=100></e-column>
+    <e-column field='Destarea' headerText='到货区域' textAlign="left"  width=150></e-column>
+    <e-column field='Origincustomname' headerText='发货客户' textAlign="left"  width=110></e-column>
+    <e-column field='DesctcustomName' headerText='到户客户'  width=110></e-column>
+    <e-column field='DestLinkman' headerText='到货联系人'  width=110></e-column>
+    <e-column field='Desttel' headerText='到货联系电话'  width=120></e-column>
+    <e-column field='SubmitUserName' headerText='提交人'  width=110></e-column>
+    <e-column field='HappendTime' headerText='发生时间'  width=145></e-column>
+    <e-column field='CreateDatetime' headerText='下单时间'  width=160></e-column>
+  </e-columns>
+</ejs-grid>
+
+
+
+

@@ -1,0 +1,16 @@
+<button ejs-button cssClass="e-info mat-width"  (click)="saveaction()" >修改&保存</button>
+<button ejs-button cssClass="e-info mat-width"  (click)="del()" >删除</button>
+<mat-tab-group dynamicHeight="true" (selectedIndexChange)="changindex($event)">
+  <mat-tab label="基础资料">
+    <div *ngIf="customerProfileModle">
+      <app-biz-customerbase  #basecom [customerProfileModle]="customerProfileModle"></app-biz-customerbase>
+    </div>
+
+  </mat-tab>
+  <mat-tab label="开票信息">
+    <app-biz-customertax [customerProfileModle]="customerProfileModle"></app-biz-customertax>
+  </mat-tab>
+  <mat-tab label="收发货地址">
+    <app-biz-customeraddresslist [customerProfileModle]="customerProfileModle"></app-biz-customeraddresslist>
+  </mat-tab>
+</mat-tab-group>

@@ -1,0 +1,101 @@
+// import { Injectable } from '@angular/core';
+// import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+// import { Observable} from 'rxjs';
+// import { catchError, tap } from 'rxjs/operators';
+// import {TmsResponseModle} from '../../../models/tms-response.module';
+// import {ReceivingBillModle} from '../../../models/orderlist/orderdetail.module';
+// import {AppConfiguration} from '../../../auth/config/app-configuration';
+// import {forEach} from '@angular/router/src/utils/collection';
+// import {Serializable} from 'selenium-webdriver';
+//
+// @Injectable({
+//   providedIn: 'root',
+// })
+// export class ShipmentOrderService {
+//
+//   private jsonmyHttpHead = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' });
+//   constructor(private appConfiguration: AppConfiguration, private  httpclient: HttpClient) {
+//
+//     if (this.appConfiguration == null) {
+//       this.appConfiguration = new AppConfiguration();
+//       this.appConfiguration.Server = 'http://localhost:52631';
+//     }
+//   }
+//
+//   /**
+//    * 承运商拒绝接单
+//    */
+//   public  ShipSotoreUnAcceptOrder(systemorderid: string): Observable<TmsResponseModle> {
+//
+//     return this.httpclient.post<TmsResponseModle>(
+//       this.appConfiguration.Server + '/api/shipment/rejectOrder', new HttpParams({ fromObject: {
+//           systemOrderId: systemorderid
+//
+//         }}))
+//       .pipe(
+//         tap(response => console.log(response.Info)));
+//
+//   }
+//   /**
+//    *  接单
+//    */
+//   public  ShipSotoreAcceptOrder(data: any): Observable<TmsResponseModle> {
+//
+//
+//     const HttpParamsoptions = new HttpParams({ fromObject: data});
+//
+//    const headersx = new HttpHeaders({
+//       'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+//     });
+//     return this.httpclient.post<TmsResponseModle>(
+//       this.appConfiguration.Server + '/api/shipment/acceptorder', HttpParamsoptions, {headers: headersx})
+//       .pipe(
+//         tap(response => console.log(response.Info)));
+//
+//
+//     const  x = JSON.stringify(data);
+//
+//
+//
+//  /*   return this.httpclient.post<TmsResponseModle>(
+//       this.appConfiguration.Server + '/api/shipment/acceptorder', options)
+//       .pipe(
+//         tap(response => console.log(response.Info)));*/
+//   }
+//   /**
+//    *  物流商查询一手货源
+//    */
+//   public SearchFirstHandItems(data: any): Observable<object[]> {
+//
+//
+//     /**return this.http.get(`api/default`)
+//       .map((res: Response) => res.json())
+//       .catch((error: any) => Observable.throw(error.json().error || 'Server error'))   **/
+//
+//
+//    // console.log(data);
+//
+//     const options = new HttpParams({ fromObject: data});
+//
+//     //console.log('读取加载的参数');
+//
+//    // console.log(options);
+//
+//
+//     // const result2 = this.httpclient.get<TmsResponseModle>(this.appConfiguration.Server + '/api/logistic/QueryOrders',data.ts);
+//     return this.httpclient.get<object[]>(this.appConfiguration.Server + '/api/Shipment/search-first-hand', {params: data})
+//       .pipe(
+//         tap(heroes => console.log(heroes)));
+//
+//
+//   }
+//
+//   OrderDetai ( id: string ): Observable<ReceivingBillModle> {
+//
+//     return new Observable(a => {
+//       a.next(new ReceivingBillModle());
+//       a.complete();
+//     } );
+//   }
+// }
+//

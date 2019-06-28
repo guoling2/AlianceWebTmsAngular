@@ -1,0 +1,56 @@
+<button ejs-button cssClass="e-info mat-width"  (click)="addaddress('50em','50em')" >添加地址</button>
+<div class="example-container mat-elevation-z8">
+  <table mat-table [dataSource]="datasource">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="AddressId">
+      <th mat-header-cell *matHeaderCellDef> 编号. </th>
+      <td mat-cell *matCellDef="let element">
+        <a>{{element.AddressId}} </a>
+      </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="LinkMan">
+      <th mat-header-cell *matHeaderCellDef> 联系人 </th>
+      <td mat-cell *matCellDef="let element"> {{element.LinkMan}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="LinkTel">
+      <th mat-header-cell *matHeaderCellDef> 联系手机 </th>
+      <td mat-cell *matCellDef="let element"> {{element.LinkTel}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Provice">
+    <th mat-header-cell *matHeaderCellDef> 省 </th>
+    <td mat-cell *matCellDef="let element"> {{element.Provice}} </td>
+  </ng-container>
+    <ng-container matColumnDef="City">
+      <th mat-header-cell *matHeaderCellDef> 市 </th>
+      <td mat-cell *matCellDef="let element"> {{element.City}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Area">
+      <th mat-header-cell *matHeaderCellDef> 区 </th>
+      <td mat-cell *matCellDef="let element"> {{element.Area}} </td>
+    </ng-container>
+    <ng-container matColumnDef="LinkAddress">
+      <th mat-header-cell *matHeaderCellDef> 联系地址 </th>
+      <td mat-cell *matCellDef="let element"> {{element.LinkAddress}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Action">
+      <th mat-header-cell *matHeaderCellDef> 操作 </th>
+      <td mat-cell *matCellDef="let element"><button
+                                                     mat-icon-button
+                                                     color="warn"
+                                                     type="button"
+                                                     (click)="deleteAddress(element.AddressId)"
+                                                     matTooltip="删除">
+        <mat-icon>delete</mat-icon>
+      </button></td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

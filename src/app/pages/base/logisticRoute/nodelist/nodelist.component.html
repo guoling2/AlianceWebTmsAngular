@@ -1,0 +1,43 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <mat-card-title>路由节点</mat-card-title>
+    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+  </div>
+</div>
+<form class="listfrom" [formGroup]="searchp" >
+  <mat-form-field class="col-md-3">
+    <label>
+      <input matInput formControlName="BeginPointName" />
+    </label>
+    <span  matPrefix style="color: #888">发货网点名称：&nbsp;</span>
+  </mat-form-field>
+  <mat-form-field class="col-md-3">
+    <label>
+      <input matInput formControlName="EndPointName" />
+    </label>
+    <span  matPrefix style="color: #888">到货网点名称：&nbsp;</span>
+  </mat-form-field>
+  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+</form>
+
+<ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
+          (dataStateChange)="dataStateChange($event)"
+          [allowExcelExport]='true'  allowSorting='false'
+          [allowSelection]="true"
+          [enableHover]="false"
+          allowPaging='false'  class="contlistbox">
+  <e-columns >
+    <e-column field='NodeId'  headerText='编号' isPrimaryKey='true' width='150'></e-column>
+    <e-column field='NodeName' headerText='节点名称'  width=150></e-column>
+    <e-column field='BeginPointId' headerText='始发网点编号'  width=150></e-column>
+    <e-column field='BeginPointName' headerText='始发网点名称'  width=120></e-column>
+    <e-column field='EndPointId' headerText='到达网点编号'  width=120></e-column>
+    <e-column field='EndPointName' headerText='到达网点名称' textAlign="left"  width='140'></e-column>
+    <e-column field='TransportHours' headerText='运输时长' textAlign="left"  width='100'></e-column>
+    <e-column field='RouteDistance' headerText='里程'  textAlign="left" width=150></e-column>
+  </e-columns>
+</ejs-grid>
+
+
+
+

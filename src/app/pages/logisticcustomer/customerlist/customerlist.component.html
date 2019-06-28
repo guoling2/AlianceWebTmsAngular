@@ -1,0 +1,56 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <mat-card-title>客户列表</mat-card-title>
+    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+  </div>
+  <div class="contenttex-r">
+    <button ejs-button cssClass="e-info" [routerLink]="['/biz/customer-management/create']" class="mat-green mat-width">新增客户</button>
+  </div>
+</div>
+
+<form class="listfrom" [formGroup]="searchp" >
+  <mat-form-field class="col-md-3">
+    <input matInput formControlName="Name" />
+    <span  matPrefix style="color: #888">名称：&nbsp;</span>
+  </mat-form-field>
+  <mat-form-field class="col-md-3">
+    <input matInput formControlName="Simplename" />
+    <span  matPrefix style="color: #888">简称：&nbsp;</span>
+  </mat-form-field>
+  <mat-form-field class="col-md-3">
+    <input matInput formControlName="Code" />
+    <span  matPrefix style="color: #888">编码：&nbsp;</span>
+  </mat-form-field>
+  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+</form>
+
+<ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
+          (dataStateChange)="dataStateChange($event)"
+          [allowExcelExport]='true'  allowSorting='false'
+          [allowSelection]="true"
+          [enableHover]="false"
+          allowPaging='false'  class="contlistbox">
+  <e-columns >
+    <e-column field='CustomerId'  headerText='客户编号' width='130' [isPrimaryKey]='true'>
+      <ng-template #template let-data>
+
+            <a [routerLink]="['/biz/customer-management/edit', data.CustomerId]">
+              <span style="margin-left: 5px;">{{data.CustomerId}}</span>
+            </a>
+
+      </ng-template>
+    </e-column>
+    <e-column field='Name' headerText='客户名称'  width=120></e-column>
+    <e-column field='Code' headerText='编码'  width=120></e-column>
+    <e-column field='Simplename' headerText='简称'  width=120></e-column>
+    <e-column field='Emp' headerText='业务' textAlign="left"  width='120'></e-column>
+    <e-column field='SendOrderCount' headerText='发货数量' textAlign="left"  width='120'></e-column>
+    <e-column field='Createdatetime' headerText='创建日期' textAlign="left"  width='120'></e-column>
+  </e-columns>
+</ejs-grid>
+
+
+
+
+
+

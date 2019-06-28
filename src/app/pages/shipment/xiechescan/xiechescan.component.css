@@ -1,0 +1,36 @@
+.margin_t_10 {margin-top:10px}
+.margin_10 {margin:10px}
+.cardborder {border-bottom: 1px #ccc solid;padding-bottom:10px}
+.margin_015 {margin:0 15px}
+.margin-l_015 {margin-left:15px}
+.margin_dis {margin-top:10px;display: block}
+.cardmargin {margin:10px 10px 0px 10px}
+.fontacommon {color:#333;font-size:18px;width:25px}
+.fontacommon_18 {color:#333;font-size:18px;width:18px}
+.mat_tit_b {font-size: 18px;color:#333}
+.contentbox {padding:10px 15px 10px 15px;wdith:100%;height:auto;clear:both;overflow:hidden;margin:0 10px 0 10px;background:#fff;border-bottom:1px #e1e1e1 solid}
+.contentit-l {width:40%;height:auto;float: left;}
+.contenttex-r {width:60%;height:auto;float: right;}
+.pagebtnbox {width:280px;margin:0 auto;text-align: center}
+.pagebtn {margin:20px 10px;font-size:18px;padding:8px 10px!important;border:none}
+.pagebtn i {margin-right:2px;}
+.contentit-l div {width:100%;height:auto;margin:0;font-size:16px;color:#666}
+.contentit-l a {color:#666;text-decoration: none}
+.contentit-l a:hover {color:#111;text-decoration: underline}
+.contentit-l b {font-weight: normal;color:#111}
+.listfrom {padding:5px 3px 5px 3px;wdith:100%;height:auto;clear:both;overflow:hidden;margin:5px 10px 0 10px;background:none;}
+.listfrom h2 {font-size:14px}
+.listfrom button {margin-left:10px}
+.contlistbox {margin:8px 10px 0px 10px}
+.e-grid .e-headercell, .e-grid .e-detailheadercell {height:35px!important;}
+.e-grid .e-gridheader .e-headercell .e-headercelldiv.e-headerchkcelldiv {
+  padding: 0 0.6em 0 0.6em!important;
+}
+.contlistbox a {text-decoration: none}
+.contlistbox a:hover {text-decoration:underline}
+.buttontos button {margin-left:10px}
+.searchspans {background-color: #e1e1e1;color:#333;padding:0 10px;height:34px;line-height:35px;margin-left:10px;margin-bottom:8px;display: block;
+  float: left;font-size:14px}
+.searchspans b {color:#ff0000}
+.choosemode {padding-bottom:4px;font-size:14px;}
+.choosemode p {margin-bottom:5px;display:block}

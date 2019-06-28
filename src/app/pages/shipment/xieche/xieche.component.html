@@ -1,0 +1,65 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <mat-card-title>网点卸货列表</mat-card-title>
+    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+  </div>
+  <div class="contenttex-r">
+    <button ejs-button cssClass="e-info mat-width" [routerLink]="['/biz/shipment/xieche-scan']" class="mat-green">扫描卸车</button>
+    <button ejs-button cssClass="e-info mat-width" (click)="excelout()" class="mat-blue">导出Excel</button>
+  </div>
+</div>
+<form class="listfrom" [formGroup]="searchp" >
+  <mat-form-field class="col-md-3">
+    <input matInput formControlName="OrderTrackServerId" />
+    <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
+  </mat-form-field>
+  <mat-form-field class="col-md-3">
+    <select matNativeControl  formControlName="PlanStatuedId">
+      <option value="10">未激活</option>
+      <option value="20">等待卸车</option>
+      <option value="30">卸车完成</option>
+    </select>
+    <span  matPrefix style="color: #888">任务状态：&nbsp;</span>
+  </mat-form-field>
+  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+</form>
+
+<ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
+          (dataStateChange)="dataStateChange($event)"
+          [allowExcelExport]='true'  allowSorting='true'
+          [allowSelection]="true"
+          [enableHover]="true"
+          allowPaging='true'  class="contlistbox">
+  <e-columns >
+<!--    <e-column  field='XiechePlanId' headerText='操作'  width='80'>-->
+<!--      <ng-template #template let-data>-->
+<!--        <div class="statustemp e-inactivecolor">-->
+<!--          <span class="statustxt e-inactivecolor">-->
+<!--             <button ejs-button iconCss="e-icons e-update" cssClass='e-flat'></button>-->
+<!--          </span>-->
+<!--        </div>-->
+<!--      </ng-template>-->
+<!--    </e-column>-->
+    <e-column field='OrderTrackServerId' headerText='物流单号'  width=150>
+      <ng-template #template let-data>
+        <a routerLink="/orders/{{data.XiechePlanId}}">{{data.OrderTrackServerId}}</a>
+      </ng-template>
+    </e-column>
+    <e-column field='DestCity' headerText='到货城市'  width=120></e-column>
+    <e-column field='OrderCount' headerText='卸车数量'  width=110></e-column>
+    <e-column field='RealOrderCount' headerText='实际数量' textAlign="left"  width='110'></e-column>
+    <e-column field='ShipmentUserDesc' headerText='运输司机' textAlign="left"  width='100'></e-column>
+    <e-column field='CarryingToolName' headerText='到场车号'  textAlign="left" width=130></e-column>
+    <e-column field='PlanStatuedId' headerText='任务状态'  width=130></e-column>
+    <e-column field='ActionStoreIdName' headerText='操作网点'  width=150></e-column>
+    <e-column field='FromStoreName' headerText='上游货站'  width=150></e-column>
+    <e-column field='TaskExcuteUserName' headerText='操作员' textAlign="left"  width='110'></e-column>
+    <e-column field='TaskFinishDateTime' headerText='操作时间' textAlign="left"  width='120'></e-column>
+    <e-column field='DesctcustomName' headerText='到货客户'  textAlign="left" width=120></e-column>
+    <e-column field='DestLinkman' headerText='到货联系人'  textAlign="left" width=120></e-column>
+  </e-columns>
+</ejs-grid>
+
+
+
+

@@ -1,0 +1,30 @@
+<div class="control-section">
+  <div class="col-lg-12">
+    <div class="control_wrapper" id="control_wrapper">
+      <h4 class="form-title"><mat-icon fontSet="fontawesome" fontIcon="fa-info-circle"></mat-icon>签收信息</h4>
+      <div class="signdetail_div">
+           <div class="inpttexts"><span>系统单号：</span>{{ShipSignDetailModel.SystemOrderId}}</div>
+           <div class="inpttexts"><span>签收单号：</span>{{ShipSignDetailModel.OrderTrackServerId}}</div>
+           <div class="inpttexts2"><span>签收人：</span>{{ShipSignDetailModel.SignUserName}}</div>
+           <div class="inpttexts2" style="float: right;"><span>签收方式：</span>{{ShipSignDetailModel.SingaMemberType}}</div>
+           <div class="clear"></div>
+           <div class="inpttexts"><span>签收信息：</span>{{ShipSignDetailModel.SingaInfo}}</div>
+           <div class="inpttexts"><span>签收时间：</span>{{ShipSignDetailModel.SignDateTime}}</div>
+           <div class="inpttexts"><span>操作员：</span>{{ShipSignDetailModel.CreateUser}}</div>
+      </div>
+
+      <div  *ngIf="ShipSignDetailModel.OrderDocuments" class="downloadbox">
+        <div class="downloads">附件预览</div>
+        <ul *ngFor="let file of ShipSignDetailModel.OrderDocuments">
+          <li>
+            <a target="_blank" href="{{file.DownLink}} ">
+              <img height="75" width="75" src="{{file.DownLink}}?imageMogr2/thumbnail/!50p/format/webp/blur/1x0/quality/75|imageslim "/>
+              <span><i class="fas fa-download"></i>{{file.FileName}}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+

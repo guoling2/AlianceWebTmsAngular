@@ -1,0 +1,50 @@
+<p>
+  司机委派接单
+</p>
+
+
+<form [formGroup]="acceptforms"  id="formId">
+  <div>
+
+
+    接单司机:
+    <ejs-dropdownlist id='dropdownlist-template'
+                      [dataSource]='driversource'
+                      [fields]='driverfields'
+                      placeholder='请选择接单司机'
+                      [itemTemplate]='itemTemplate' formControlName="ShipmentUserId">
+      <ng-template #itemTemplate="" let-data="">
+        <!--set the value to itemTemplate property-->
+        <span><span class='name'> {{data.RealName}}</span><span class ='city'>{{data.Tel}}</span></span>
+      </ng-template>
+    </ejs-dropdownlist>
+    <div *ngIf="aaccpetdrivercheck.invalid && (aaccpetdrivercheck.dirty || aaccpetdrivercheck.touched)"
+         class="alert alert-danger">
+
+      <div *ngIf="aaccpetdrivercheck.errors.required">
+        请选择需要接单的司机
+      </div>
+
+    </div>
+
+  </div>
+
+  <div hidden="true">
+    转运网点:
+
+    <ejs-dropdownlist
+      id='games' #sample
+      placeholder='中转网点' [dataSource]='logistticstores'
+      [popupHeight]='100'
+      [fields]='logisticstorefiled' formControlName="middlelogiticstore" ></ejs-dropdownlist>
+  </div>
+
+</form>
+
+
+
+<div>
+  操作
+  <button ejs-button cssClass="e-info" (click)="save()">委派</button>
+</div>
+

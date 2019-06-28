@@ -1,0 +1,39 @@
+任务委派
+
+<form [formGroup]="saveform"  id="formId">
+司机类型:
+<ejs-radiobutton label="联盟" name="drivertype" value="aliance" checked="true"></ejs-radiobutton>
+<ejs-radiobutton label="自有" name="drivertype"  value="private" disabled="true"></ejs-radiobutton>
+<div>
+
+
+司机:
+<ejs-dropdownlist id='dropdownlist-template'
+                  [dataSource]='driversource'
+                  [fields]='driverfields'
+                  placeholder='请选择接单司机'
+                  [itemTemplate]='itemTemplate' formControlName="ShipmentUserId">
+  <ng-template #itemTemplate="" let-data="">
+    <!--set the value to itemTemplate property-->
+    <span><span class='name'> {{data.RealName}}</span><span class ='city'>{{data.Tel}}</span></span>
+  </ng-template>
+</ejs-dropdownlist>
+  <div *ngIf="aaccpetdrivercheck.invalid && (aaccpetdrivercheck.dirty || aaccpetdrivercheck.touched)" class="alert alert-danger">
+    <div *ngIf="aaccpetdrivercheck.errors.required">
+      请选择需要接单的司机
+    </div>
+  </div>
+</div>
+<div>
+  运输备注<ejs-textbox></ejs-textbox>
+</div>
+<div>
+  运费<ejs-numerictextbox step='1' disabled="true"></ejs-numerictextbox>
+</div>
+</form>
+<div>
+  操作
+  <button ejs-button cssClass="e-info" (click)="save()">委派</button>
+  <button ejs-button cssClass="e-info" (click)="close()">关闭</button>
+</div>
+

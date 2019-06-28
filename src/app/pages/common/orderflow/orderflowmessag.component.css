@@ -1,0 +1,6 @@
+.orderflowbox h2{color:#006ddd;width:100%;height:35px;line-height:35px;border-bottom:1px #ccc solid;font-size:16px;margin:0}
+.listitemhov {width:100%;height:auto;line-height:22px;font-size:14px;padding:5px 0;border-bottom:1px #ccc dashed;}
+.listitemhov:hover {background:#f0f7ff;color:#006ddd}
+.listitemhov span {padding:0 10px;display: block;border-left:2px #006ddd solid}
+.mat-list-item-content {padding:0!important;}
+.listboxs {margin:0!important;}

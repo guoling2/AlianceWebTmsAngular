@@ -1,0 +1,29 @@
+.header {padding-left:20px}
+
+label.labelongs {width:125px}
+label.labeshorts {width:110px;}
+label.labeshorts {width:100px;}
+.listtops {width:100%;height:auto;padding:5px 5px 0px 20px;background:#fff;border-bottom:2px #e6e6e6 solid;margin-bottom:10px}
+.ecolumbox {font-size:16px;height:100%;}
+.e-content {height:100%;min-height:280px;}
+.e-table {height:100%;text-align:center}
+.contadeatia {margin:0 auto}
+.contadeatia2 {margin:0 auto}
+.contadeatia .col{width:auto!important;margin:0px;padding-left:0px;border-top:1px #ccc solid;border-right:1px #ccc solid;height:32px;line-height:32px;background:#f9f9f9;font-family: 宋体;font-size:12px}
+.contadeatia .bordertnone {border-top:none!important;}
+.contadeatia .col label {display:inline-flex;font-weight:bold;height:31px;width:100px;background:#f3f3f3;padding-left:10px;margin-right:10px;border-right:1px #ccc solid;}
+.contadeatia .col:hover {background:#fff}
+.contadeatia .row {margin-top:0px;border-bottom:1px #ccc solid;border-left:1px #ccc solid;}
+.contadeatia .col-12 {margin:0px;padding-left:0px;border-top:1px #ccc solid;border-right:1px #ccc solid;height:32px;line-height:32px;background:#f9f9f9;font-family: 宋体;font-size:12px}
+.contadeatia .col-12 label {display:inline-flex;font-weight: bold;height:31px;width:100px;background:#f3f3f3;padding-left:10px;margin-right:10px;border-right:1px #ccc solid;}
+.contadeatia {width:98%}
+.contadeatia2 {width:98%;margin-top:10px}
+.contadeatia2 .col {width:auto!important;margin:0px;padding-left:0px;border-right:1px #ccc solid;border-top:1px #ccc solid;border-bottom:1px #ccc solid;height:32px;line-height:32px;background:#f9f9f9;font-family: 宋体;font-size:12px}
+.contadeatia2 .col label {display:inline-flex;font-weight:bold;height:30px;width:85px;background:#f3f3f3;padding-left:10px;margin-right:10px;border-right:1px #ccc solid;}
+.contadeatia2 .row {margin-top:0px;border-left:1px #ccc solid;}
+.contadeatia2 .col:hover {background:#fff}
+.mat-card {padding:15px 20px 0px 20px!important;}
+.e-grid .e-rowcell {padding:3px 15px!important;font-size:12px}
+.example-cardb {padding-bottom:20px!important;}
+.examcardh3 {width:99.5%;height:38px;line-height:38px;border-bottom:2px #ccc solid;font-weight:bold;font-size:14px;margin-bottom:10px;background:#e6e6e6e2;color:#666;padding-left:10px;}
+.examcardh3 i {margin-right:5px!important;}

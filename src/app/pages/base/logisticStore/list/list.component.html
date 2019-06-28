@@ -1,0 +1,41 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <mat-card-title>网点列表</mat-card-title>
+    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+  </div>
+  <div class="contenttex-r">
+    <button ejs-button cssClass="e-info" [routerLink]="['/biz/base/stores/create']" class="mat-green mat-width">创建</button>
+  </div>
+</div>
+<form class="listfrom" [formGroup]="searchp" >
+  <mat-form-field class="col-md-3">
+    <input matInput formControlName="SearchText" />
+    <span  matPrefix style="color: #888">网点名称：&nbsp;</span>
+  </mat-form-field>
+  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+</form>
+
+<ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
+          (dataStateChange)="dataStateChange($event)"
+          [allowExcelExport]='true'  allowSorting='false'
+          [allowSelection]="true"
+          [enableHover]="false"
+          allowPaging='false'  class="contlistbox">
+  <e-columns >
+    <e-column field='StoreId'  headerText='编号' isPrimaryKey='true' width='110'>
+      <ng-template #template let-data>
+        <a routerLink="/biz/base/stores/detail/{{data.StoreId}}">{{data.StoreId}}</a>
+      </ng-template>
+    </e-column>
+    <e-column field='StoreName' headerText='名称'  width=150></e-column>
+    <e-column field='StoreTypeId' headerText='网点类别'  width=120></e-column>
+    <e-column field='BranchLevel' headerText='网点级别'  width=120></e-column>
+    <e-column field='StoreArea' headerText='所在区域' textAlign="left"  width='140'></e-column>
+    <e-column field='LinkMan' headerText='联系人' textAlign="left"  width='100'></e-column>
+    <e-column field='LinkTel' headerText='联系电话'  textAlign="left" width=150></e-column>
+  </e-columns>
+</ejs-grid>
+
+
+
+

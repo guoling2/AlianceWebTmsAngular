@@ -1,0 +1,62 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <mat-card-title>同城订单</mat-card-title>
+    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+  </div>
+  <div class="contenttex-r">
+    <button ejs-button cssClass="e-info mat-width"  disabled="disabled" >创建车次</button>
+    <button ejs-dropdownbutton [items]='taskitems' cssClass="e-info" style="height:33px!important;line-heigt:22px!important;text-align: center" content="任务取消" (select)="cacletask($event)">任务取消</button>
+    <button ejs-button cssClass="e-info mat-width" (click)="openplan()">调度安排</button>
+  </div>
+</div>
+<form class="listfrom" [formGroup]="searchp" >
+  <mat-form-field class="col-md-3">
+    <input matInput />
+    <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
+  </mat-form-field>
+  <mat-form-field class="col-md-3 col-lefty">
+    <select matNativeControl  formControlName="TaskExcuteStatueId">
+      <option label="--状态选择 --"></option>
+      <option value="10">未开始</option>
+      <option value="20">执行中</option>
+      <option value="30">结束</option>
+    </select>
+    <span  matPrefix style="color: #888">任务状态：&nbsp;</span>
+  </mat-form-field>
+  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+</form>
+<ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
+          (dataStateChange)="dataStateChange($event)"
+          [allowExcelExport]='true'  allowSorting='false'
+          [allowSelection]="true"
+          [enableHover]="false"
+          allowPaging='true'  class="contlistbox">
+  <e-columns >
+    <e-column type='checkbox' width='50'></e-column>
+    <e-column field='OrderCommandId'  headerText='任务类型' isPrimaryKey='true' width='100'></e-column>
+    <e-column field='OrderTrackServerId'  headerText='物流单号' isPrimaryKey='true' width='155'>
+      <ng-template #template let-data>
+        <a routerLink="/orders/{{data.ShipmentId}}">{{data.OrderTrackServerId}}</a>
+      </ng-template>
+    </e-column>
+    <e-column field='OrderCount' headerText='下达件数'  width=110></e-column>
+    <e-column field='OrderZhWeight' headerText='重量(重货)'  width=110></e-column>
+    <e-column field='OrderPhVol' headerText='体积(泡货)'  width=110></e-column>
+    <e-column field='NeedXieche' headerText='提货返仓'  width=110></e-column>
+    <e-column field='XieCheOrderCount' headerText='卸车件数'  width=110></e-column>
+    <e-column field='SendOrderCount' headerText='配载件数' textAlign="left"  width='110'></e-column>
+    <e-column field='OrderExcuteStatuedId' headerText='运单状态' textAlign="left"  width='120'></e-column>
+<!--    <e-column field='TaskExcuteStatueId' headerText='任务状态'  textAlign="left" width=110></e-column>-->
+    <e-column field='TihuoAddress' headerText='提货地址' textAlign="left"  width=150></e-column>
+    <e-column field='DestCity' headerText='到货城市' textAlign="left"  width=150></e-column>
+    <e-column field='SendAddress' headerText='送货地址'  width=150></e-column>
+    <e-column field='CreateDateTime' headerText='下达时间'  width=120></e-column>
+    <e-column field='ActionStoreName' headerText='操作网点'  width=150></e-column>
+    <e-column field='TaskUpdateDateTime' headerText='更新时间'  width=120></e-column>
+    <e-column field='TaskUpdateUserName' headerText='更新人'  width=120></e-column>
+  </e-columns>
+</ejs-grid>
+
+
+
+

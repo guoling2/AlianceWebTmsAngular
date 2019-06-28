@@ -1,0 +1,51 @@
+
+
+<div >
+
+
+  <div [hidden]="fiststdisplyanindex" >
+    <button ejs-button cssClass="e-info" (click)="delegateorder()">委派司机</button>
+    <button ejs-button cssClass="e-info" >中转外包</button>
+    <button ejs-dropdownbutton cssClass="e-info" [items]='items' content="状态修改">状态修改</button>
+    <button ejs-button cssClass="e-info">取消委派</button>
+    <button ejs-button cssClass="e-info">打印标签</button>
+  </div>
+</div>
+
+
+
+<form class="" [formGroup]="searchp" >
+  <mat-form-field class="col-md-3">
+    <input matInput  formControlName="orderid"/>
+    <span  matPrefix style="color: #888">物流跟踪号：&nbsp;</span>
+  </mat-form-field>
+
+  <button ejs-button cssClass="e-info" (click)="searching()">查询</button>
+
+</form>
+<ejs-grid #grid1  id='Grid' allowResizing= 'true'
+          [allowExcelExport]='true'  allowSorting='true'
+          [allowSelection]="true"
+          [enableHover]="false"
+          allowPaging='true'  >
+  <e-columns >
+    <e-column type='checkbox' width='50'></e-column>
+    <e-column field='ServerTrackId'  headerText='物流跟踪号' isPrimaryKey='true' width='170' style="border: 1px #ccc solid">
+      <ng-template #template let-data>
+        <a routerLink="/orders/{{data.SystemOrderId}}">{{data.ServerTrackId}}</a>
+      </ng-template>
+    </e-column>
+    <e-column field='AcceptOrderCount' headerText='接单件数'  width=120></e-column>
+    <e-column field='SendOrderCount' headerText='已配载件数'  width=120></e-column>
+    <e-column field='OrderStatedDesc' headerText='运单状态'  width=120></e-column>
+    <e-column field='AcceptStoreName' headerText='接单网点'  width=120></e-column>
+    <e-column field='NexReceiveStoreName' headerText='转运网点'  width=120></e-column>
+    <e-column field='EndSendStoreName' headerText='配送网点'  width=120></e-column>
+    <e-column field='AcceptDateTime' headerText='接单时间' format='yMd' width=120>
+      <ng-template #template let-data>
+        {{data.AcceptDateTime | date: 'yyyy-MM-dd HH:mm:ss'}}
+      </ng-template>
+    </e-column>
+    <e-column field='OrderSendMark' headerText='托运备注' width=150></e-column>
+  </e-columns>
+</ejs-grid>

@@ -1,0 +1,92 @@
+<div class="shipmentbox">
+  <div class="contentit-l">
+    <mat-card-title>任务委派列表</mat-card-title>
+    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+  </div>
+  <div  class="contenttex-r">
+    <button ejs-button cssClass="e-info mat-width" (click)="undelegateorder()" class="mat-reject">取消委派</button>
+  </div>
+</div>
+<form class="shipmentform" [formGroup]="searchp" >
+  <mat-form-field class="col-md-6 col-lefty3">
+    <input matInput  formControlName="serverTrackId"/>
+    <span  matPrefix style="color: #888">物流跟踪号：&nbsp;</span>
+  </mat-form-field>
+  <mat-form-field class="col-md-6 col-lefty">
+    <input matInput  formControlName="shipmentUserDesc"/>
+    <span  matPrefix style="color: #888">司机：&nbsp;</span>
+  </mat-form-field>
+  <mat-form-field class="col-md-6 col-lefty">
+    <select matNativeControl  formControlName="PlanTaskType">
+      <option label="--全部 --"></option>
+      <option value="1">提货任务</option>
+      <option value="3">配送任务</option>
+    </select>
+    <span  matPrefix style="color: #888">任务类型：&nbsp;</span>
+  </mat-form-field>
+
+  <mat-form-field class="col-md-6 col-lefty">
+    <select matNativeControl  formControlName="CarryingStatuedId">
+      <option label="--全部 --"></option>
+      <option value="10">未开始</option>
+      <option value="20">执行中</option>
+      <option value="30">结束</option>
+    </select>
+    <span  matPrefix style="color: #888">任务状态：&nbsp;</span>
+  </mat-form-field>
+
+  <div  class="col-lefty2">
+    <button   ejs-button cssClass="e-info mat-width" (click)="searchingplan()">计划查询</button>
+  </div>
+
+</form>
+
+<ejs-grid #grid2  id='Grid2'
+
+          allowResizing= 'true'
+          [allowExcelExport]='true'  allowSorting='true'
+          [allowSelection]="true"
+          [enableHover]="false"
+          allowPaging='true'  height='{{gridheight2}}' class="contlistbox">
+  <e-columns >
+    <e-column type='checkbox' width='50'></e-column>
+    <e-column field='shipplanid'  headerText='物流计划编号' isPrimaryKey='true' width='170' style="border: 1px #ccc solid">
+      <ng-template #template let-data>
+        <a routerLink="/orders/{{data.shipplanid}}">{{data.shipplanid}}</a>
+      </ng-template>
+    </e-column>
+    <e-column field='serverTrackId' headerText='物流跟踪号'  width=120></e-column>
+    <e-column field='TaskType' headerText='任务类型'  width=120>
+      <ng-template #template let-data>
+        {{data.TaskType | carryingtasktypePipe :'1'}}
+      </ng-template>
+    </e-column>
+    <e-column field='ShipmentPeopleDesc' headerText='运输方'  width=120></e-column>
+    <e-column field='CarryingToolName' headerText='车牌号'  width=120></e-column>
+    <e-column field='CarryingStatuedId' headerText='任务状态'  width=120>
+      <ng-template #template let-data>
+        {{data.CarryingStatuedId | carryingStatuedPipe :'1'}}
+      </ng-template>
+    </e-column>
+    <e-column field='PublishTaskCount' headerText='委托数量'  width=120></e-column>
+    <e-column field='DestArea' headerText='到货地'  width=120></e-column>
+    <e-column field='PublishDateTime' headerText='委派时间' format='yMd' width=120>
+      <ng-template #template let-data>
+        {{data.PublishDateTime | date: 'yyyy-MM-dd HH:mm:ss'}}
+      </ng-template>
+    </e-column>
+    <e-column field='AcceptDateTime' headerText='接单时间' format='yMd' width=120>
+      <ng-template #template let-data>
+        {{data.AcceptDateTime | date: 'yyyy-MM-dd HH:mm:ss'}}
+      </ng-template>
+    </e-column>
+    <e-column field='FinishDateTime' headerText='完成时间' format='yMd' width=120>
+      <ng-template #template let-data>
+        {{data.FinishDatetime | date: 'yyyy-MM-dd HH:mm:ss'}}
+      </ng-template>
+    </e-column>
+    <e-column field='OrderSendMark' headerText='托运备注' width=150></e-column>
+  </e-columns>
+
+</ejs-grid>
+

@@ -1,0 +1,60 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <mat-card-title>网络订单</mat-card-title>
+    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+  </div>
+  <div class="contenttex-r">
+    <button ejs-button cssClass="e-info mat-width" (click)="acceptorder(false)" class="mat-reject">退单</button>
+    <button ejs-button cssClass="e-info mat-width" (click)="acceptorder(true)" class="mat-green">接单</button>
+    <!--<button ejs-button cssClass="e-info" (click)="acceptorder(true)"  hidden="hidden">接单&安排司机</button>-->
+  </div>
+</div>
+<form class="listfrom" [formGroup]="searchp" >
+
+  <mat-form-field class="col-md-3">
+    <select matNativeControl  formControlName="IfReceipt">
+      <option value="-1" label="--状态选择 --"></option>
+      <option value="0" selected="selected">未接单</option>
+      <option value="1">已处理</option>
+    </select>
+    <span  matPrefix style="color: #888">订单状态：&nbsp;</span>
+  </mat-form-field>
+
+  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+
+</form>
+
+<ejs-grid #grid  id='Grid' allowResizing= 'true' height="{{gridheight}}"
+          [allowExcelExport]='true'  allowSorting='false'
+          [allowSelection]="true"
+          [enableHover]="false"
+          (dataStateChange)="dataStateChange($event)"
+          allowPaging='true' class="contlistbox">
+  <e-columns >
+    <e-column type='checkbox' width='50'></e-column>
+    <e-column field='OrderId' headerText='订单编号' textAlign="left"  width='120'></e-column>
+    <e-column field='OrderType' headerText='类型' textAlign="left"  width='120'></e-column>
+    <e-column field='OriginLinkman' headerText='发货人'  textAlign="left" width=120></e-column>
+    <e-column field='Origintel' headerText='发货联系电话'  textAlign="left" width=150></e-column>
+    <e-column field='OriginAddress' headerText='发货地址' textAlign="left"  width=150></e-column>
+    <e-column field='DestLinkman' headerText='收货人' textAlign="left"  width=120></e-column>
+    <e-column field='Desttel' headerText='收货联系电话'  textAlign="left" width=150></e-column>
+    <e-column field='DestCity' headerText='到货城市' textAlign="left"  width=150></e-column>
+    <e-column field='Destarea' headerText='到货区域' textAlign="left"  width=150></e-column>
+    <e-column field='DestAddress' headerText='到货地址' textAlign="left"  width=150></e-column>
+    <e-column field='Package' headerText='货物名称'  width=120></e-column>
+    <e-column field='PackageCount' headerText='件数'  width=120></e-column>
+    <e-column field='PackageWeight' headerText='重量'  width=120></e-column>
+    <e-column field='PackageVol' headerText='体积'  width=120></e-column>
+    <e-column field='Sendstarttime' headerText='预约提货时间'  width=150></e-column>
+    <e-column field='CreateRealName' headerText='网络昵称'  width=120></e-column>
+    <e-column field='CreateTime' headerText='下单时间' width=120></e-column>
+    <e-column field='OrderSendMark' headerText='托运备注' width=150></e-column>
+    <e-column field='IfReceipt' headerText='是否开单'  width=120></e-column>
+    <e-column field='IsDetete' headerText='是否作废'  width=120></e-column>
+  </e-columns>
+</ejs-grid>
+
+
+
+

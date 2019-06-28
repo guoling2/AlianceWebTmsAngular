@@ -1,0 +1,33 @@
+<div fxLayout="column" fxLayoutAlign="none">
+  <div fxFlex="10">
+    <app-xbadorder-detail [quectioncliamreadonly]="false" [showdocument]="false"></app-xbadorder-detail>
+  </div>
+  <div fxFlex="90" style="height:auto;margin:10px">
+  <mat-card>
+  <mat-card-content>
+    <mat-tab-group>
+      <mat-tab label="流程记录">
+        <ng-template matTabContent>
+         <app-order-abnormal-process [MessageId]="messageId"></app-order-abnormal-process>
+        </ng-template>
+      </mat-tab>
+      <mat-tab label="结案处理">
+        <ng-template matTabContent>
+          <app-order-abnormal-process-result [MessageId]="messageId"></app-order-abnormal-process-result>
+        </ng-template>
+      </mat-tab>
+      <mat-tab label="赔付记录">
+        <ng-template matTabContent>
+          <app-order-abnormal-payment [MessageId]="messageId"></app-order-abnormal-payment>
+        </ng-template>
+      </mat-tab>
+      <mat-tab label="附件">
+        <ng-template matTabContent>
+         <app-order-abnormal-file></app-order-abnormal-file>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+  </mat-card>
+  </div>
+</div>

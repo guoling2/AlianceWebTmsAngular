@@ -1,0 +1,47 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <mat-card-title>异常汇总列表</mat-card-title>
+    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+  </div>
+</div>
+<form class="listfrom" [formGroup]="searchp" >
+  <mat-form-field class="col-md-3">
+    <input matInput  formControlName="OrderTrackServerId" />
+    <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
+  </mat-form-field>
+  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+</form>
+
+<ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
+          (dataStateChange)="dataStateChange($event)"
+          [allowExcelExport]='true'  allowSorting='false'
+          [allowSelection]="true"
+          [enableHover]="false"
+          allowPaging='true'  class="contlistbox">
+  <e-columns >
+    <e-column field='OrderTrackServerId' headerText='物流单号'  width=160>
+      <ng-template #template let-data>
+        <a [routerLink]="['/biz/orderserver/badorderdetail', data.MessageId]">{{data.OrderTrackServerId}}</a>
+      </ng-template>
+    </e-column>
+    <e-column field='OrigincustomLinkman' headerText='发货联系人' textAlign="left"  width='100'></e-column>
+    <e-column field='DestLinkman' headerText='收货联系人'  textAlign="left" width=100></e-column>
+    <e-column field='OriginCity' headerText='发货城市' textAlign="left"  width=110></e-column>
+    <e-column field='DestCity' headerText='到货城市' textAlign="left"  width=110></e-column>
+    <e-column field='MessageId' headerText='消息编号'  width=110></e-column>
+    <e-column field='HappendTime' headerText='发生时间'  width=120></e-column>
+    <e-column field='OrderModule' headerText='异常模块'  width=120></e-column>
+    <e-column field='QuestionMsg' headerText='异常问题'  width=110></e-column>
+    <e-column field='SubmitUserName' headerText='提交人'  width=110></e-column>
+    <e-column field='ProcessStatued' headerText='处理状态'  width=110></e-column>
+    <e-column field='ResponseLogisticStoreName' headerText='关联网点'  width=150></e-column>
+    <e-column field='QuestionCliam' headerText='消息分类'  width=110></e-column>
+    <e-column field='ToUserName' headerText='赔付人'  width=110></e-column>
+    <e-column field='PeifuPrice' headerText='赔付金额'  width=110></e-column>
+    <e-column field='PeifuStatued' headerText='赔付状态'  width=120></e-column>
+  </e-columns>
+</ejs-grid>
+
+
+
+

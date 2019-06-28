@@ -1,0 +1,20 @@
+<div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_10">
+  <div fxFlex="93">跟进内容：<ejs-textbox [(ngModel)]="FlowContent"></ejs-textbox></div>
+  <div fxFlex="7" class="margin_015"><button   ejs-button cssClass="e-info pagebtn" type="button"  (click)="processtask(0)">跟进</button></div>
+</div>
+<table class="matTables"  style="width: 100%">
+  <thead>
+  <tr>
+    <th>编号</th> <th>内容</th> <th>状态</th><th>操作人</th><th>操作时间</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let file of recordlist">
+    <td>   {{ file.ProcessId }}</td>
+    <td>   {{ file.ProcessContent }}</td>
+    <td>   {{ file.ProcessStatued }}</td>
+    <td>    {{ file.CreateUserDesc }}</td>
+    <td>    {{ file.CreateDateTime }}</td>
+  </tr>
+  </tbody>
+</table>

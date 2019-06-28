@@ -1,0 +1,35 @@
+<ng-container *ngIf="orderAbnormalPaymentModel.PeifuId==null">
+  <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_10">
+    <div fxFlex="50">交款人：<ejs-textbox  [(ngModel)]="orderAbnormalPaymentModel.ToUserName" required="required"></ejs-textbox></div>
+    <div fxFlex="50" class="margin_015">赔付类别：<ejs-textbox  [(ngModel)]="orderAbnormalPaymentModel.CliaimType" required="required"></ejs-textbox></div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_10">
+    <div fxFlex="50">赔付金额：<ejs-numerictextbox  [(ngModel)]="orderAbnormalPaymentModel.PeifuPrice"  step='1' required="required"></ejs-numerictextbox></div>
+    <div fxFlex="50" class="margin_015">赔付内容：<ejs-textbox  [(ngModel)]="orderAbnormalPaymentModel.PeifuContent" required="required"></ejs-textbox></div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_10">
+    <div fxFlex="86">赔付备注：<ejs-textbox  [(ngModel)]="orderAbnormalPaymentModel.Marks"></ejs-textbox></div>
+    <div fxFlex="14" class="margin_015"><button   ejs-button cssClass="e-info pagebtn" type="button"  (click)="processtask()">添加赔付记录</button></div>
+  </div>
+</ng-container>
+<ng-container *ngIf="orderAbnormalPaymentModel.PeifuId!=null">
+  <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_10">
+    <div fxFlex="50">交款人：<ejs-textbox  [(ngModel)]="orderAbnormalPaymentModel.ToUserName" readonly="readonly"></ejs-textbox></div>
+    <div fxFlex="50" class="margin_015">赔付状态：<ejs-textbox  [(ngModel)]="orderAbnormalPaymentModel.ProcessStatued" readonly="readonly"></ejs-textbox></div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_10">
+    <div fxFlex="50">赔付类别：<ejs-textbox  [(ngModel)]="orderAbnormalPaymentModel.CliaimType" readonly="readonly"></ejs-textbox></div>
+    <div fxFlex="50" class="margin_015">赔付金额：<ejs-numerictextbox  [(ngModel)]="orderAbnormalPaymentModel.PeifuPrice"  readonly="readonly"></ejs-numerictextbox></div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_10">
+    <div fxFlex="50">赔付内容：<ejs-textbox  [(ngModel)]="orderAbnormalPaymentModel.PeifuContent" readonly="readonly"></ejs-textbox></div>
+    <div fxFlex="50" class="margin_015">创建时间：<ejs-textbox  [(ngModel)]="orderAbnormalPaymentModel.CreateDateTime" readonly="readonly"></ejs-textbox></div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_10">
+    <div fxFlex="78">赔付备注：<ejs-textbox  [(ngModel)]="orderAbnormalPaymentModel.Marks" readonly="readonly"></ejs-textbox></div>
+    <div fxFlex="22" class="margin_015">
+      <button [disabled]="!allowmotifu"  ejs-button cssClass="e-info pagebtn" type="button"  (click)="comfirmpay()" >确认赔付</button>
+      <button [disabled]="!allowmotifu"  ejs-button cssClass="e-info pagebtn" type="button"  (click)="del()" class="margin_015">删除赔付</button>
+    </div>
+  </div>
+</ng-container>

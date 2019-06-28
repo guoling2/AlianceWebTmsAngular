@@ -1,0 +1,17 @@
+export   class TmsDataEntity {
+
+  constructor() {
+    this.UpdateModelType = UpdateModelType.Unchanged;
+  }
+   UpdateModelType: UpdateModelType;
+
+}
+
+export enum UpdateModelType {
+
+  Unchanged = 0,
+  Insert = 1,
+  Update = 2,
+  Delete = 3,
+  Attach= 4
+}

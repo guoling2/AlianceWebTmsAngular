@@ -1,0 +1,34 @@
+<div class="toolbar-user-container">
+  <button mat-button (click)="toggleDropdown()" class="toolbar-user-btn" [class.open]="isOpen">
+  <span fxLayout="row" fxLayoutAlign="start center">
+   <!-- &lt;!&ndash;<img class="avatar" [src]="currentUser.userheadimage || 'assets/images/avatars/noavatar.png'">-->
+    <img class="avatar" src='{{currentUser.userheadimage}}' alt="用户头像">
+    <span class="name" fxHide fxShow.gt-sm>  {{currentUser.nickname ||'未登录' }}@{{currentUser.storeshort}}</span>
+  </span>
+  </button>
+
+  <div class="dropdown mat-elevation-z1" [class.open]="isOpen">
+    <div class="content">
+      <div class="list">
+        <div class="item" fxLayout="row" fxLayoutAlign="start center"  (click)="userprofile()" mat-ripple>
+          <mat-icon class="icon"><i class="far fa-user-circle"></i></mat-icon>
+          <span class="title">个人</span>
+        </div>
+        <div class="item" fxLayout="row" fxLayoutAlign="start center" mat-ripple (click)="changebiz(1)">
+          <mat-icon class="icon"><i class="fas fa-cog"></i></mat-icon>
+          <span class="title">发货</span>
+        </div>
+        <div class="item" fxLayout="row" fxLayoutAlign="start center" mat-ripple (click)="changebiz(2)">
+          <mat-icon class="icon"><i class="fas fa-question-circle"></i></mat-icon>
+          <span class="title">物流</span>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="item" fxLayout="row" fxLayoutAlign="start center" (click)="logout()" mat-ripple>
+          <mat-icon class="icon"><i class="fas fa-sign-out-alt"></i></mat-icon>
+          <span class="title">退出</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

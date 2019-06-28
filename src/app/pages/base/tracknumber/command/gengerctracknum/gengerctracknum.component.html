@@ -1,0 +1,41 @@
+<h1>物流运单号生成</h1>
+<div class="matfullheight">
+  <mat-dialog-content class="mat-typography">
+    <div *ngIf="ErrorMsg">{{ErrorMsg}}</div>
+
+    <form [formGroup]="acceptforms"  id="formId">
+      <div class="fromcontent">
+        <b>物流商:</b>
+        <ejs-dropdownlist
+          id='games' #sample
+          placeholder='请选择物流商' [dataSource]='logistticstores'
+          [popupHeight]='100'
+          [fields]='logisticstorefiled' formControlName="tocompanycode" ></ejs-dropdownlist>
+
+        <div *ngIf="tocompanycheck.invalid && (tocompanycheck.dirty || tocompanycheck.touched)"
+             class="alert alert-danger">
+
+          <div *ngIf="tocompanycheck.errors.required">
+            <b style="color:#e21641;font-weight:100">请指定一个承运商</b>
+          </div>
+
+        </div>
+      </div>
+      <div>
+        <mat-form-field>
+          <b>申请数量：</b>
+          <input  style="margin-top:8px" type="number" class="form-control"  matInput formControlName="numbercount" maxlength="100"  value="1">
+        </mat-form-field>
+        <b class="reds">(1~999的范围)</b>
+      </div>
+
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close color="cancel">关闭</button>
+    <button mat-button mat-raised-button color="green"  (click)="applay($event)" >确认申请</button>
+  </mat-dialog-actions>
+</div>
+
+
+

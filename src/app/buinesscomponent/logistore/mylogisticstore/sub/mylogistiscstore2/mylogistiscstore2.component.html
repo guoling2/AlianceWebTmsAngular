@@ -1,0 +1,4 @@
+<mat-select #mystore placeholder="{{placeholder}}" >
+  <option value="" selected></option>
+  <mat-option value="{{store.StoreId}}" *ngFor="let store of logistticstores;">{{store.StoreName}}</mat-option>
+</mat-select>

@@ -1,0 +1,19 @@
+<div *ngIf="messresult" class="orderflowbox">
+  <h2>{{messresult[0].OrderTrackServerId}} - 物流信息</h2>
+  <div *ngFor="let mesage of messresult" class="listboxs">
+    <div class="listitemhov">
+      <span>{{mesage.CreateTime}} - {{mesage.TrackMessage}}</span>
+    </div>
+  </div>
+  <!---->
+  <!---->
+  <!--<div *ngFor="let mesage of messresult">-->
+    <!--{{mesage.TaskStatuedDesv}}-->
+
+
+
+    <!--{{mesage.CreateTime}}-->
+    <!--{{mesage.TrackMessage}}-->
+  <!--</div>-->
+
+</div>

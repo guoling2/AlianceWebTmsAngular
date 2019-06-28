@@ -1,0 +1,24 @@
+<div class="main-toolbar mat-elevation-z2" fxLayout="row" fxLayoutAlign="start center">
+  <button mat-icon-button (click)="sidenav.opened = !sidenav.opened">
+    <mat-icon><i class="fas fa-bars fa-sm"></i></mat-icon>
+  </button>
+
+  <span fxFlex></span>
+
+  <button mat-icon-button>
+    <mat-icon><i class="fas fa-search fa-sm"></i></mat-icon>
+  </button>
+  <button mat-icon-button [fxHide]="true" [fxHide.gt-sm]="false" >
+    <mat-icon *ngIf="!isFullscreen"><i class="fas fa-arrows-alt fa-sm"></i></mat-icon>
+    <mat-icon *ngIf="isFullscreen"><i class="fas fa-arrows-alt fa-sm"></i></mat-icon>
+  </button>
+  <app-toolbar-notification></app-toolbar-notification>
+  <app-toolbar-user></app-toolbar-user>
+
+  <!--<button mat-button class="more-btn" (click)="customizer.open()">-->
+    <!--<mat-icon><i class="fas fa-cog"></i></mat-icon>-->
+  <!--</button>-->
+
+</div>
+
+<!--<stbui-loading *ngIf="showLoading"></stbui-loading>-->

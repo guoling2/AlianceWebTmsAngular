@@ -1,0 +1,15 @@
+
+<div class="control-section">
+  <div class='control-wrapper' style='width:100%; margin: 0 auto' fxLayout="row" fxLayoutAlign="space-around end" >
+    <div fxFlex="2 6">
+      <ejs-dropdownlist  floatLabelType="Auto" #countryList id='country' [dataSource]='country' [fields]='countryFields' (change)='onChange1($event)' popupHeight='200' [placeholder]='countryWaterMark'></ejs-dropdownlist>
+    </div>
+    <div  fxFlex="2 6" class="margin_015">
+      <ejs-dropdownlist  floatLabelType="Auto" #stateList id='state' [dataSource]='state' [fields]='stateFields' (change)='onChange2($event)' [placeholder]='stateWaterMark' popupHeight='auto'
+                        [enabled]='false'></ejs-dropdownlist>
+    </div>
+    <div  fxFlex="2 6">
+      <ejs-dropdownlist  floatLabelType="Auto" #cityList id='city' [dataSource]='cities' [fields]='cityFields' [placeholder]='cityWaterMark' (change)='onChange3($event)' [enabled]='false' popupHeight='200'></ejs-dropdownlist>
+    </div>
+  </div>
+</div>

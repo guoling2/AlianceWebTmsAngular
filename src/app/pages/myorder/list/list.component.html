@@ -1,0 +1,62 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <mat-card-title>自营订单</mat-card-title>
+    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+  </div>
+  <div class="contenttex-r">
+    <button ejs-button cssClass="e-info mat-width" [routerLink]="['/biz/myorder/create']" class="mat-green">新增</button>
+    <button ejs-button cssClass="e-info mat-width"  class="mat-reject"  (click)="createmyshipmentorder()">下达</button>
+  </div>
+</div>
+<form class="listfrom" [formGroup]="searchp" >
+  <mat-form-field class="col-md-3">
+    <input matInput  formControlName="OrderTrackServerId" />
+    <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
+  </mat-form-field>
+  <mat-form-field class="col-md-3">
+    <select matNativeControl  formControlName="LosigticTrackStatued">
+      <option label="--状态选择 --"></option>
+      <option value="1">未下达</option>
+      <option value="2">已下达</option>
+    </select>
+    <span  matPrefix style="color: #888">下达状态：&nbsp;</span>
+  </mat-form-field>
+  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+</form>
+
+<ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
+          (dataStateChange)="dataStateChange($event)"
+          [allowExcelExport]='true'  allowSorting='false'
+          [allowSelection]="true"
+          [enableHover]="false"
+          allowPaging='true'  class="contlistbox">
+  <e-columns >
+
+    <e-column type='checkbox' width='50'></e-column>
+    <e-column field='OrderTrackServerId'  headerText='物流单号' isPrimaryKey='true' width='165'></e-column>
+    <e-column field='OrderDestserviceId' headerText='交货方式'  width=120></e-column>
+    <e-column field='IfCargoFromOrigin' headerText='上门提货'  width=100></e-column>
+    <e-column field='LogisticOrderStatuedId' headerText='物流状态'  width=120></e-column>
+    <e-column field='OrigincustomLinkman' headerText='发货联系人' textAlign="left"  width='100'></e-column>
+    <e-column field='Origintel' headerText='发货联系电话' textAlign="left"  width='130'></e-column>
+    <e-column field='DestLinkman' headerText='到货联系人'  textAlign="left" width=100></e-column>
+    <e-column field='Desttel' headerText='到货联系电话' textAlign="left"  width=130></e-column>
+    <e-column  headerText='始发区域' field="Originarea" textAlign="left"  width=150></e-column>
+    <e-column field='Destarea' headerText='到货区域' textAlign="left"  width=150></e-column>
+    <e-column field='TotalCount' headerText='订单件数'  width=100></e-column>
+    <e-column field='TotalWeight' headerText='订单重量'  width=120></e-column>
+    <e-column field='TotalVolume' headerText='订单体积'  width=130></e-column>
+    <e-column field='TotalRealAmount' headerText='实付运费'  width=120></e-column>
+    <e-column field='PaymentStatusId' headerText='财务状态'  width=120></e-column>
+    <e-column field='CustomePaymentMethod' headerText='结算方式'  width=120></e-column>
+    <e-column field='BeginLogisticStoreName' headerText='发货网点'  width=180></e-column>
+    <e-column field='EndLogisticStoreName' headerText='落货/自提网点'  width=180></e-column>
+    <e-column field='CreateUserName' headerText='创建人'  width=120></e-column>
+    <e-column field='CreateDatetime' headerText='创建时间' format='yMd' width=150></e-column>
+    <e-column field='InnerMark' headerText='对内备注' width=150></e-column>
+  </e-columns>
+</ejs-grid>
+
+
+
+

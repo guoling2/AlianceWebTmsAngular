@@ -1,0 +1,8 @@
+.matTables {border:none;border-collapse:collapse;background:#fff;}
+.matTables th {padding:5px 10px;border-bottom:1px #ccc solid;color:#666;text-align:left}
+.matTables td {border-bottom:1px #ccc solid;padding:5px 10px;color:#000;text-align:left}
+.matTables td a {margin-right:10px;text-decoration:none}
+.matTables td a:hover {text-decoration: underline}
+.matTables tr:hover {background:#eee}
+.matTables thead tr:hover {background:#fff}
+.cardmargin {margin:10px 10px 0px 10px}

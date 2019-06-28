@@ -1,0 +1,59 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <div><i class="fas fa-compass"></i> 当前位置：<a  [routerLink]="['/biz/base/stores/list']" >网点列表</a>  / <b>查看明细</b></div>
+  </div>
+  <div class="contenttex-r"></div>
+</div>
+
+
+
+<div style="width:100%;height:auto;color:#666">
+    <mat-card class="cardmargin">
+      <mat-card-title class="cardborder">
+        <mat-icon fontSet="fontawesome" fontIcon="fa-warehouse" class="fontacommon"></mat-icon>
+        <b class="mat_tit_b">网点名称</b>
+      </mat-card-title>
+      <mat-card-content>
+        <div>
+          <div fxLayout="row" fxLayoutAlign="space-around start" class="margin_t_10">
+            <div fxFlex="20" class="fxflexspan">网点编号：<span>{{logisticdetail.StoreId}}</span></div>
+            <div fxFlex="20" class="margin_015 fxflexspan">发货联系人：<span>{{logisticdetail.LinkMan}}</span></div>
+            <div fxFlex="30" class="fxflexspan">网点名称：<span>{{logisticdetail.StoreName}}</span></div>
+            <div fxFlex="30" class="margin-l_015  fxflexspan">联系电话：<span>{{logisticdetail.LinkTel}}</span></div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around start" class="margin_t_10">
+            <div fxFlex="20" class="fxflexspan">发货网点省：<span>{{logisticdetail.StoreProvice}}</span></div>
+            <div fxFlex="20" class="margin_015 fxflexspan"> 发货网点市：<span>{{logisticdetail.StoreCity}}</span></div>
+            <div fxFlex="20" class="fxflexspan">发货网点区域：<span>{{logisticdetail.StoreArea}}</span></div>
+            <div fxFlex="40" class="margin-l_015 fxflexspan">发货网点地址：<span>{{logisticdetail.StoreAddessDetail}}</span></div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around start" class="margin_t_10">
+            <div fxFlex="20" class="fxflexspan">是否是总部：<span>{{logisticdetail.IsManageBranch}}</span></div>
+            <div fxFlex="20" class="margin_015 fxflexspan">是否可用：<span>{{logisticdetail.IsEnable}}</span></div>
+            <div fxFlex="20" class="fxflexspan">网点类型：<span>{{logisticdetail.BranchLevel}}</span></div>
+            <div fxFlex="40" class="margin-l_015 fxflexspan">用户ID：<span>{{logisticdetail.StoreOwnUserId}}</span></div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around start" class="margin_t_10">
+            <div fxFlex="20" class="fxflexspan">网点分类：<span>{{logisticdetail.StoreTypeId}}</span></div>
+            <div fxFlex="20" class="margin_015 fxflexspan"> 经度：<span>{{logisticdetail.Lng}}</span></div>
+            <div fxFlex="20" class="fxflexspan">纬度：<span>{{logisticdetail.Lat}}</span></div>
+            <div fxFlex="40" class="margin-l_015 fxflexspan">业务信息：<span>{{logisticdetail.BuinessContent}}</span></div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around start" class="margin_t_10">
+            <div fxFlex="50" class="fxflexspan">发货区域信息：<span>{{logisticdetail.GoodsSendAreaMsg}}</span></div>
+            <div fxFlex="50" class="margin-l_015 fxflexspan"> 提货费信息：<span>{{logisticdetail.TihuoMoneyMsg}}</span></div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around start" class="margin_t_10">
+            <div fxFlex="50" class="fxflexspan">送货费信息：<span>{{logisticdetail.SonghuoMoneyMsg}}</span></div>
+            <div fxFlex="50" class="margin-l_015 fxflexspan">营业时间信息：<span>{{logisticdetail.BuinessTimeMsg}}</span></div>
+
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around start" class="margin_t_10">
+            <div fxFlex="100" class="fxflexspan">服务描述：<span>{{logisticdetail.Desc}}</span></div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+</div>
+
