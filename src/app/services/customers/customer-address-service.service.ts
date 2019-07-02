@@ -6,6 +6,8 @@ import {AppConfiguration} from '../../auth/config/app-configuration';
 import {Observable} from 'rxjs';
 import {TmsResponseModle} from '../../models/tms-response.module';
 import {tap} from 'rxjs/operators';
+import {AbstractControl} from '@angular/forms';
+import {CustomerQueryForOrdermodle} from '../../models/customers/customer-for-order-query-modle';
 
 @Injectable({
   providedIn: 'root'
@@ -42,4 +44,20 @@ export class CustomerAddressServiceService {
       .pipe(
         tap(heroes => console.log(heroes)));
   }
+
+  /**
+   * 一般用于系统内查询客户使用的
+   * @公司ID companyId
+   * @查询类型 searchtype
+   * @查询内容 searchtxt
+   */
+  public SearchForCustomer(companyId: string, searchtype: string, searchtxt: string): Observable<CustomerQueryForOrdermodle[]> {
+
+    return this.httpclient.get<CustomerQueryForOrdermodle[]>(
+      this.appConfiguration.Server + '/api/CustomerAddress/Search/' + companyId +
+      '?searchtype=' + searchtype + '&searchtxt=' + searchtxt)
+      .pipe(
+        tap(heroes => console.log(heroes)));
+  }
+
 }

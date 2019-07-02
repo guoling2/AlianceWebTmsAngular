@@ -34,19 +34,20 @@ export class CustomerpaymethodComponent implements OnInit, ControlValueAccessor 
 
   }
 
-  registerOnChange ( fn :any ) :void {
+  registerOnChange ( fn: any ): void {
 
     this.onChange = fn;
   }
 
-  registerOnTouched ( fn : any ) :void {
+  registerOnTouched ( fn: any ): void {
   }
 
-  setDisabledState ( isDisabled :boolean ) :void {
+  setDisabledState ( isDisabled: boolean ): void {
     this.mystoredownlist.setDisabledState(isDisabled);
   }
 
-  writeValue ( value : any ) : void {
+  writeValue ( value: any ): void {
+
     if (value) {
 
       this.mystoredownlist.writeValue(value);
@@ -61,7 +62,7 @@ export class CustomerpaymethodComponent implements OnInit, ControlValueAccessor 
 
     this.onChange(event.value);
     console.log(event.value);
-    //this.onChange(event.value);
+    // this.onChange(event.value);
 
   }
 

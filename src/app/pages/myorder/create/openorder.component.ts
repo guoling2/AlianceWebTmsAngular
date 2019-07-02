@@ -21,6 +21,16 @@ import {OpenOrdervalidationMessages} from '../openordervalidation';
 import {TmsresponseStatusCode} from '../../../models/tms-response.module';
 import {DialogservicesService} from '../../../help/dialogservices.service';
 import { ProgressButton, SpinSettingsModel, AnimationSettingsModel } from '@syncfusion/ej2-angular-splitbuttons';
+import {MatDialog} from '@angular/material';
+import {CustomeraddressaddComponent} from '../../logisticcustomer/_sub/customeraddressadd/customeraddressadd.component';
+import {OrdercustomerComponent} from '../_sub/ordercustomer/ordercustomer.component';
+import {CustomerAddressModle} from '../../../models/customers/customer-address-modle';
+import {CustomerQueryForOrdermodle} from '../../../models/customers/customer-for-order-query-modle';
+import {CustomerTaxServiceService} from '../../../services/customers/customer-tax-service.service';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {CustomerProfileModle} from '../../../models/customers/customer-profile-modle';
+import {CustomerTaxModle} from '../../../models/customers/customer-tax-modle';
+import {map} from 'rxjs/operators';
 @Component({
   selector: 'app-myopenorder',
   templateUrl: './openorder.component.html',
@@ -29,6 +39,7 @@ import { ProgressButton, SpinSettingsModel, AnimationSettingsModel } from '@sync
 export class OpenMyorderComponent implements OnInit {
 
   constructor(
+    private dialog: MatDialog,
     public emitService: EmitService,
     private http: HttpClient,
     private bsAreaService: BusAreaService,
@@ -37,9 +48,12 @@ export class OpenMyorderComponent implements OnInit {
     private shipmentOrderService: ShipmentOrderService,
     private logisticStoreServiceService: LogisticStoreServiceService,
     private logisticStoreAuthorizeServiceService: LogisticStoreAuthorizeServiceService,
+    private customerTaxServiceService: CustomerTaxServiceService,
     private  dialogx: DialogservicesService
   ) { }
 
+
+  public CustomerTaxModles: CustomerTaxModle[] = []; // 用来存储发货客户开票数据
 
   /**
    * 订单品相
@@ -54,6 +68,8 @@ export class OpenMyorderComponent implements OnInit {
 
   // maps the remote data column to fields property
   public remoteFields: Object = { value: 'AreaNameDesc' };
+
+  public taxfields: Object = { text: 'Invoicetitle', value: 'Taxno' };
 
   public TihuoType: TihuoType = TihuoType;
   public YunshuxingzhiData: YunshuxingzhiData = YunshuxingzhiData;
@@ -139,8 +155,8 @@ export class OpenMyorderComponent implements OnInit {
       CollectionOnDeliveryAmount: '', // 声明代收货款
       CollectionOnDeliveryBankPeopleName: '', // 代收货款人姓名
       CollectionOnDeliveryBankNumber: '', // 代收货款银行账号
-      InvoiceTitle: { value: '', disabled: true }, // 发票抬头
-      IsOpenInvoice: { value: '', disabled: true }, // 是否开票
+      InvoiceTitle: {value: '', disabled: true}, // 发票抬头
+      IsOpenInvoice: { value: 'false' }, // 是否开票
       // CargoReceiptNumber:'',//回单
       Needreturntrackingno: '', // 是否回单
       CargoReceiptPaperShowType: '', // 回单返回方式
@@ -166,6 +182,7 @@ export class OpenMyorderComponent implements OnInit {
     this.subscibrefeechange(); // 金额变化~~
 
     this.subscibretihuocontrolstatued(); // 是否提货费用的关注
+
     // this.data=bsAreaService
   }
 
@@ -318,5 +335,89 @@ export class OpenMyorderComponent implements OnInit {
   }
   additem() {
     this.AddItem();
+  }
+
+  // 选择客户  1 发货 2收货
+  choecustomer(number: number, height: string, width: string) {
+
+    const dialogRef = this.dialog.open(OrdercustomerComponent, {
+      height: height,
+      width: width,
+      disableClose: false,
+      data: number
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      if (result == null) {
+        return;
+      }
+       const customertype = <number>result[0];
+       const selectcustomer = <CustomerQueryForOrdermodle>result[1];
+
+      if (customertype === 1) {
+        this.saveform.patchValue({ OrigincustomId: selectcustomer.CustomerId });
+        this.saveform.patchValue({ Origincustomname: selectcustomer.Name });
+        this.saveform.patchValue({ OrigincustomLinkman: selectcustomer.LinkMan });
+        this.saveform.patchValue({ Origintel: selectcustomer.LinkTel });
+        this.saveform.patchValue({ OriginArea: selectcustomer.Area });
+        this.saveform.patchValue({ OriginAddress: selectcustomer.LinkAddress });
+
+        if (selectcustomer.Ismonth) {
+          this.saveform.patchValue({PaymentMethod: CustomePaymentMethod.PaymentMehodDataForMonth});
+        }
+
+      } else {
+        this.saveform.patchValue({ DestcustomId: selectcustomer.CustomerId });
+        this.saveform.patchValue({ Destcustomname: selectcustomer.Name });
+        this.saveform.patchValue({ DestcustomLinkman: selectcustomer.LinkMan });
+        this.saveform.patchValue({ Desttel: selectcustomer.LinkTel });
+        this.saveform.patchValue({ DestArea: selectcustomer.Area });
+        this.saveform.patchValue({ DestAddress: selectcustomer.LinkAddress });
+      }
+
+     // this.CustomerTaxModles = this.customerTaxServiceService.Search(selectcustomer.CustomerId);
+
+
+      const x = this.CustomerTaxModles;
+      this.customerTaxServiceService.Search(selectcustomer.CustomerId).subscribe((a) => {
+        if (a.length > 0) {
+
+          if (x.length > 0) {
+
+            x.forEach((c, index) => {
+
+              if (c.SelectType === customertype.toString()) {
+
+                x.splice(index, 1);
+              }
+
+            });
+          }
+
+          this.CustomerTaxModles = [];
+          a.forEach((item, index) => {
+            item.SelectType = customertype.toString();
+            this.CustomerTaxModles.push(item);
+          });
+            this.CustomerTaxModles= this.CustomerTaxModles.concat(x);
+        }
+
+      });
+
+    });
+  }
+
+  // 选择开票的事件
+  IsOpenInvoiceChange($event: boolean) {
+
+    if ($event) {
+      this.saveform.get('InvoiceTitle').enable();
+    } else {
+      this.saveform.get('InvoiceTitle').patchValue('');
+      this.saveform.get('InvoiceTitle').disable();
+    }
+
+    console.log($event);
   }
 }

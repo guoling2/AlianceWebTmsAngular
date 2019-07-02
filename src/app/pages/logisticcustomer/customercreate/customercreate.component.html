@@ -1,140 +1,123 @@
 <div class="contentbox">
   <div class="contentit-l">
-    <div><i class="fas fa-compass"></i> 当前位置：<a [routerLink]="['/biz/customer-management/customers']" >客户列表</a> </div>
+    <div><i class="fas fa-compass"></i> 当前位置：<a [routerLink]="['/biz/customer-management/customers']" >客户列表</a> / <b>新增客户</b></div>
   </div>
-  <div class="contenttex-r">
-    <button ejs-button cssClass="e-info mat-width"  (click)="saveaction()" >保存</button>
-  </div>
+  <div class="contenttex-r"></div>
 </div>
-<mat-card class="userbox">
+<form id="customerid" [formGroup]="form" >
+  <mat-card class="userbox">
+    <mat-card-content>
+      <h3>客户信息</h3>
+      <div fxLayout="row" fxLayoutAlign="space-between end">
+        <div fxFlex="18" class="customar">
+          <mat-form-field>
+            <label><input matInput placeholder="客户名称" formControlName="name"></label>
+            <mat-error>客户名称是<strong>必须的</strong></mat-error>
+            <mat-hint align="start">请输入<strong>客户名称</strong></mat-hint>
+          </mat-form-field>
+        </div>
+        <div fxFlex="18" class="customar">
+          <mat-form-field>
+            <label><input matInput placeholder="编码" formControlName="code"></label>
+            <mat-hint align="start">客户编码</mat-hint>
+          </mat-form-field>
+        </div>
+        <div fxFlex="18" class="customar">
+          <mat-form-field>
+            <label><input matInput placeholder="客户简称" formControlName="simplename"></label>
+            <mat-hint align="start">客户简称</mat-hint>
+          </mat-form-field>
+        </div>
+        <div fxFlex="18" class="customar">
+          <mat-form-field>
+            <mat-select formControlName="customType"  id="customType" placeholder="客户性质">
+              <mat-option value="公司">公司</mat-option>
+              <mat-option value="个人">个人</mat-option>
+            </mat-select>
+            <mat-error>客户性质<strong>必须的</strong></mat-error>
+            <mat-hint align="start">请选择<strong>客户性质</strong></mat-hint>
+          </mat-form-field>
+        </div>
+        <div fxFlex="18" class="customar">
+          <mat-form-field>
+            <mat-select formControlName="customleavel"  id="customleavel" placeholder="客户级别">
+              <mat-option value="普通">普通</mat-option>
+              <mat-option value="高级">高级</mat-option>
+            </mat-select>
+            <mat-error>客户级别<strong>必须的</strong></mat-error>
+            <mat-hint align="start">请选择<strong>客户级别</strong></mat-hint>
+          </mat-form-field>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between none">
+        <div fxFlex="18" class="customar">
+          <mat-form-field>
+            <label><input matInput placeholder="业务员" formControlName="emp"></label>
+            <mat-hint align="start">业务员</mat-hint>
+          </mat-form-field>
+        </div>
+        <div fxFlex="18" class="customar">
+          <mat-form-field>
+            <mat-select  placeholder="从属机构"  formControlName="partyto">
+              <option value="" selected></option>
+              <mat-option value="{{store.StoreId}}" *ngFor="let store of logistticstores;">{{store.StoreName}}</mat-option>
+            </mat-select>
+            <mat-hint align="start">请选择从属机构</mat-hint>
+            <mat-error>从属机构<strong>必须的</strong></mat-error>
+          </mat-form-field>
+        </div>
+        <div fxFlex="18" class="customar checkmar">
+          <mat-checkbox formControlName="Canmonthlysettle" >是否可月结</mat-checkbox>
+        </div>
+        <div fxFlex="18" class="customar checkmar">
+          <mat-checkbox formControlName="Ismonth" >默认月结</mat-checkbox>
+        </div>
+        <div fxFlex="18" class="customar">
+        </div>
+      </div>
 
-  <mat-card-content>
-  <form id="customerid" [formGroup]="form" >
-
-
-
-    <mat-form-field>
-      <label><input matInput placeholder="客户名称" formControlName="name"></label>
-      <mat-error>
-        客户名称是
-        <strong>必须的</strong>
-      </mat-error>
-      <mat-hint align="start">请输入
-        <strong>客户名称</strong>
-      </mat-hint>
-    </mat-form-field>
-
-    <mat-form-field>
-      <label><input matInput placeholder="编码" formControlName="code"></label>
-
-      <mat-hint align="start">
-        客户编码
-      </mat-hint>
-    </mat-form-field>
-
-    <mat-form-field>
-      <label><input matInput placeholder="客户简称" formControlName="simplename"></label>
-
-      <mat-hint align="start">
-        客户简称
-      </mat-hint>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-select formControlName="customType"  id="customType" placeholder="客户性质">
-        <mat-option value="公司">公司</mat-option>
-        <mat-option value="个人">个人</mat-option>
-      </mat-select>
-      <mat-error>
-        客户性质
-        <strong>必须的</strong>
-      </mat-error>
-      <mat-hint align="start">请选择
-        <strong>客户性质</strong>
-      </mat-hint>
-    </mat-form-field>
-    <mat-form-field>
-
-      <mat-select formControlName="customleavel"  id="customleavel" placeholder="客户级别">
-        <mat-option value="普通">普通</mat-option>
-        <mat-option value="高级">高级</mat-option>
-      </mat-select>
-      <mat-error>
-        客户级别
-        <strong>必须的</strong>
-      </mat-error>
-      <mat-hint align="start">请选择
-        <strong>客户级别</strong>
-      </mat-hint>
-    </mat-form-field>
-    <mat-form-field>
-      <label><input matInput placeholder="业务员" formControlName="emp"></label>
-
-      <mat-hint align="start">
-        业务员
-      </mat-hint>
-    </mat-form-field>
-
-    <mat-form-field>
-
-      <mat-select  placeholder="从属机构"  formControlName="partyto">
-        <option value="" selected></option>
-        <mat-option value="{{store.StoreId}}" *ngFor="let store of logistticstores;">{{store.StoreName}}</mat-option>
-      </mat-select>
-      <mat-hint align="start">
-        请选择从属机构
-      </mat-hint>
-      <mat-error>
-        从属机构
-        <strong>必须的</strong>
-      </mat-error>
-    </mat-form-field>
-
-
-    <mat-checkbox formControlName="Canmonthlysettle">是否可月结</mat-checkbox>
-    <mat-checkbox formControlName="Ismonth">默认月结</mat-checkbox>
-
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="userbox">
+    <mat-card-content>
     <div formGroupName="CustomerAddressModel">
       <h3>物流地址</h3>
-
-      <mat-form-field>
-        <label><input matInput placeholder="联系人" formControlName="LinkMan"></label>
-        <mat-hint align="start">请输入
-          <strong>联系人，如果为空 使用姓名作为联系人</strong>
-        </mat-hint>
-      </mat-form-field>
-
-      <mat-form-field>
-        <label><input matInput placeholder="联系手机" formControlName="LinkTel"></label>
-        <mat-error>
-          联系手机
-          <strong>必须的</strong>
-        </mat-error>
-        <mat-hint align="start">请输入
-          <strong>联系手机</strong>
-        </mat-hint>
-      </mat-form-field>
-
-
-      <app-bin-areacascading formControlName="Area"></app-bin-areacascading>
-
-
-      <mat-form-field>
-        <label><input matInput placeholder="联系地址" formControlName="LinkAddress"></label>
-        <mat-hint align="start">请输入
-          <strong>联系地址</strong>
-        </mat-hint>
-      </mat-form-field>
-
-
+      <div fxLayout="row" fxLayoutAlign="space-between none">
+        <div fxFlex="28" class="customar">
+          <mat-form-field>
+            <label><input matInput placeholder="联系人" formControlName="LinkMan"></label>
+            <mat-hint align="start">请输入
+              <strong>联系人，如果为空 使用姓名作为联系人</strong>
+            </mat-hint>
+          </mat-form-field>
+        </div>
+        <div fxFlex="20" class="customar">
+          <mat-form-field>
+            <label><input matInput placeholder="联系手机" formControlName="LinkTel"></label>
+            <mat-error>联系手机<strong>必须的</strong></mat-error>
+            <mat-hint align="start">请输入<strong>联系手机</strong></mat-hint>
+          </mat-form-field>
+        </div>
+        <div fxFlex="48" class="customar" style="margin-top:2px;">
+          <app-bin-areacascading formControlName="Area"></app-bin-areacascading>
+        </div>
+      </div>
     </div>
+    <div fxLayout="row" fxLayoutAlign="space-between none">
+      <div fxFlex="100" class="customar2">
+        <mat-form-field style="width: 100%;">
+          <label><input matInput placeholder="联系地址" formControlName="LinkAddress"></label>
+          <mat-hint align="start">请输入<strong>联系地址</strong></mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+    </mat-card-content>
+  </mat-card>
+  <div style="text-align: center;margin-top:20px"><button ejs-button cssClass="e-info mat-width"  (click)="saveaction()" >保存</button></div>
+</form>
 
-  </form>
 
 
-
-
-  </mat-card-content>
-</mat-card>
 
 
 

@@ -9,6 +9,9 @@ import {AutoCompleteModule} from '@syncfusion/ej2-angular-dropdowns';
 import {LogistictoreModule} from '../../buinesscomponent/logistore/logistictore.module';
 import {BasedataModule} from '../../buinesscomponent/base/basedata.module';
 import {PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
+import { OrdercustomerComponent } from './_sub/ordercustomer/ordercustomer.component';
+import {CustomeraddressaddComponent} from '../logisticcustomer/_sub/customeraddressadd/customeraddressadd.component';
+import {CustomertaxaddComponent} from '../logisticcustomer/_sub/customertaxadd/customertaxadd.component';
 
 const routes: Routes = [
   {
@@ -40,6 +43,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule
   ],
-  declarations: [MyOrderListComponent, OpenMyorderComponent]
+  declarations: [MyOrderListComponent, OpenMyorderComponent, OrdercustomerComponent],
+  entryComponents: [OrdercustomerComponent]
 })
 export class LogistcimyorderModule { }

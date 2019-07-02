@@ -5,23 +5,20 @@
   </div>
   <div class="contenttex-r"></div>
 </div>
-
-
-<div *ngIf="adminuser">
-  <h1>系统拥有者</h1>
-  <div>
+<div *ngIf="adminuser" class="adminuser">
+  <div class="admintit">系统拥有者：</div>
+  <div class="admintext">
     <span>
       <a [routerLink]="['/biz/user-management/users/edit', adminuser.name]">
-              <img height="35" width="35" src="{{adminuser.userheadimage}}?imageMogr2/thumbnail/50x50/format/webp/blur/1x0/quality/75|imageslim" alt="用户头像" />
-      <span style="margin-left: 5px;">{{adminuser.realname}}</span>
+       <img height="35" width="35" src="{{adminuser.userheadimage}}?imageMogr2/thumbnail/50x50/format/webp/blur/1x0/quality/75|imageslim" alt="用户头像" />
+      {{adminuser.realname}}
       </a>
     </span>
     <span> {{adminuser.phone_number}}</span>
     <span> {{adminuser.storename}}</span>
+    <a class="altusera" [routerLink]="['/biz/user-management/users/edit', adminuser.name]">编辑用户</a>
   </div>
 </div>
-
-
 <form class="listfrom" [formGroup]="searchp" >
   <mat-form-field class="col-md-3">
   <input matInput formControlName="worknumber" />

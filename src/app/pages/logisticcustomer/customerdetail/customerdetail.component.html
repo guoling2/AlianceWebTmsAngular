@@ -1,16 +1,26 @@
-<button ejs-button cssClass="e-info mat-width"  (click)="saveaction()" >修改&保存</button>
-<button ejs-button cssClass="e-info mat-width"  (click)="del()" >删除</button>
-<mat-tab-group dynamicHeight="true" (selectedIndexChange)="changindex($event)">
-  <mat-tab label="基础资料">
-    <div *ngIf="customerProfileModle">
-      <app-biz-customerbase  #basecom [customerProfileModle]="customerProfileModle"></app-biz-customerbase>
-    </div>
-
-  </mat-tab>
-  <mat-tab label="开票信息">
-    <app-biz-customertax [customerProfileModle]="customerProfileModle"></app-biz-customertax>
-  </mat-tab>
-  <mat-tab label="收发货地址">
-    <app-biz-customeraddresslist [customerProfileModle]="customerProfileModle"></app-biz-customeraddresslist>
-  </mat-tab>
-</mat-tab-group>
+<div class="contentbox">
+  <div class="contentit-l">
+    <div><i class="fas fa-compass"></i> 当前位置：<a [routerLink]="['/biz/customer-management/customers']" >客户列表</a> / <b>客户信息</b></div>
+  </div>
+  <div class="contenttex-r">
+    <button ejs-button cssClass="e-info mat-width"  (click)="saveaction()" >修改&保存</button>
+    <button ejs-button cssClass="e-info mat-width" class="mat-reject"   style="margin-left:20px" (click)="del()" >删除</button>
+  </div>
+</div>
+<mat-card class="userbox">
+  <mat-card-content>
+    <mat-tab-group dynamicHeight="true" (selectedIndexChange)="changindex($event)">
+      <mat-tab label="基础资料">
+        <div *ngIf="customerProfileModle">
+          <app-biz-customerbase  #basecom [customerProfileModle]="customerProfileModle"></app-biz-customerbase>
+        </div>
+      </mat-tab>
+      <mat-tab label="开票信息">
+        <app-biz-customertax [customerProfileModle]="customerProfileModle"></app-biz-customertax>
+      </mat-tab>
+      <mat-tab label="收发货地址">
+        <app-biz-customeraddresslist [customerProfileModle]="customerProfileModle"></app-biz-customeraddresslist>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>

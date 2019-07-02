@@ -1,54 +1,47 @@
+<h1>开票资料</h1>
 <form [formGroup]="form" >
-
-  <mat-form-field>
-    <mat-select placeholder="开票类型" formControlName="Invoicetype">
-      <mat-option value="enterprise" >企业</mat-option>
-      <mat-option value="person">个人</mat-option>
-    </mat-select>
-    <mat-error>
-      开票类型
-      <strong>必须的</strong>
-    </mat-error>
-    <mat-hint align="start">请选择
-      <strong>开票类型</strong>
-    </mat-hint>
-  </mat-form-field>
-
-  <mat-form-field>
-    <label><input matInput placeholder="发票抬头" formControlName="Invoicetitle"></label>
-    <mat-error>
-      发票抬头
-      <strong>必须的</strong>
-    </mat-error>
-    <mat-hint align="start">请输入
-      <strong>发票抬头</strong>
-    </mat-hint>
-  </mat-form-field>
-
-  <mat-form-field>
-    <label><input matInput placeholder="税号" formControlName="Taxno"></label>
-    <mat-error>
-      税号
-      <strong>必须的</strong>
-    </mat-error>
-    <mat-hint align="start">请输入
-      <strong>税号</strong>
-    </mat-hint>
-  </mat-form-field>
-
-  <mat-form-field>
-    <label><input matInput placeholder="开户行" formControlName="Bankname"></label>
-    <mat-hint align="start">请输入
-      <strong>开户行名称</strong>
-    </mat-hint>
-  </mat-form-field>
-
-  <mat-form-field>
-    <label><input matInput placeholder="开户行账号" formControlName="Bankaccountno"></label>
-    <mat-hint align="start">请输入
-      <strong>开户行账号</strong>
-    </mat-hint>
-  </mat-form-field>
-
+  <div fxLayout="row" fxLayoutAlign="space-between end">
+    <div fxFlex="30" class="customar">
+      <mat-form-field>
+        <mat-select placeholder="开票类型" formControlName="Invoicetype">
+          <mat-option value="enterprise" >企业</mat-option>
+          <mat-option value="person">个人</mat-option>
+        </mat-select>
+        <mat-error>开票类型<strong>必须的</strong></mat-error>
+        <mat-hint align="start">请选择
+          <strong>开票类型</strong>
+        </mat-hint>
+      </mat-form-field>
+    </div>
+    <div fxFlex="33" class="customar">
+      <mat-form-field>
+        <label><input matInput placeholder="发票抬头" formControlName="Invoicetitle"></label>
+        <mat-error>发票抬头<strong>必须的</strong></mat-error>
+        <mat-hint align="start">请输入<strong>发票抬头</strong></mat-hint>
+      </mat-form-field>
+    </div>
+    <div fxFlex="33" class="customar">
+      <mat-form-field>
+        <label><input matInput placeholder="税号" formControlName="Taxno"></label>
+        <mat-error>税号<strong>必须的</strong></mat-error>
+        <mat-hint align="start">请输入<strong>税号</strong></mat-hint>
+      </mat-form-field>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-between end" class="marginT">
+    <div fxFlex="30" class="customar">
+      <mat-form-field>
+        <label><input matInput placeholder="开户行" formControlName="Bankname"></label>
+        <mat-hint align="start">请输入<strong>开户行名称</strong></mat-hint>
+      </mat-form-field>
+    </div>
+    <div fxFlex="33" class="customar">
+      <mat-form-field>
+        <label><input matInput placeholder="开户行账号" formControlName="Bankaccountno"></label>
+        <mat-hint align="start">请输入<strong>开户行账号</strong></mat-hint>
+      </mat-form-field>
+    </div>
+    <div fxFlex="33" class="customar"></div>
+  </div>
 </form>
-<button ejs-button cssClass="e-info mat-width"  (click)="saveaction()" >创建</button>
+<div class="btnbox"><button ejs-button cssClass="e-info mat-width"  (click)="saveaction()" >创建</button></div>

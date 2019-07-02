@@ -18,6 +18,7 @@ import {DetailComponent} from '../shipment/signlist/detail/detail.component';
 import {NoselectedComponent} from '../shipment/signlist/noselected/noselected.component';
 import { CustomertaxComponent } from './_sub/customertax/customertax.component';
 import { CustomertaxaddComponent } from './_sub/customertaxadd/customertaxadd.component';
+import { DisplaytaxtypePipe } from './displaytaxtype.pipe';
 
 
 
@@ -39,7 +40,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [CustomerlistComponent, CustomercreateComponent, CustomerdetailComponent, CustomerbaseComponent, CustomeraddresslistComponent, CustomeraddressaddComponent, CustomertaxComponent, CustomertaxaddComponent],
+  declarations: [CustomerlistComponent, CustomercreateComponent, CustomerdetailComponent, CustomerbaseComponent, CustomeraddresslistComponent, CustomeraddressaddComponent, CustomertaxComponent, CustomertaxaddComponent, DisplaytaxtypePipe],
   imports: [
     CommonModule,
     SharedModule,

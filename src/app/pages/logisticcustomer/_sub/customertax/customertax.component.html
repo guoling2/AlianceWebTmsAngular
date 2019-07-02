@@ -1,1 +1,54 @@
+<div class="addbox">
 <button ejs-button cssClass="e-info"  (click)="addtax('50em','50em')" >添加开票信息</button>
+</div>
+<div class="example-container mat-elevation-z8 tablebox">
+  <table mat-table [dataSource]="datasource">
+    <!-- Name Column -->
+    <ng-container matColumnDef="Invoicetitle">
+      <th mat-header-cell *matHeaderCellDef> 发票抬头 </th>
+      <td mat-cell *matCellDef="let element"> {{element.Invoicetitle}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Taxno">
+      <th mat-header-cell *matHeaderCellDef> 税号 </th>
+      <td mat-cell *matCellDef="let element"> {{element.Taxno}} </td>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="Invoicetype">
+      <th mat-header-cell *matHeaderCellDef> 类型. </th>
+      <td mat-cell *matCellDef="let element">
+        <span [ngClass]="element.Invoicetype=='person'?'displayperson':'displayenterprise' ">
+          {{element.Invoicetype | displaytaxtype}}
+        </span>
+
+      </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Bankname">
+      <th mat-header-cell *matHeaderCellDef> 开户行 </th>
+      <td mat-cell *matCellDef="let element"> {{element.Bankname}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Bankaccountno">
+      <th mat-header-cell *matHeaderCellDef> 开户行账号 </th>
+      <td mat-cell *matCellDef="let element"> {{element.Bankaccountno}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Action">
+      <th mat-header-cell *matHeaderCellDef> 操作 </th>
+      <td mat-cell *matCellDef="let element"><button
+        mat-icon-button
+        color="warn"
+        type="button"
+        (click)="deletetax(element.Id,element.Invoicetitle)"
+        matTooltip="删除">
+        <mat-icon>delete</mat-icon>
+      </button></td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+

@@ -77,7 +77,6 @@ export class CustomeraddresslistComponent implements OnInit {
           this.loaddata(
             this.customerProfileModle.getValue().Companycode,
             this.customerProfileModle.getValue().CustomerId);
-
         });
 
       })};

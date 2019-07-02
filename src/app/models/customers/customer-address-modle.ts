@@ -17,4 +17,5 @@ export class CustomerAddressModle {
   public CustomerId: string;
 
   public AddressId: number;
+
 }

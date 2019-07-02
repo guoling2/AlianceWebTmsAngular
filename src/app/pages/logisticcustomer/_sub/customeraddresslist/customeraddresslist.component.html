@@ -1,13 +1,12 @@
-<button ejs-button cssClass="e-info mat-width"  (click)="addaddress('50em','50em')" >添加地址</button>
-<div class="example-container mat-elevation-z8">
+<div class="addbox">
+  <button ejs-button cssClass="e-info mat-width"  (click)="addaddress('50em','50em')" >添加地址</button>
+</div>
+<div class="example-container mat-elevation-z8 tablebox">
   <table mat-table [dataSource]="datasource">
 
-    <!-- Position Column -->
     <ng-container matColumnDef="AddressId">
-      <th mat-header-cell *matHeaderCellDef> 编号. </th>
-      <td mat-cell *matCellDef="let element">
-        <a>{{element.AddressId}} </a>
-      </td>
+      <th mat-header-cell *matHeaderCellDef> 编号 </th>
+      <td mat-cell *matCellDef="let element"> {{element.AddressId}} </td>
     </ng-container>
 
     <!-- Name Column -->

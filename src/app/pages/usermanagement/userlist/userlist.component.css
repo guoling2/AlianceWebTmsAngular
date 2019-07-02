@@ -2,7 +2,7 @@
 .contentit-l {width:40%;height:auto;float: left;}
 .contenttex-r {width:60%;height:auto;float: right;}
 .contenttex-r button {margin-left:10px;margin-top:5px;float:right}
-.listfrom {width:100%;height:auto;margin:5px 0!important;}
+.listfrom {width:100%;height:auto;margin:0 0 5px 0!important;}
 .listfrom button {margin-left:10px}
 .contlistbox {margin:-10px 13px 0px 13px}
 .mat-form-field {margin-left:15px}
@@ -13,4 +13,22 @@
 .userimgs span {vertical-align: middle}
 .userimgs a {color:#3f5efb}
 .userimgs a:hover span  {text-decoration:underline;}
+
+.adminuser {width:97.6%;height:auto;margin:15px auto 0 auto;border:1px #e1e1e1 solid;overflow: hidden;background:#fff}
+.admintit {width:auto;height:30px;line-height:30px;border-bottom:1px #e1e1e1 solid;font-size:14px;color:#666;font-weight:bold;padding-left:10px}
+.admintext {width:auto;padding:5px 10px 5px 10px;vertical-align: middle;font-size:14px}
+.admintext img {border-radius: 50%;vertical-align: middle;margin-right:30px}
+.admintext span {margin-right:30px;color:#666}
+.admintext a {text-decoration: none}
+.admintext a:hover {text-decoration: underline}
+.altusera {padding:5px 8px;float: right;color:#fff;background:#ed6d00;margin-right: 10px;font-size:12px;margin-top:5px}
+
+
+
+
+
+
+
+
+
 
