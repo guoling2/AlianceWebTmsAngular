@@ -31,6 +31,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {CustomerProfileModle} from '../../../models/customers/customer-profile-modle';
 import {CustomerTaxModle} from '../../../models/customers/customer-tax-modle';
 import {map} from 'rxjs/operators';
+import {OrderrouteplanComponent} from '../_sub/orderrouteplan/orderrouteplan.component';
 @Component({
   selector: 'app-myopenorder',
   templateUrl: './openorder.component.html',
@@ -52,9 +53,6 @@ export class OpenMyorderComponent implements OnInit {
     private  dialogx: DialogservicesService
   ) { }
 
-
-  public CustomerTaxModles: CustomerTaxModle[] = []; // 用来存储发货客户开票数据
-
   /**
    * 订单品相
    * return FormArray
@@ -62,6 +60,9 @@ export class OpenMyorderComponent implements OnInit {
   public get OrderItems(): FormArray {
     return this.saveform.get('ShipmentOrderItems') as FormArray;
   }
+
+
+  public CustomerTaxModles: CustomerTaxModle[] = []; // 用来存储发货客户开票数据
   public saveform: FormGroup;
   public shiporder: object;
   public toareadisplaystring: string = null;
@@ -89,6 +90,9 @@ export class OpenMyorderComponent implements OnInit {
 
   @ViewChild('savabtn ')
   SaveBtn: ProgressButton;
+
+
+  enbelbackuprouteplan = false; // 是否启用备选线路计算
 
 
   ngOnInit() {
@@ -183,6 +187,7 @@ export class OpenMyorderComponent implements OnInit {
 
     this.subscibretihuocontrolstatued(); // 是否提货费用的关注
 
+    this.subscibredestservicechange(); // 交货方式改变;
     // this.data=bsAreaService
   }
 
@@ -200,6 +205,28 @@ export class OpenMyorderComponent implements OnInit {
       })
     );
   }
+  /**
+   * 订阅交货改变
+   */
+  private subscibredestservicechange(): void {
+    this.saveform.get('Destservice').valueChanges.subscribe(($event: string) => {
+
+      switch ($event) {
+
+        case TihuoType.TihuoForganxian30:
+        case TihuoType.TihuoForganxian50:  // 根据逻辑判断是否启用备用线路按钮
+
+          this.enbelbackuprouteplan = true;
+          break;
+        default:
+          this.enbelbackuprouteplan = false;
+          break;
+      }
+
+     console.log($event);
+    });
+
+}
 
   /**
    * 订阅费用变化
@@ -400,7 +427,7 @@ export class OpenMyorderComponent implements OnInit {
             item.SelectType = customertype.toString();
             this.CustomerTaxModles.push(item);
           });
-            this.CustomerTaxModles= this.CustomerTaxModles.concat(x);
+            this.CustomerTaxModles = this.CustomerTaxModles.concat(x);
         }
 
       });
@@ -419,5 +446,30 @@ export class OpenMyorderComponent implements OnInit {
     }
 
     console.log($event);
+  }
+
+  caclorderroute(height: string, width: string) {
+
+   const s1 = this.saveform.get('BeginLogisticStoreId').value;
+   const s2 = this.saveform.get('EndLogisticStoreId').value;
+
+   if (s1 == null || s2 == null) {
+     this.emitService.eventEmit.emit(
+       new EmitAlertMessage(AlertMessageType.Error, '系统信息', '网点参数错误！', MessageShowType.Toast));
+     return;
+   }
+
+    const dialogRef = this.dialog.open(OrderrouteplanComponent, {
+      height: height,
+      width: width,
+      disableClose: false,
+      data: new Array<string>(s1, s2)
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
+
+
   }
 }

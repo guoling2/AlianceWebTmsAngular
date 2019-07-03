@@ -1361,7 +1361,7 @@ textarea.e-input,
   margin: 0;
   margin-bottom: 4px;
   outline: none;
-  padding: 4px 0 8px;
+  padding-bottom:2px;/*padding: 4px 0 8px;*/
   text-indent: 0;
   width: 100%;
 }
@@ -1470,9 +1470,9 @@ input.e-input,
 .e-input-group.e-control-wrapper input.e-input:focus,
 .e-input-group textarea.e-input:focus,
 .e-input-group.e-control-wrapper textarea.e-input:focus {
-  padding: 4px 0 8px;
+  padding-bottom:2px;/*padding: 4px 0 8px;*/
 }
-
+.e-input-group .e-input-group-icon, .e-input-group.e-control-wrapper .e-input-group-icon
 input.e-input.e-bigger,
 textarea.e-input.e-bigger,
 .e-bigger input.e-input,
@@ -1817,7 +1817,7 @@ textarea.e-input.e-small,
 .e-input.e-small.e-bigger,
 .e-bigger .e-input.e-small,
 .e-small .e-input.e-bigger {
-  padding: 4px 0 8px;
+  padding-bottom:2px;/*padding: 4px 0 8px;*/
 }
 
 .e-input-group.e-small.e-bigger .e-input,
@@ -1827,7 +1827,7 @@ textarea.e-input.e-small,
 .e-bigger .e-input-group.e-small .e-input,
 .e-bigger .e-input-group.e-control-wrapper.e-small .e-input {
   font: inherit;
-  padding: 4px 0 8px;
+  padding-bottom:2px;/*padding: 4px 0 8px;*/
 }
 
 .e-input-group.e-small.e-bigger .e-input:focus,
@@ -1836,7 +1836,7 @@ textarea.e-input.e-small,
 .e-input-group.e-control-wrapper.e-small.e-bigger .e-input:focus,
 .e-input-group.e-control-wrapper.e-small .e-input.e-bigger:focus,
 .e-bigger .e-input-group.e-control-wrapper.e-small .e-input:focus {
-  padding: 4px 0 8px;
+  padding-bottom:2px;/*padding: 4px 0 8px;*/
 }
 
 .e-input-group.e-small .e-input-group-icon,
@@ -2349,7 +2349,7 @@ label.e-float-text,
 .e-float-input.e-control-wrapper input,
 .e-float-input.e-control-wrapper textarea {
   min-width: 0;
-  padding: 4px 0 8px;
+  padding-bottom:2px;/*padding: 4px 0 8px;*/
 }
 
 .e-float-input input,
@@ -2465,7 +2465,7 @@ label.e-float-text,
 .e-bigger .e-float-input.e-control-wrapper.e-small textarea {
   font: inherit;
   line-height: inherit;
-  padding: 4px 0 8px;
+  padding-bottom:2px;/*padding: 4px 0 8px;*/
 }
 
 .e-float-input input:focus,
@@ -2830,9 +2830,9 @@ label.e-float-text,
 
 .e-input-group .e-input-group-icon,
 .e-input-group.e-control-wrapper .e-input-group-icon {
-  margin-bottom: 8px;
+  margin-bottom: 2px;
   margin-right: 4px;
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 .e-float-input.e-input-group .e-input-group-icon,
@@ -2866,9 +2866,9 @@ label.e-float-text,
 .e-input-group.e-control-wrapper.e-small .e-input-group-icon.e-bigger,
 .e-bigger .e-input-group.e-small .e-input-group-icon,
 .e-bigger .e-input-group.e-control-wrapper.e-small .e-input-group-icon {
-  margin-bottom: 8px;
+  margin-bottom: 2px;
   margin-right: 4px;
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 .e-float-input.e-input-group.e-small.e-bigger .e-input-group-icon,
@@ -4088,7 +4088,7 @@ textarea.e-input.e-bigger.e-small,
 .e-input-group.e-control-wrapper .e-clear-icon {
   min-height: 18px;
   min-width: 18px;
-  padding-bottom: 8px;
+  padding-bottom: 2px;/*padding-bottom: 8px;*/
   padding-left: 4px;
   padding-right: 4px;
   padding-top: 4px;
@@ -4108,7 +4108,7 @@ textarea.e-input.e-bigger.e-small,
 .e-bigger .e-input-group.e-control-wrapper .e-clear-icon {
   min-height: 20px;
   min-width: 20px;
-  padding-bottom: 8px;
+  padding-bottom: 2px;/*padding-bottom: 8px;*/
   padding-right: 8px;
   padding-top: 9px;
 }
@@ -4160,7 +4160,7 @@ textarea.e-input.e-bigger.e-small,
 .e-small .e-input-group.e-control-wrapper .e-clear-icon {
   min-height: 16px;
   min-width: 16px;
-  padding-bottom: 6px;
+  padding-bottom: 2px;/*padding-bottom: 6px*/
   padding-right: 4px;
   padding-top: 4px;
 }

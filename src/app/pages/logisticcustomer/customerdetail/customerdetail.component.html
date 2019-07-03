@@ -3,8 +3,9 @@
     <div><i class="fas fa-compass"></i> 当前位置：<a [routerLink]="['/biz/customer-management/customers']" >客户列表</a> / <b>客户信息</b></div>
   </div>
   <div class="contenttex-r">
-    <button ejs-button cssClass="e-info mat-width"  (click)="saveaction()" >修改&保存</button>
     <button ejs-button cssClass="e-info mat-width" class="mat-reject"   style="margin-left:20px" (click)="del()" >删除</button>
+    <button ejs-button cssClass="e-info mat-width"  (click)="saveaction()"  [disabled]="disenabelbtn">修改&保存</button>
+
   </div>
 </div>
 <mat-card class="userbox">

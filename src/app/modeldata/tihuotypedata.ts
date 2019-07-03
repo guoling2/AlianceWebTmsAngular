@@ -10,7 +10,18 @@ export class TihuoType {
     { Id: '40', DescName: '干线直送' },
     { Id: '50', DescName: '干线自提' }
   ];
-
+  /**
+   * 干线中转
+   */
+  public  static TihuoForganxian30 = '30';
+  /**
+   * 干线直送
+   */
+  public  static TihuoForganxian40 = '40';
+  /**
+   * 干线自提
+   */
+  public  static TihuoForganxian50 = '50';
   /**
    * 下拉列表的展示字段数据
    */

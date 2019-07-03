@@ -12,6 +12,7 @@ import {PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
 import { OrdercustomerComponent } from './_sub/ordercustomer/ordercustomer.component';
 import {CustomeraddressaddComponent} from '../logisticcustomer/_sub/customeraddressadd/customeraddressadd.component';
 import {CustomertaxaddComponent} from '../logisticcustomer/_sub/customertaxadd/customertaxadd.component';
+import { OrderrouteplanComponent } from './_sub/orderrouteplan/orderrouteplan.component';
 
 const routes: Routes = [
   {
@@ -43,7 +44,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule
   ],
-  declarations: [MyOrderListComponent, OpenMyorderComponent, OrdercustomerComponent],
-  entryComponents: [OrdercustomerComponent]
+  declarations: [MyOrderListComponent, OpenMyorderComponent, OrdercustomerComponent, OrderrouteplanComponent],
+  entryComponents: [OrdercustomerComponent, OrderrouteplanComponent]
 })
 export class LogistcimyorderModule { }

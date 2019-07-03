@@ -57,7 +57,7 @@
               <div fxFlex="1 3" class="margin_015">客户名称：&nbsp;<ejs-textbox formControlName="Origincustomname" disabled="true"></ejs-textbox></div>
               <div fxFlex="1 3">
                 <div style="float: left;width:80%">客户编码：<ejs-textbox disabled="true" formControlName="OrigincustomId"></ejs-textbox></div>
-                <div style="float: right;padding-top:25px"><button ejs-button cssClass="e-small" (click)="choecustomer(1,'50em','50em')"><i class="fas fa-search"></i></button></div>
+                <div style="float: right;padding-top:15px"><button ejs-button cssClass="e-small" (click)="choecustomer(1,'50em','50em')"><i class="fas fa-search"></i></button></div>
               </div>
             </div>
             <div fxLayout="row" class="margin_t_10">
@@ -84,7 +84,7 @@
               <div fxFlex="1 3" class="margin_015">客户名称：&nbsp;<ejs-textbox formControlName="Destcustomname" disabled="true"></ejs-textbox></div>
               <div fxFlex="1 3">
                 <div style="float: left;width:80%">客户编码：<ejs-textbox disabled="true" formControlName="DestcustomId"></ejs-textbox></div>   <!--收货客户-->
-                <div style="float: right;padding-top:25px"><button ejs-button cssClass="e-small" (click)="choecustomer(2,'50em','50em')"><i class="fas fa-search"></i></button></div>
+                <div style="float: right;padding-top:15px"><button ejs-button cssClass="e-small" (click)="choecustomer(2,'50em','50em')"><i class="fas fa-search"></i></button></div>
               </div>
             </div>
             <div fxLayout="row" class="margin_t_10">
@@ -154,9 +154,12 @@
             <!--            <div style="float:right;width:20%"><ejs-checkbox label="专线直送" formControlName="ToDestCustomerNoRound" style="margin-top:17px"></ejs-checkbox></div>-->
           </div>
           <div fxFlex="1 3">
-            <div style="float:left;width:76%">中转路径：<ejs-textbox disabled="true"  placeholder='交货方式为干线类别需要计算'></ejs-textbox></div>
-            <div style="float:right;width:22%;"><button ejs-button cssClass="e-success" disabled="disabled" style="margin-top:17px">线路计算</button></div>
+            <div style="float:left;width:76%">中转方案：<ejs-textbox disabled="true"  placeholder='直达线路'></ejs-textbox></div>
+            <div style="float:right;width:22%;">
+              <button ejs-button cssClass="e-success" style="margin-top:17px" [disabled]="!enbelbackuprouteplan"  (click)="caclorderroute('50em','50em')">备选线路</button>
+            </div>
           </div>
+
         </div>
         <div class="margin_t_10">运输备注：<ejs-textbox formControlName="TransportMark"></ejs-textbox></div>
       </mat-card-content>

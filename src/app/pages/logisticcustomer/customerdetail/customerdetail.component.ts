@@ -39,6 +39,8 @@ export class CustomerdetailComponent implements OnInit {
   basecom: IDataActionMethod;
   private savecommand = 0; // 命令状态
 
+  disenabelbtn = false;
+
   ngOnInit() {
 
     const cid = this.route.snapshot.paramMap.get('id');
@@ -80,10 +82,14 @@ export class CustomerdetailComponent implements OnInit {
       })};
     this.dialogx.openDialog(alerter);
   }
-
-
   changindex($event: number) {
 
+    if ($event !== 0) {
+
+      this.disenabelbtn = true;
+    } else {
+      this.disenabelbtn = false;
+    }
     this.savecommand = $event;
   }
 }

@@ -1,43 +1,42 @@
 
 <h1>客户查询</h1>
 <div>
-
-
 <form [formGroup]="form" >
-
-
 <!--CD(代号),JC（简称）,KN(客户名称),LK(联系人),LT(联系电话)-->
-查询范围：
-<mat-radio-group formControlName="searchtype">
-  <mat-radio-button value="CD" style="margin-left:10px">代号</mat-radio-button>
-  <mat-radio-button  value="JC" style="margin-left:25px">简称</mat-radio-button>
-  <mat-radio-button value="KN" style="margin-left:10px" checked="checked">客户名称</mat-radio-button>
-  <mat-radio-button value="LK" style="margin-left:10px">联系人</mat-radio-button>
-  <mat-radio-button value="LT" style="margin-left:10px">联系电话</mat-radio-button>
-</mat-radio-group>
-
-  <mat-form-field>
-    <label><input matInput placeholder="查询内容" formControlName="searchtxt"></label>
-    <mat-error>查询内容是<strong>必须的</strong></mat-error>
-    <mat-hint align="start">请输入<strong>查询内容</strong></mat-hint>
-  </mat-form-field>
-  <button type="submit" ejs-button cssClass="e-info mat-width"  (click)="search()" >查询</button>
+  <div fxLayout="row" fxLayoutAlign="space-between end">
+    <div fxFlex="100" class="customar">
+      查询范围：
+      <mat-radio-group formControlName="searchtype">
+        <mat-radio-button value="CD" class="marginL">代号</mat-radio-button>
+        <mat-radio-button  value="JC" class="marginL">简称</mat-radio-button>
+        <mat-radio-button value="KN" class="marginL" checked="checked">客户名称</mat-radio-button>
+        <mat-radio-button value="LK" class="marginL">联系人</mat-radio-button>
+        <mat-radio-button value="LT" class="marginL">联系电话</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-between end" class="marginT">
+    <div fxFlex="85" class="customar">
+      <mat-form-field>
+        <label><input matInput placeholder="查询内容" formControlName="searchtxt"></label>
+        <mat-error>查询内容是<strong>必须的</strong></mat-error>
+        <mat-hint align="start">请输入<strong>查询内容</strong></mat-hint>
+      </mat-form-field>
+    </div>
+    <div fxFlex="15" class="customar" style="margin-bottom:15px;text-align:right">
+      <button type="submit" ejs-button cssClass="e-info mat-width"  (click)="search()" >查询</button>
+    </div>
+  </div>
 </form>
 </div>
-
-
 <div>
-  查询结果
-
-
+  <div class="searchtit">查询结果</div>
   <table mat-table [dataSource]="customeraddressdatasource" class="mat-elevation-z8">
-
-
     <ng-container matColumnDef="CustomerId">
       <th mat-header-cell *matHeaderCellDef> No. </th>
       <td mat-cell *matCellDef="let element">
-        <ejs-tooltip #tooltip content='点击选择这个地址'  position="BottomCenter">
-          <button ejs-button cssClass="e-flat" [isPrimary]="true"
+        <ejs-tooltip #tooltip content='点击选择这个地址'  position="BottomCenter" style="padding-left:0!important;padding-right:0!important;">
+          <button ejs-button cssClass="e-flat" [isPrimary]="true" style="padding-left:0!important;padding-right:0!important;"
                   (click)="chosethiscustomer(element)">{{element.CustomerId}}</button>
         </ejs-tooltip>
 
