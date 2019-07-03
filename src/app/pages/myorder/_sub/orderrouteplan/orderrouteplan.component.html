@@ -1,0 +1,36 @@
+运输方案
+
+<perfect-scrollbar style="max-height: 400px;" >
+  <div *ngIf="trackRoueCaclResultx">
+      <ng-container *ngFor="let item of trackRoueCaclResultx; let i = index">
+        <div>
+
+          <dl>
+            <dt>  <h3 mat-subheader>{{item.TrackDisPlay}}
+            </h3></dt>
+            <dd *ngFor="let item2 of item.TrackRouteRelations; let j=index">
+              {{j+1}}
+              {{item2.StartRoute.PointName}} ---> {{item2.EndRoute.PointName}}
+
+              {{item2.TransportHours}}(小时)
+              {{item2.RouteDistance}}(Km)
+            </dd>
+          </dl>
+
+          <div>汇总：{{item.TotalTrackUseHours}} (小时) {{item.TotalTrackDistance}}(Km)
+
+            <button  ejs-button cssClass="e-info" type="button" (click)="ChosePlan(item.PlanId)" > 确认线路</button>
+          </div>
+
+        </div>
+
+        <mat-divider></mat-divider>
+      </ng-container>
+  </div>
+</perfect-scrollbar>
+
+<div>共{{trackRoueCaclResultx?.length}} 条线路</div>
+
+
+
+
