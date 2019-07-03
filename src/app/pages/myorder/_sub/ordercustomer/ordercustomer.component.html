@@ -1,0 +1,81 @@
+
+<h1>客户查询</h1>
+<div>
+
+
+<form [formGroup]="form" >
+
+
+<!--CD(代号),JC（简称）,KN(客户名称),LK(联系人),LT(联系电话)-->
+查询范围：
+<mat-radio-group formControlName="searchtype">
+  <mat-radio-button value="CD" style="margin-left:10px">代号</mat-radio-button>
+  <mat-radio-button  value="JC" style="margin-left:25px">简称</mat-radio-button>
+  <mat-radio-button value="KN" style="margin-left:10px" checked="checked">客户名称</mat-radio-button>
+  <mat-radio-button value="LK" style="margin-left:10px">联系人</mat-radio-button>
+  <mat-radio-button value="LT" style="margin-left:10px">联系电话</mat-radio-button>
+</mat-radio-group>
+
+  <mat-form-field>
+    <label><input matInput placeholder="查询内容" formControlName="searchtxt"></label>
+    <mat-error>查询内容是<strong>必须的</strong></mat-error>
+    <mat-hint align="start">请输入<strong>查询内容</strong></mat-hint>
+  </mat-form-field>
+  <button type="submit" ejs-button cssClass="e-info mat-width"  (click)="search()" >查询</button>
+</form>
+</div>
+
+
+<div>
+  查询结果
+
+
+  <table mat-table [dataSource]="customeraddressdatasource" class="mat-elevation-z8">
+
+
+    <ng-container matColumnDef="CustomerId">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element">
+        <ejs-tooltip #tooltip content='点击选择这个地址'  position="BottomCenter">
+          <button ejs-button cssClass="e-flat" [isPrimary]="true"
+                  (click)="chosethiscustomer(element)">{{element.CustomerId}}</button>
+        </ejs-tooltip>
+
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef> 客户名称. </th>
+      <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="LinkMan">
+      <th mat-header-cell *matHeaderCellDef> 联系人. </th>
+      <td mat-cell *matCellDef="let element"> {{element.LinkMan}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="LinkTel">
+      <th mat-header-cell *matHeaderCellDef> 联系电话. </th>
+      <td mat-cell *matCellDef="let element"> {{element.LinkTel}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Canmonthlysettle">
+      <th mat-header-cell *matHeaderCellDef> 是否月结. </th>
+      <td mat-cell *matCellDef="let element"> {{element.Canmonthlysettle}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Area">
+      <th mat-header-cell *matHeaderCellDef> 联系区域. </th>
+      <td mat-cell *matCellDef="let element"> {{element.Area}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="LinkAddress">
+      <th mat-header-cell *matHeaderCellDef> 联系地址. </th>
+      <td mat-cell *matCellDef="let element"> {{element.LinkAddress}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+  </table>
+</div>
+
