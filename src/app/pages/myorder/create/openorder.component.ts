@@ -32,6 +32,7 @@ import {CustomerProfileModle} from '../../../models/customers/customer-profile-m
 import {CustomerTaxModle} from '../../../models/customers/customer-tax-modle';
 import {map} from 'rxjs/operators';
 import {OrderrouteplanComponent} from '../_sub/orderrouteplan/orderrouteplan.component';
+import {TextBoxComponent} from '@syncfusion/ej2-angular-inputs';
 @Component({
   selector: 'app-myopenorder',
   templateUrl: './openorder.component.html',
@@ -91,6 +92,8 @@ export class OpenMyorderComponent implements OnInit {
   @ViewChild('savabtn ')
   SaveBtn: ProgressButton;
 
+  @ViewChild('planroutetxt')
+  PlanTxt: TextBoxComponent;
 
   enbelbackuprouteplan = false; // 是否启用备选线路计算
 
@@ -124,6 +127,7 @@ export class OpenMyorderComponent implements OnInit {
       TrackOrderNumber: '',
       IfCargoFromOrigin: false, // 是否上门提货
       FreeTihuo: { value: false, disabled: true }, // 是否免费提货
+      TihuoReturn: '',
       OrderItemCaclProperty: 'ZH',
       BuinessManCode: '',
       AskTihuoTime: '',
@@ -153,6 +157,7 @@ export class OpenMyorderComponent implements OnInit {
       BeginLogisticStoreId: '', // 始发网点
       EndLogisticStoreId: { value: '', disabled: false }, // 末端配送网点
       OrderAskLimiteDateTime: '',
+      RoutePlanId: '', // 运输计划
       TransportMark: '', // 运输备注
       // 增值业务
       DeclaredValue: '', // 声明货物价值
@@ -188,6 +193,8 @@ export class OpenMyorderComponent implements OnInit {
     this.subscibretihuocontrolstatued(); // 是否提货费用的关注
 
     this.subscibredestservicechange(); // 交货方式改变;
+
+    this.subscibrechangeEndLogisticStoreId(); // 收货网点发生变化
     // this.data=bsAreaService
   }
 
@@ -252,6 +259,19 @@ export class OpenMyorderComponent implements OnInit {
 
   }
 
+ // 如果收货网点是空 需要重置线路计划和展示的信息
+  private subscibrechangeEndLogisticStoreId(): void {
+    this.saveform.get('EndLogisticStoreId').valueChanges.subscribe(($event) => {
+
+      if ($event === null) {
+        this.saveform.get('RoutePlanId').patchValue('');
+        this.PlanTxt.value = '';
+      }
+
+
+    });
+
+  }
   /**
    *提货状态的改变
    */
@@ -365,7 +385,13 @@ export class OpenMyorderComponent implements OnInit {
   }
 
   // 选择客户  1 发货 2收货
-  choecustomer(number: number, height: string, width: string) {
+  choecustomer($event: MouseEvent, number: number, height: string, width: string) {
+
+
+    if ($event.clientX === 0) {
+      return;
+    }
+    console.log($event);
 
     const dialogRef = this.dialog.open(OrdercustomerComponent, {
       height: height,
@@ -450,10 +476,17 @@ export class OpenMyorderComponent implements OnInit {
 
   caclorderroute(height: string, width: string) {
 
-   const s1 = this.saveform.get('BeginLogisticStoreId').value;
-   const s2 = this.saveform.get('EndLogisticStoreId').value;
+   let s1 = <string>this.saveform.get('BeginLogisticStoreId').value;
+   let s2 = <string> this.saveform.get('EndLogisticStoreId').value;
 
-   if (s1 == null || s2 == null) {
+   if (s1 == null) {
+     s1 = '';
+   }
+   if (s2 == null) {
+     s2 = '';
+   }
+
+   if (s1.length === 0 || s2.length === 0) {
      this.emitService.eventEmit.emit(
        new EmitAlertMessage(AlertMessageType.Error, '系统信息', '网点参数错误！', MessageShowType.Toast));
      return;
@@ -463,10 +496,13 @@ export class OpenMyorderComponent implements OnInit {
       height: height,
       width: width,
       disableClose: false,
-      data: new Array<string>(s1, s2)
+      data: new Array<string>(s1, s2, this.saveform.get('RoutePlanId').value)
     });
 
     dialogRef.afterClosed().subscribe(result => {
+
+      this.saveform.get('RoutePlanId').patchValue(result[0]);
+      this.PlanTxt.value = result[1];
 
     });
 

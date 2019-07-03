@@ -1,5 +1,5 @@
 
-<h1>客户查询</h1>
+<h1>{{displaytithle}}</h1>
 <div>
 <form [formGroup]="form" >
 <!--CD(代号),JC（简称）,KN(客户名称),LK(联系人),LT(联系电话)-->
@@ -24,10 +24,11 @@
       </mat-form-field>
     </div>
     <div fxFlex="15" class="customar" style="margin-bottom:15px;text-align:right">
-      <button type="submit" ejs-button cssClass="e-info mat-width"  (click)="search()" >查询</button>
+      <button   ejs-button cssClass="e-info mat-width"  (click)="search()" >查询</button>
     </div>
   </div>
 </form>
+
 </div>
 <div>
   <div class="searchtit">查询结果</div>

@@ -20,6 +20,7 @@ export class OrdercustomerComponent implements OnInit {
   currentUser = null;
   displayedColumns: string[] = ['CustomerId', 'Name', 'LinkMan', 'LinkTel', 'Canmonthlysettle', 'Area', 'LinkAddress'];
 
+  public displaytithle = '';
   customeraddressdatasource: CustomerQueryForOrdermodle[] = [];
 
   constructor(
@@ -35,6 +36,12 @@ export class OrdercustomerComponent implements OnInit {
 
 
     this.oidcSecurityService.getUserData().subscribe(value => {
+
+      if (this.customertype === 1) {
+        this.displaytithle = '发货地址检索';
+      } else {
+        this.displaytithle = '收货地址检索';
+      }
 
       this.currentUser = value;
       this.form = this.fb.group({
