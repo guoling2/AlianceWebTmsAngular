@@ -63,7 +63,8 @@ const routes: Routes = [
       { path: 'orderserver', loadChildren: './pages/track/track.module#TrackModule' },
       { path: 'base', loadChildren: './pages/base/bizbase.module#BizBaseModuleModule' },
       { path: 'user-management', loadChildren: './pages/usermanagement/user-management.module#UserManagementModule' },
-      { path: 'customer-management', loadChildren: './pages/logisticcustomer/customer-management.module#CustomerManagementModule' }
+      { path: 'customer-management', loadChildren: './pages/logisticcustomer/customer-management.module#CustomerManagementModule' },
+      { path: 'vehicle-management', loadChildren: './pages/vehiclemanagement/vehicle-management.module#VehicleManagementModule' }
     ]
   },
   {

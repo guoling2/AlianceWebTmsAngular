@@ -33,6 +33,8 @@ import {CustomerTaxModle} from '../../../models/customers/customer-tax-modle';
 import {map} from 'rxjs/operators';
 import {OrderrouteplanComponent} from '../_sub/orderrouteplan/orderrouteplan.component';
 import {TextBoxComponent} from '@syncfusion/ej2-angular-inputs';
+import {Priceanalysisparameter} from '../priceanalysisparameter';
+import {PriceanalysisComponent} from '../_sub/priceanalysis/priceanalysis.component';
 @Component({
   selector: 'app-myopenorder',
   templateUrl: './openorder.component.html',
@@ -167,7 +169,7 @@ export class OpenMyorderComponent implements OnInit {
       InvoiceTitle: {value: '', disabled: true}, // 发票抬头
       IsOpenInvoice: { value: 'false' }, // 是否开票
       // CargoReceiptNumber:'',//回单
-      Needreturntrackingno: '', // 是否回单
+      Needreturntrackingno: false, // 是否回单
       CargoReceiptPaperShowType: '', // 回单返回方式
       ConpunCode: '', // 优惠折扣代码
       PaymentMethod: ['', Validators.required], // 付款方式
@@ -315,14 +317,7 @@ export class OpenMyorderComponent implements OnInit {
       return;
     }
 
-    // alert(this.saveform.get('CargoReceiptPaperShowType').value.toString().length);
 
-    // return;
-    if (this.saveform.get('CargoReceiptPaperShowType').value.toString().length !== 0) {
-      this.saveform.patchValue({ Needreturntrackingno: true });
-    } else {
-      this.saveform.patchValue({ Needreturntrackingno: false });
-    }
     this.issave = true;
     const alerter = {
       Title: '确认',
@@ -507,5 +502,14 @@ export class OpenMyorderComponent implements OnInit {
     });
 
 
+  }
+  // 打开报价参考
+  openorderAnalysis(height: string, width: string) {
+    const dialogRef = this.dialog.open(PriceanalysisComponent, {
+      height: height,
+      width: width,
+      disableClose: false,
+      data: new Priceanalysisparameter()
+    });
   }
 }

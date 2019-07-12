@@ -1,0 +1,16 @@
+h1 {font-size:20px;border-bottom:1px #ccc solid;padding:10px 0;margin:0}
+.progbox h3 {font-size:16px;font-weight: normal;color:#333;margin:0px 0 10px 0;}
+.progbox h3 i {margin-right:3px}
+.projbox {padding:10px 10px;overflow:auto;clear:both;font-size:14px;color:#666;padding-bottom:5px;-webkit-transition: all 0.7s;-moz-transition: all 0.7s;-ms-transition: all 0.7s;transition: all 0.7s;}
+.projbox button {float:right;display: none;-webkit-transition: all 0.7s;-moz-transition: all 0.7s;-ms-transition: all 0.7s;transition: all 0.7s;}
+.projbox:hover {background:#f5f5f5;cursor: pointer}
+.projbox:hover button {display: inherit;margin-right:54px}
+.collectbox {height:32px;line-height:32px;padding-top:8px}
+.collectbox span {float:left}
+.progtext {list-style: disc;line-height:25px;margin-top:0px}
+.progtext table {border:none;border-collapse:collapse;border-spacing:0;width:100%;}
+.progtext table td {border-bottom:1px #e1e1e1 dashed;padding:5px 10px;}
+.countroad {padding-top:15px;color:#666;font-size:14px;}
+.countroad b {color:#ff0000;font-weight: bold;}
+.mat-dialog-container {padding:10px 20px!important;}
+.collectbox b {color:#ff0000;font-weight: bold;}

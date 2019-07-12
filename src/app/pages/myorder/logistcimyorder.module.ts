@@ -13,6 +13,7 @@ import { OrdercustomerComponent } from './_sub/ordercustomer/ordercustomer.compo
 import {CustomeraddressaddComponent} from '../logisticcustomer/_sub/customeraddressadd/customeraddressadd.component';
 import {CustomertaxaddComponent} from '../logisticcustomer/_sub/customertaxadd/customertaxadd.component';
 import { OrderrouteplanComponent } from './_sub/orderrouteplan/orderrouteplan.component';
+import { PriceanalysisComponent } from './_sub/priceanalysis/priceanalysis.component';
 
 const routes: Routes = [
   {
@@ -44,7 +45,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule
   ],
-  declarations: [MyOrderListComponent, OpenMyorderComponent, OrdercustomerComponent, OrderrouteplanComponent],
-  entryComponents: [OrdercustomerComponent, OrderrouteplanComponent]
+  declarations: [MyOrderListComponent, OpenMyorderComponent, OrdercustomerComponent, OrderrouteplanComponent, PriceanalysisComponent],
+  entryComponents: [OrdercustomerComponent, OrderrouteplanComponent, PriceanalysisComponent]
 })
 export class LogistcimyorderModule { }

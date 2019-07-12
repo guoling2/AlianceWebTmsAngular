@@ -1,35 +1,35 @@
-运输方案
-
+<h1>运输方案</h1>
 <perfect-scrollbar style="max-height: 400px;" >
   <div *ngIf="trackRoueCaclResultx">
       <ng-container *ngFor="let item of trackRoueCaclResultx; let i = index">
-        <div>
-
-          <dl>
-            <dt>  <h3 mat-subheader>{{item.TrackDisPlay}}
-            </h3></dt>
-            <dd *ngFor="let item2 of item.TrackRouteRelations; let j=index">
-              {{j+1}}
-              {{item2.StartRoute.PointName}} ---> {{item2.EndRoute.PointName}}
-
-              {{item2.TransportHours}}(小时)
-              {{item2.RouteDistance}}(Km)
-            </dd>
-          </dl>
-
-          <div>汇总：{{item.TotalTrackUseHours}} (小时) {{item.TotalTrackDistance}}(Km)
-
+        <div class="projbox">
+          <div class="progbox">
+            <h3 mat-subheader><i class="fas fa-road"></i>{{item.TrackDisPlay}}</h3>
+            <div class="progtext" *ngFor="let item2 of item.TrackRouteRelations; let j=index" >
+              <table>
+                <tr>
+                  <td width="5%">{{j+1}}</td>
+                  <td width="55%">{{item2.StartRoute.PointName}} ---> {{item2.EndRoute.PointName}}</td>
+                  <td width="20%">
+                    <ejs-tooltip #tooltip content='运输时长'  position="BottomCenter"> <i class="fas fa-clock"></i> {{item2.TransportHours}} (小时)</ejs-tooltip>
+                  </td>
+                  <td width="20%"><ejs-tooltip #tooltip content='运输公里数'  position="BottomCenter"><i class="fas fa-tachometer-alt"></i> {{item2.RouteDistance}} (Km)</ejs-tooltip></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="collectbox">
+            <span>汇总：<b>{{item.TotalTrackUseHours}}</b> (小时) - <b>{{item.TotalTrackDistance}}</b> (Km)</span>
             <button  ejs-button cssClass="e-info" type="button" (click)="ChosePlan(item.PlanId)" > 确认线路</button>
           </div>
 
         </div>
-
         <mat-divider></mat-divider>
       </ng-container>
   </div>
 </perfect-scrollbar>
 
-<div>共{{trackRoueCaclResultx?.length}} 条线路</div>
+<div class="countroad">共 <b>{{trackRoueCaclResultx?.length}}</b> 条线路</div>
 
 
 

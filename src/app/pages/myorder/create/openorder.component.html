@@ -8,7 +8,7 @@
 <!--</perfect-scrollbar>-->
 <div class="contentbox">
   <div class="contentit-l">
-    <div><i class="fas fa-compass"></i> 当前位置：<a  [routerLink]="['/biz/myorder/list']" >零担列表</a>  / <b>新增</b></div>
+    <div><i class="fas fa-compass"></i> 当前位置：<b>订单录入</b></div>
   </div>
   <div class="contenttex-r"></div>
 </div>
@@ -215,7 +215,10 @@
           </div>
           <div fxFlex="1 6 calc(5em + 10px)" style="margin:0 0 0 20px">
             <div class="margin_t_10">折扣代码：<ejs-textbox  formControlName="ConpunCode"></ejs-textbox></div>
-            <div class="margin_t_10">回单类型：<app-bin-cargoreceiptpapershowtype formControlName="CargoReceiptPaperShowType"></app-bin-cargoreceiptpapershowtype></div>
+            <div class="margin_t_10">回单类型：
+              <app-bin-cargoreceiptpapershowtype formControlName="CargoReceiptPaperShowType"></app-bin-cargoreceiptpapershowtype>
+              <ejs-checkbox label="是否回单" formControlName="Needreturntrackingno"></ejs-checkbox>
+            </div>
             <div class="margin_t_10">付款方式：<app-bin-customerpaymethod formControlName="PaymentMethod"></app-bin-customerpaymethod></div>
             <div class="margin_t_10"><button ejs-button cssClass="e-info" type="button" disabled="disabled">计算总费用</button></div>
           </div>
@@ -230,15 +233,15 @@
       </mat-card-title>
       <mat-card-content>
         <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_10">
-          <div fxFlex="1 6">提货费：<ejs-numerictextbox step='1' formControlName="TihuoFee" disabled="disabled"></ejs-numerictextbox></div>
-          <div fxFlex="1 6" class="margin_015">基本运费：<ejs-numerictextbox step='1' formControlName="BaseTransportFee"  disabled="disabled"></ejs-numerictextbox></div>
-          <div fxFlex="1 6">送货费：<ejs-numerictextbox step='1' formControlName="SonhuoFee"  disabled="disabled"></ejs-numerictextbox></div>
+          <div fxFlex="1 6">提货费：<ejs-numerictextbox step='1' formControlName="TihuoFee" ></ejs-numerictextbox></div>
+          <div fxFlex="1 6" class="margin_015">运费：<ejs-numerictextbox step='1' formControlName="BaseTransportFee" ></ejs-numerictextbox></div>
+          <div fxFlex="1 6">送货费：<ejs-numerictextbox step='1' formControlName="SonhuoFee" ></ejs-numerictextbox></div>
           <div fxFlex="1 6" class="margin_015">增值服务费：<ejs-numerictextbox step='1' formControlName="AddValueFee"  disabled="disabled"></ejs-numerictextbox></div>
           <div fxFlex="1 6">额外费用合计： <ejs-numerictextbox step='1' formControlName="ExtendOtherFee"  disabled="disabled"></ejs-numerictextbox></div>
         </div>
         <div fxLayout="row" fxLayoutAlign="space-around end" class="margin_t_10">
           <div fxFlex="1 6">运费合计：<ejs-numerictextbox disabled="true" value="{{displyatotalfee}}"></ejs-numerictextbox></div>
-          <div fxFlex="1 6" style="margin-left:15px">实收合计：<ejs-numerictextbox step='0' formControlName="RealInputLogisticFee"></ejs-numerictextbox></div>
+          <div fxFlex="1 6" style="margin-left:15px">实收合计(折扣优惠)：<ejs-numerictextbox step='0' formControlName="RealInputLogisticFee" disabled="disabled"></ejs-numerictextbox></div>
         </div>
         <div fxLayout="row" fxLayoutAlign="center center" style="margin-top:20px">
         </div>
@@ -248,10 +251,9 @@
   <div class="pagebtnbox">
     <button [disabled]="issave" ejs-button cssClass="e-info pagebtn" type="button" (click)="SaveOrder()" class="mat-green"><i class="fas fa-save"></i>
     保存</button>
-
     <button ejs-button cssClass="e-info pagebtn" type="button" (click)="ResetForm()" class="mat-reject"><i class="fas fa-undo-alt"></i>
       重置表单</button>
-
+    <a  ejs-button cssClass="e-info pagebtn"  class="mat-blue"  (click)="openorderAnalysis('50em','50em')"><i class="fas fa-clipboard-list"></i> 报价参考</a>
     <a  ejs-button cssClass="e-info pagebtn"  class="mat-cancel"  [routerLink]="['/biz/myorder/list']" ><i class="fas fa-angle-double-left"></i>返回</a>
     <!--    <button ejs-button cssClass="e-info pagebtn" type="button" (click)="SaveOrder()" ><i class="fas fa-share"></i>保存&下达</button>-->
   </div>

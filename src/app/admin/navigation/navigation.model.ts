@@ -17,51 +17,57 @@ export class NavigationModel {
         },
         {
           'id': 'ui',
-          'title': '订单',
+          'title': '订单管理',
           'type': 'collapse',
           'icon': 'insert_drive_file',
           'children': [
+            {
+              'id': 'myorder-create',
+              'title': '订单录入',
+              'type': 'item',
+              'url': '/biz/myorder/create'
+            },
             {
               'id': 'date-picker1',
               'title': '自营订单',
               'type': 'item',
               'url': '/biz/myorder/list'
-            },
-            {
-              'id': 'date-picker2',
-              'title': '外包订单',
-              'type': 'item',
-              'url': '/biz/orders/myorder'
-            },
-            {
-              'id': 'date-picker',
-              'title': '客户订单',
-              'type': 'item',
-              'url': '/biz/orders/c-orders'
-            },
-            {
-              'id': 'pagination',
-              'title': '订单列表',
-              'type': 'item',
-              'url': '/biz/orders1'
-            },
-            {
-              'id': 'modal',
-              'title': '运单信息补录',
-              'type': 'item',
-              'url': '/biz/orders2'
-            },
-            {
-              'id': 'buttons',
-              'title': '网上下单审核',
-              'type': 'item',
-              'url': '/biz/weixinorder'
             }
+            // {
+            //   'id': 'date-picker2',
+            //   'title': '外包订单',
+            //   'type': 'item',
+            //   'url': '/biz/orders/myorder'
+            // },
+            // {
+            //   'id': 'date-picker',
+            //   'title': '客户订单',
+            //   'type': 'item',
+            //   'url': '/biz/orders/c-orders'
+            // },
+            // {
+            //   'id': 'pagination',
+            //   'title': '订单列表',
+            //   'type': 'item',
+            //   'url': '/biz/orders1'
+            // },
+            // {
+            //   'id': 'modal',
+            //   'title': '运单信息补录',
+            //   'type': 'item',
+            //   'url': '/biz/orders2'
+            // },
+            // {
+            //   'id': 'buttons',
+            //   'title': '网上下单审核',
+            //   'type': 'item',
+            //   'url': '/biz/weixinorder'
+            // }
           ]
         },
         {
           'id': 'wuliu2',
-          'title': '物流',
+          'title': '配载发车',
           'type': 'collapse',
           'icon': 'local_shipping',
           'children': [
@@ -209,7 +215,21 @@ export class NavigationModel {
           ]
         },
         {
-          'id': 'ui',
+          'id': 'fnmanager',
+          'title': '报价管理',
+          'type': 'collapse',
+          'icon': 'storage',
+          'children': [
+            {
+              'id': 'pagination',
+              'title': '运价方案',
+              'type': 'item',
+              'url': ''
+            }
+          ]
+        },
+        {
+          'id': 'baseprofile',
           'title': '基础资料',
           'type': 'collapse',
           'icon': 'storage',
@@ -231,12 +251,37 @@ export class NavigationModel {
               'title': '走货路径',
               'type': 'item',
               'url': '/biz/materials/pagination2'
-            }, {
+            },
+            {
               'id': 'modal',
               'title': '客户资料',
               'type': 'item',
               'url': '/biz/customer-management/customers'
             },
+            {
+              'id': 'Carrierprofile',
+              'title': '运输商资料',
+              'type': 'item',
+              'url': '/biz/customer-management/customers'
+            },
+            {
+              'id': 'driverprofile',
+              'title': '司机资料',
+              'type': 'item',
+              'url': '/biz/customer-management/customers'
+            },
+            {
+              'id': 'vehicleprofile',
+              'title': '车辆资料',
+              'type': 'item',
+              'url': '/biz/customer-management/customers'
+            }, {
+              'id': 'ContainerModel',
+              'title': '车型',
+              'type': 'item',
+              'url': '/biz/vehicle-management/containers'
+            },
+
             {
               'id': 'cusbasedata-tracknumber',
               'title': '物流面单',
