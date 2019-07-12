@@ -1,0 +1,18 @@
+h1 {font-size:20px;border-bottom:1px #ccc solid;padding:10px 0;margin:-10px 0 0 0}
+table {width: 100%;box-shadow: none!important;border:1px #ccc solid;text-align:left}
+h2 {width:100%;height:35px;line-height:35px;font-size:16px;font-weight:normal;color:#555;margin:8px 0 10px 0;background:#f2f2f2;}
+h2 i {margin-right:5px;margin-left:10px}
+.marginT {margin-top:10px}
+.marginB {margin-bottom:10px}
+.marginL {margin-left:10px}
+.pagebtnbox {width:280px;margin:0px auto 0 auto;text-align: center}
+.pagebtn {margin:15px 10px;font-size:18px;padding:8px 10px!important;border:none;}
+.pagebtn i {margin-right:2px;}
+h3 {border:1px #ccc solid;border-bottom:none;width:99.7%;height:35px;line-height:35px;font-size:16px;font-weight:normal;margin-bottom:10px;color:#555;margin:0;background:#f2f2f2;}
+h3 i {margin-right:5px;margin-left:10px}
+h3 b {color:#dd1024}
+.notespan {font-size:14px;color:#dd1024}
+tr.mat-header-row {height:32px!important;}
+tr.mat-footer-row, tr.mat-row{height:32px!important;}
+input.e-input, .e-input-group input.e-input, .e-input-group.e-control-wrapper input.e-input, textarea.e-input, .e-input-group textarea.e-input, .e-input-group.e-control-wrapper textarea.e-input{padding:2px 0 2px!important;}
+.e-float-input input, .e-float-input.e-control-wrapper input {padding:2px 0 2px!important;}

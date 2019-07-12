@@ -1,0 +1,108 @@
+<div>
+  <h1>参考分析</h1>
+<div class="pricebox">
+  <h2><i class="fas fa-cogs"></i>参数设置</h2>
+  <form [formGroup]="saveform">
+    <div fxLayout="row" fxLayoutAlign="space-between end" class="marginB">
+      <div fxFlex="49" class="customar">
+        发货网点：<app-bin-mylogisticstore  formControlName="BeginStoreId">loading...</app-bin-mylogisticstore>
+      </div>
+      <div fxFlex="49" class="customar">
+        落货/自提网点：<app-bin-logisticstoreall  formControlName="EndStoreId" placeholder="下拉选择网点"></app-bin-logisticstoreall>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between end" class="marginB">
+      <div fxFlex="49" class="customar">
+        始发地：
+        <ejs-autocomplete [dataSource]='areagroup' [fields]='arearemoteFields' allowCustom=false, formControlName="BeginTihuoAreaCode" placeholder='始发地'></ejs-autocomplete>
+        <span class="notespan">(不提货不用填写)</span>
+      </div>
+      <div fxFlex="49" class="customar">
+        到货地：
+        <ejs-autocomplete [dataSource]='areagroup' [fields]='arearemoteFields' allowCustom=false, formControlName="EndAreaCode" placeholder='到货地'></ejs-autocomplete>
+        <span class="notespan">(不送货不用填写)</span>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between end" class="marginB">
+      <div fxFlex="32" class="customar">
+        <div fxLayout="row" fxLayoutAlign="space-between end">
+          <div fxFlex="85" class="customar">重量：
+            <ejs-numerictextbox value="0.01" [min]="0.01" placeholder="重量" formControlName="TotalWeight"></ejs-numerictextbox></div>
+          <div fxFlex="12" class="customar"><span class="notespan">(吨)</span></div>
+        </div>
+      </div>
+      <div fxFlex="32" class="customar">
+        <div fxLayout="row" fxLayoutAlign="space-between end">
+          <div fxFlex="85" class="customar">体积：
+            <ejs-numerictextbox value="0.01" [min]="0.01" placeholder="体积" formControlName="TotalVol"></ejs-numerictextbox></div>
+          <div fxFlex="12" class="customar"><span class="notespan">(方)</span></div>
+        </div>
+      </div>
+      <div fxFlex="32" class="customar">
+        <div fxLayout="row" fxLayoutAlign="space-between end">
+          <div fxFlex="85" class="customar">数量：
+            <ejs-numerictextbox value="1" [min]="1" placeholder="数量" formControlName="TotalCount"></ejs-numerictextbox></div>
+          <div fxFlex="12" class="customar"><span class="notespan">(件)</span></div>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between end" class="">
+      <div fxFlex="32" class="customar">
+        <ejs-checkbox label="上门提货" formControlName="IfCargoFromOrigin" ></ejs-checkbox>
+      </div>
+      <div fxFlex="32" class="customar">
+        <ejs-checkbox label="提货返仓" formControlName="IfCargoReturnWarehouse" ></ejs-checkbox>
+      </div>
+      <div fxFlex="32" class="customar">
+        <ejs-checkbox label="货站自提" formControlName="IfDesctPickUpMySelf" ></ejs-checkbox>
+      </div>
+    </div>
+  </form>
+  <div class="pagebtnbox">
+    <button class="mat-blue e-info pagebtn e-control e-btn e-lib e-info "  (click)="openchoseroute()">线路方案</button>
+    <button class="mat-green e-info pagebtn e-control e-btn e-lib e-info "  (click)="analysis()" (ended)="enabelsearchbtn">报价分析</button>
+  </div>
+</div>
+<div>
+  <h3><i class="fas fa-coins"></i>分析结果 <b>{{AnalysisResultPrice}}</b> 元</h3>
+  <table mat-table [dataSource]="AnalysisResultList" class="mat-elevation-z8">
+    <ng-container matColumnDef="SequenceId">
+      <th mat-header-cell *matHeaderCellDef> 序列. </th>
+      <td mat-cell *matCellDef="let element"> {{element.SequenceId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="StoreId">
+      <th mat-header-cell *matHeaderCellDef> 编号. </th>
+      <td mat-cell *matCellDef="let element"> {{element.StoreId}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Storename">
+      <th mat-header-cell *matHeaderCellDef> 网点名称. </th>
+      <td mat-cell *matCellDef="let element"> {{element.Storename}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="local_pickup_amt">
+      <th mat-header-cell *matHeaderCellDef> 本地提货费. </th>
+      <td mat-cell *matCellDef="let element"> {{element.local_pickup_amt}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delivery">
+      <th mat-header-cell *matHeaderCellDef> 送货费. </th>
+      <td mat-cell *matCellDef="let element"> {{element.delivery}} </td>
+    </ng-container>
+
+
+
+    <ng-container matColumnDef="load_amt">
+      <th mat-header-cell *matHeaderCellDef> 装卸费. </th>
+      <td mat-cell *matCellDef="let element"> {{element.load_amt}} </td>
+    </ng-container>
+
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+  </table>
+</div>
+
+
+</div>
