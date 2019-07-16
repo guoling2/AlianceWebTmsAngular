@@ -16,7 +16,7 @@ import {MatDialog} from '@angular/material';
 export class OrderlistComponent implements OnInit {
   gridheight: number;
   searchp: FormGroup;
-  @ViewChild('grid')
+  @ViewChild('grid', {static: false})
   public grid: GridComponent;
   constructor(private fb: FormBuilder, private service: Basereportservice, public dialog: MatDialog) {  }
 

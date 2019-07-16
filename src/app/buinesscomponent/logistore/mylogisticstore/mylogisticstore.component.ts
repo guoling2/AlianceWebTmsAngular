@@ -43,7 +43,7 @@ export class MylogisticstoreComponent implements OnInit, ControlValueAccessor   
 
 
 
-  @ViewChild('mystore')
+  @ViewChild('mystore', {static: false})
   mystoredownlist: DropDownListComponent;
 
 

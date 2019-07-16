@@ -18,7 +18,7 @@ import {Commonsetting} from '../../../help/commonsetting';
 export class ShiplentplanComponent implements OnInit {
 
 
-  @ViewChild('grid2')
+  @ViewChild('grid2', {static: false})
   public grid2: GridComponent;
 
   public searchp: FormGroup;

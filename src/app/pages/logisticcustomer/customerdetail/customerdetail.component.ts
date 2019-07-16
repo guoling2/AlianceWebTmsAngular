@@ -34,7 +34,7 @@ export class CustomerdetailComponent implements OnInit {
     Simplename: ''
   });
 
-  @ViewChild('basecom')
+  @ViewChild('basecom', {static: false})
 
   basecom: IDataActionMethod;
   private savecommand = 0; // 命令状态

@@ -15,7 +15,7 @@ import {GridDataSource} from '../../../models/grid-data-source';
 export class ContainerModelComponent implements OnInit {
   gridheight: number;
   searchp: FormGroup;
-  @ViewChild('grid')
+  @ViewChild('grid', {static: false})
   public grid: GridComponent;
   constructor(private fb: FormBuilder, private vehicleContainerService: VehicleContainerService) { }
 

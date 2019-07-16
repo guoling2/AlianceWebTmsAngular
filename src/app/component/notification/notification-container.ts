@@ -46,7 +46,7 @@ export class NotificationContainer extends BasePortalOutlet
   implements OnDestroy {
   private _destroyed = false;
 
-  @ViewChild(CdkPortalOutlet) _portalOutlet: CdkPortalOutlet;
+  @ViewChild(CdkPortalOutlet, {static: false}) _portalOutlet: CdkPortalOutlet;
 
   readonly _onExit: Subject<any> = new Subject();
   readonly _onEnter: Subject<any> = new Subject();

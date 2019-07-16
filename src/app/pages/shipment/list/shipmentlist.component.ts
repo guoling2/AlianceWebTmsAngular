@@ -33,16 +33,16 @@ export class ShipmentlistComponent implements OnInit {
   public items: ItemModel[] = OrderStatuedSource;
   public headerText: Object = [{ text: '配载', 'iconCss': 'e-twitter' },
     { text: '计划', 'iconCss': 'e-facebook' }];
-  @ViewChild('butonsearch')
+  @ViewChild('butonsearch', {static: false})
   public butonsearch: ButtonComponent;
 
-  @ViewChild('listordetab')
+  @ViewChild('listordetab', {static: false})
   public tabObj: TabComponent;
 
-  @ViewChild('grid1')
+  @ViewChild('grid1', {static: false})
   public grid1: GridComponent;
 
-  @ViewChild('grid2')
+  @ViewChild('grid2', {static: false})
   public grid2: GridComponent;
 
   public searchp: FormGroup;
@@ -98,7 +98,7 @@ export class ShipmentlistComponent implements OnInit {
     }
 
     let commandId = 0;
-    switch(args.item.text ) {
+    switch (args.item.text ) {
       case '已提货':
         commandId = 19;
         break;

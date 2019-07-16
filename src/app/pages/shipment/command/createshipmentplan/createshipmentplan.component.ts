@@ -22,7 +22,7 @@ export class CreateShipmentPlanComponent implements OnInit {
 
   public driversource: DriverProfile[] = [];
 
-  @ViewChild('ShipmentCarryingToolId')
+  @ViewChild('ShipmentCarryingToolId', {static: false})
   public ShipmentCarryingToolTxt: TextBoxComponent;
 
 

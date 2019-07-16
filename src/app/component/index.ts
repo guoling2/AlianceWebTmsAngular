@@ -6,7 +6,6 @@ export * from './loading';
 export * from './button';
 export * from './count-down';
 export * from './mobile-input';
-export * from './popover';
 export * from './table';
 export * from './tag-select';
 export * from './github-button';

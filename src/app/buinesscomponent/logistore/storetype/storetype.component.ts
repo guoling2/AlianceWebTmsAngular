@@ -27,7 +27,7 @@ export class StoretypeComponent implements OnInit, ControlValueAccessor {
   @Input()
   FirstIsSelect = false;
 
-  @ViewChild('dropname')
+  @ViewChild('dropname',{static:false})
   mystoredownlist: DropDownListComponent;
   onChange;
 

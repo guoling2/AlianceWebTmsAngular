@@ -27,11 +27,11 @@ export class AdminComponent implements OnInit {
   alertmessage = null;
 
 
-  @ViewChild('alert')
+  @ViewChild('alert', {static: false})
   public alertcom: AlertComponent;
 
 
-  @ViewChild('toasttype')
+  @ViewChild('toasttype', {static: false})
   public toastObj: ToastComponent;
 
   public toasts: { [key: string]: Object }[] = [

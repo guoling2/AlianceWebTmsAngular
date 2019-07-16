@@ -14,7 +14,7 @@ import {OidcSecurityService} from 'angular-auth-oidc-client';
 export class UserlistComponent implements OnInit {
   gridheight: number;
   searchp: FormGroup;
-  @ViewChild('grid')
+  @ViewChild('grid', {static: false})
   public grid: GridComponent;
 
   adminuser = null;

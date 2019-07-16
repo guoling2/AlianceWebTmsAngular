@@ -6,9 +6,6 @@ import {MatDialog} from '@angular/material';
 import {GengerctracknumComponent} from './command/gengerctracknum/gengerctracknum.component';
 import {AlertMessageType, EmitAlertMessage} from '../../../help/emit-alert-message';
 import {EmitService} from '../../../help/emit-service';
-import {AppCommonConfig} from '../../../app.common.config';
-import { Grid, Page, Toolbar, ExcelExport, PdfExport, Group, Aggregate } from '@syncfusion/ej2-grids';
-import {forEach} from '@angular/router/src/utils/collection';
 import {TrackOrderNumberEntity} from '../../../models/tracknumbers/TrackOrderNumberEntity';
 import {Commonsetting} from '../../../help/commonsetting';
 
@@ -22,7 +19,7 @@ export class TrackNumberManagerComponent implements OnInit {
 
   public gridheight: number;
 
-  @ViewChild('grid')
+  @ViewChild('grid', {static: false})
   public grid: GridComponent;
 
   searchp: FormGroup;
@@ -32,7 +29,7 @@ export class TrackNumberManagerComponent implements OnInit {
     this.searchp = this.fb.group(
       { serverTrackId: '', isued: '', bindlogistic: ''});
 
-    //this.grid.toolbar = ['ExcelExport'];
+    // this.grid.toolbar = ['ExcelExport'];
   }
 
   ngOnInit() {
@@ -75,7 +72,7 @@ export class TrackNumberManagerComponent implements OnInit {
   /**
    * 申请面单
    */
-  opengenerctrackforms(): void{
+  opengenerctrackforms(): void {
 
     const dialogRef = this.dialog.open(GengerctracknumComponent, {
       height: '350em',
@@ -101,7 +98,7 @@ export class TrackNumberManagerComponent implements OnInit {
    */
   excelout(): void {
 
-    alert("导出了");
+    alert('导出了');
     this.grid.excelExport();
   }
 

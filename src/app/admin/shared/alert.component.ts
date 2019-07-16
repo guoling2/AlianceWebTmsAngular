@@ -13,7 +13,7 @@ export class AlertComponent implements OnInit {
 
 
 
-  @ViewChild('message')
+  @ViewChild('message', {static: false})
   public messagec: MessageComponent;
 
   public display = false;

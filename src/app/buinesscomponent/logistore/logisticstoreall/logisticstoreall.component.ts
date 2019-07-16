@@ -25,7 +25,7 @@ export class LogisticstoreallComponent implements OnInit, ControlValueAccessor {
   @Input()
   disabled: boolean;
 
-  @ViewChild('store')
+  @ViewChild('store', {static: false})
   mystoredownlist: DropDownListComponent
 
   onChange;

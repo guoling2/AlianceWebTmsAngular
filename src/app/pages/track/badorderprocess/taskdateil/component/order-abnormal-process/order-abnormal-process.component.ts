@@ -18,7 +18,7 @@ export class OrderAbnormalProcessComponent implements OnInit {
 
   public FlowContent: string;
   public  recordlist: Array<OrderAbnormalProcessRecordModel> = [];
-  constructor(private route: ActivatedRoute,private orderAbnormalProcessService: OrderAbnormalProcessService, public emitService: EmitService) { }
+  constructor(private route: ActivatedRoute, private orderAbnormalProcessService: OrderAbnormalProcessService, public emitService: EmitService) { }
 
   ngOnInit() {
 

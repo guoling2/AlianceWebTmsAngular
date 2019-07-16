@@ -24,7 +24,7 @@ export class YunshuxingzhiComponent implements OnInit , ControlValueAccessor {
 
   @Input()
   placeholder: string;
-  @ViewChild('mystore')
+  @ViewChild('mystore',{static:false})
   mystoredownlist: DropDownListComponent;
   onChange;
 

@@ -19,7 +19,7 @@ import {DialogservicesService} from '../../../help/dialogservices.service';
 export class MyOrderListComponent implements OnInit {
   gridheight: number;
   searchp: FormGroup;
-  @ViewChild('grid')
+  @ViewChild('grid', {static: false})
   public grid: GridComponent;
   constructor(private  dialogx: DialogservicesService, private  myShpipmentOrderService: MyShpipmentOrderService, public emitService: EmitService, private fb: FormBuilder, public dialog: MatDialog, private service: Basereportservice ) {
 

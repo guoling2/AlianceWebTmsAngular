@@ -34,7 +34,7 @@ export class SpeedDialComponent implements AfterContentInit {
   @Input() open: boolean = false;
 
   @ContentChildren(MatButton) _buttons: QueryList<MatButton>;
-  @ViewChild('actions') _actions: ElementRef;
+  @ViewChild('actions', {static: false}) _actions: ElementRef;
 
   constructor(private renderer: Renderer2) {}
 

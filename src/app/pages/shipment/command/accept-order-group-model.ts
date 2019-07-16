@@ -9,7 +9,7 @@ export class AcceptOrderGroupModel {
   public  TotalVol: number;
 
   public TotalOrderCount: number;
-  
+
 }
 
 

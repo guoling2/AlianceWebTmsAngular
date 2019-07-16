@@ -2,12 +2,10 @@ import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {LogisticStore} from '../../../../../models/LogisticStore/logistic-store';
 import {BehaviorSubject} from 'rxjs';
 import {LogisticStoreServiceService} from '../../../../../services/logisticstore/logisticstoreservice';
-import {store, template} from '@angular/core/src/render3';
 import {TmaIndicatorService} from '@syncfusion/ej2-angular-charts';
 import {DropDownListComponent} from '@syncfusion/ej2-angular-dropdowns';
 import {DataManager} from '@syncfusion/ej2-data';
 import {UpdateModelType} from '../../../../../models/tms-data-entity';
-import {el} from '@angular/platform-browser/testing/src/browser_util';
 
 @Component({
   selector: 'app-user-store',
@@ -29,7 +27,7 @@ export class UserinstoreComponent implements OnInit {
   private needaddstoreids: string[] = [];
   private  deletestoreids: string[] = [];
 
-  @ViewChild('unassignedStorelist')
+  @ViewChild('unassignedStorelist', {static: false})
   public unassignedStorelist: DropDownListComponent;
 
   constructor(private logisticStoreServiceService: LogisticStoreServiceService) {

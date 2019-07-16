@@ -28,9 +28,9 @@ export class AddComponent implements OnInit, SignBaseView {
   @Input()
   public  OrderLogisticDetailId: string;
 
-  @ViewChild('defaultupload')
+  @ViewChild('defaultupload', {static: false})
   public uploadObj: UploaderComponent;
-  @ViewChild('Dialog')
+  @ViewChild('Dialog', {static: false})
   public dialogObj: DialogComponent;
   public width = '335px';
   public visible = false;

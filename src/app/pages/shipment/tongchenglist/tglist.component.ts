@@ -26,7 +26,7 @@ import {ShipplanService} from '../../../services/logistic/shipment/shipplan.serv
 export class TglistComponent implements OnInit {
   gridheight: number;
   searchp: FormGroup;
-  @ViewChild('grid')
+  @ViewChild('grid', {static: false})
   public grid: GridComponent;
   public taskitems: ItemModel[] = [
     {
@@ -40,7 +40,7 @@ export class TglistComponent implements OnInit {
   constructor(
      private  shipplanService: ShipplanService,
      private  dialogx: DialogservicesService,
-     private  myShpipmentOrderService: MyShpipmentOrderService, 
+     private  myShpipmentOrderService: MyShpipmentOrderService,
      public emitService: EmitService, private fb: FormBuilder, public dialog: MatDialog, private service: Basereportservice ) { }
 
   ngOnInit() {
@@ -135,7 +135,7 @@ export class TglistComponent implements OnInit {
         }
 
         const selectedrows =  this.grid.getSelectedRecords();
-        if (selectedrows.length==0) {
+        if (selectedrows.length == 0) {
           this.emitService.eventEmit.emit(
             new EmitAlertMessage(AlertMessageType.Error, '系统信息', '请选择订单之后在进行操作！'));
         }

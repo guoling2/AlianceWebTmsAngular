@@ -23,7 +23,7 @@ export class ListComponent implements OnInit {
 
   searchp: FormGroup;
 
-  @ViewChild('grid')
+  @ViewChild('grid', {static: false})
   public grid: GridComponent;
 
   private dialogRef: MatDialogRef<DialogAlertComponent>;

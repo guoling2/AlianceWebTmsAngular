@@ -1,9 +1,9 @@
 export  class XieCheScanResponseModel {
-  get ActionStoreId () : string {
+  get ActionStoreId (): string {
     return this._ActionStoreId;
   }
 
-  set ActionStoreId ( value : string ) {
+  set ActionStoreId ( value: string ) {
     this._ActionStoreId = value;
   }
   get XieCheId (): string {

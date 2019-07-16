@@ -17,6 +17,16 @@ import {AlertMessageType, EmitAlertMessage} from '../../../../../help/emit-alert
 })
 export class GengerctracknumComponent implements OnInit {
 
+  constructor(public dialogRef: MatDialogRef<GengerctracknumComponent>, private cTracknumberservice: CTracknumberservice, private  companyservice: Companyservice, private fb: FormBuilder, ) {
+
+
+  }
+
+  /**
+   * 网点的验证
+   */
+  get tocompanycheck() { return this.acceptforms.get('tocompanycode'); }
+
 
   public logisticstorefiled: Object = { text: 'OrganName', value: 'OrganCode' };
 
@@ -24,10 +34,10 @@ export class GengerctracknumComponent implements OnInit {
 
   acceptforms: FormGroup;
 
-  constructor(public dialogRef: MatDialogRef<GengerctracknumComponent>,private cTracknumberservice: CTracknumberservice, private  companyservice: Companyservice,private fb: FormBuilder, ) {
-
-
-  }
+  /**
+   * 申请物流单号
+   */
+  public ErrorMsg: string;
 
   ngOnInit() {
 
@@ -40,16 +50,6 @@ export class GengerctracknumComponent implements OnInit {
       this.logistticstores = value; });
 
   }
-
-  /**
-   * 网点的验证
-   */
-  get tocompanycheck() { return this.acceptforms.get('tocompanycode'); }
-
-  /**
-   * 申请物流单号
-   */
-  public ErrorMsg: string;
 
   applay($event): void {
 
@@ -73,7 +73,7 @@ export class GengerctracknumComponent implements OnInit {
         }
         console.log(value);
 
-      }, ( xerror : any ) => {
+      }, ( xerror: any ) => {
         alert(xerror);
       });
 

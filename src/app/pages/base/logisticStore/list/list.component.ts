@@ -13,7 +13,7 @@ import {LogisticstoreService} from '../../../../services/base/logisticstore.serv
 export class ListComponent implements OnInit {
   gridheight: number;
   searchp: FormGroup;
-  @ViewChild('grid')
+  @ViewChild('grid', {static: false})
   public grid: GridComponent;
   constructor( private fb: FormBuilder, public dialog: MatDialog, public logisticstoreService: LogisticstoreService ) { }
 

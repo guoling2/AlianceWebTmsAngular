@@ -1,7 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { NavigationModel } from './navigation.model';
-import {forEach} from '@angular/router/src/utils/collection';
 
 @Injectable()
 export class NavigationService {

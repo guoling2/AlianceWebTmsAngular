@@ -7,7 +7,6 @@ import { XiecheService } from '../../../services/logistic/shipment/xieche.servic
 import { DropDownListComponent } from '@syncfusion/ej2-angular-dropdowns';
 import { TextBoxComponent } from '@syncfusion/ej2-angular-inputs';
 import {XieCheScanResponseModel} from './XieCheScanResponseModel';
-import {forEach} from '@angular/router/src/utils/collection';
 import {AlertMessageType, EmitAlertMessage} from '../../../help/emit-alert-message';
 import {GridComponent} from '@syncfusion/ej2-angular-grids';
 import {dataBinding} from '@syncfusion/ej2-schedule';
@@ -25,9 +24,9 @@ export class XiechescanComponent implements OnInit {
 
   saveform: FormGroup;
 
-  @ViewChild('singelsearch')
+  @ViewChild('singelsearch', {static: false})
   SearchCodeText: TextBoxComponent;
-  @ViewChild('grid')
+  @ViewChild('grid', {static: false})
   public grid: GridComponent;
   public XieCheScanResponses = new Array<XieCheScanResponseModel>();
   XieCheScanResponses2: { [key: string]: XieCheScanResponseModel }[] = [];
@@ -36,7 +35,7 @@ export class XiechescanComponent implements OnInit {
   public editSettings: Object;
   public  multilinehidden = true;
 
-  @ViewChild('sannmodel')
+  @ViewChild('sannmodel', {static: false})
   public checkbox: CheckBoxComponent;
 
   ngOnInit() {

@@ -9,7 +9,6 @@ import {UpdateModelType} from '../../../models/tms-data-entity';
 import {UserStoreActionRequest} from '../../../models/User/user-store-action-request';
 import {AlertMessageType, EmitAlertMessage, MessageShowType} from '../../../help/emit-alert-message';
 import {EmitService} from '../../../help/emit-service';
-import {forEach} from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-userdetail',

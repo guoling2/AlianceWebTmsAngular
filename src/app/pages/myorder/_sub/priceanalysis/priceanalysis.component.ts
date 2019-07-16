@@ -7,7 +7,6 @@ import {BusAreaEntity} from '../../../../models/base/busareaEntity';
 import {HttpClient} from '@angular/common/http';
 import {StoreCaclRequestModel} from '../../../../models/priceAnalysis/store-cacl-request-model';
 import {TmsresponseStatusCode} from '../../../../models/tms-response.module';
-import {el} from '@angular/platform-browser/testing/src/browser_util';
 import {AlertMessageType, EmitAlertMessage, MessageShowType} from '../../../../help/emit-alert-message';
 import {EmitService} from '../../../../help/emit-service';
 import {OrderRoutePlanService} from '../../../../services/Math/order-route-plan-service';

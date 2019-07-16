@@ -20,11 +20,11 @@ import {SignBaseView} from './sign-base-view';
 export class SignlistComponent implements OnInit {
   gridheight: number;
   searchp: FormGroup;
-  @ViewChild('grid')
+  @ViewChild('grid', {static: false})
 
   public grid: GridComponent;
 
-  @ViewChild(SignViewChangeDirective) signview: SignViewChangeDirective;
+  @ViewChild(SignViewChangeDirective, {static: false}) signview: SignViewChangeDirective;
 
   ads:  SignViewItem[];
 

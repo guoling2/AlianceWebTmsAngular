@@ -91,10 +91,10 @@ export class OpenMyorderComponent implements OnInit {
   issave: boolean; // 正在保存数据
   public slideRight: AnimationSettingsModel = { effect: 'SlideRight' };
 
-  @ViewChild('savabtn ')
+  @ViewChild('savabtn ', {static: false})
   SaveBtn: ProgressButton;
 
-  @ViewChild('planroutetxt')
+  @ViewChild('planroutetxt', {static: false})
   PlanTxt: TextBoxComponent;
 
   enbelbackuprouteplan = false; // 是否启用备选线路计算

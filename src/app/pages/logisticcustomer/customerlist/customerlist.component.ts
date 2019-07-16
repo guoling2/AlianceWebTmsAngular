@@ -14,7 +14,7 @@ import {Basereportconfig} from '../../../services/base/basereportconfig';
 export class CustomerlistComponent implements OnInit {
   gridheight: number;
   searchp: FormGroup;
-  @ViewChild('grid')
+  @ViewChild('grid', {static: false})
   public grid: GridComponent;
 
   constructor(private service: Basereportservice, private fb: FormBuilder) { }

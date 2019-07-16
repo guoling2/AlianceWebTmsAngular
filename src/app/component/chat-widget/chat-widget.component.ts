@@ -27,8 +27,8 @@ const getRandomMessage = () => randomMessages[rand(randomMessages.length)];
   styleUrls: ['./chat-widget.component.scss']
 })
 export class ChatWidgetComponent implements OnInit {
-  @ViewChild('message') message: ElementRef;
-  @ViewChild('bottom') bottom: ElementRef;
+  @ViewChild('message', {static: false}) message: ElementRef;
+  @ViewChild('bottom', {static: false}) bottom: ElementRef;
 
   visible = false;
 

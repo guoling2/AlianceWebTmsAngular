@@ -25,7 +25,7 @@ export class CargoReceiptPaperShowTypeComponent implements OnInit, ControlValueA
 
   @Input()
   placeholder: string;
-  @ViewChild('mystore')
+  @ViewChild('mystore', {static: false})
   mystoredownlist: DropDownListComponent;
 
   onChange;

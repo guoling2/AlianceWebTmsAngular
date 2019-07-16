@@ -4,7 +4,6 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {DriverProfile} from '../../../../../models/User/driver-profile';
 import {LogisticStore} from '../../../../../models/LogisticStore/logistic-store';
 import {TmsResponseModle} from '../../../../../models/tms-response.module';
-import {forEach} from '@angular/router/src/utils/collection';
 import {ShipmentOrder} from '../../../../../models/shipment/shipment-plan-order';
 import {Driverservice} from '../../../../../services/profile/driverservice';
 import { Query } from '@syncfusion/ej2-data';
@@ -59,9 +58,9 @@ export class DelegateorderComponent implements OnInit {
 
   public onFiltering: EmitType<FilteringEventArgs> = (e: FilteringEventArgs) => {
     let query: Query = new Query();
-    //frame the query based on search string with filter type.
+    // frame the query based on search string with filter type.
     query = (e.text !== '') ? query.where('Name', 'startswith', e.text, true) : query;
-    //pass the filter data source, filter query to updateData method.
+    // pass the filter data source, filter query to updateData method.
 
   }
 

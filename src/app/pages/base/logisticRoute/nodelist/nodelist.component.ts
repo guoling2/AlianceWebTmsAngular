@@ -14,7 +14,7 @@ export class NodelistComponent implements OnInit {
 
   gridheight: number;
   searchp: FormGroup;
-  @ViewChild('grid')
+  @ViewChild('grid', {static: false})
   public grid: GridComponent;
 
   constructor(private fb: FormBuilder, private  service: Basereportservice) {

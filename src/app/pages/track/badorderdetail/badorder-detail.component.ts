@@ -28,7 +28,7 @@ export class BadorderDetailComponent implements OnInit {
 
   private  issave: boolean;
   public  btnstatued = false;
-  @ViewChild('xbadorder')
+  @ViewChild('xbadorder', {static: false})
   xbadorder: XbadorderDetailComponent;
   ngOnInit() {
 
