@@ -26,7 +26,7 @@ import {ShipplanService} from '../../../services/logistic/shipment/shipplan.serv
 export class TglistComponent implements OnInit {
   gridheight: number;
   searchp: FormGroup;
-  @ViewChild('grid', {static: false})
+  @ViewChild('grid', {static: true})
   public grid: GridComponent;
   public taskitems: ItemModel[] = [
     {

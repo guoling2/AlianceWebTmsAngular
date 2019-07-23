@@ -14,7 +14,7 @@ export class WuliuorderstatuedComponent implements OnInit {
 
   @Input()
   placeholder: string;
-  @ViewChild('mystore',{static:false})
+  @ViewChild('mystore', {static: true})
   mystoredownlist: DropDownListComponent;
   onChange;
   constructor() { }

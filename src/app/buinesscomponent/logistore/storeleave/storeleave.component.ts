@@ -16,7 +16,7 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
     }
   ]
 })
-export class StoreleaveComponent implements OnInit , ControlValueAccessor{
+export class StoreleaveComponent implements OnInit , ControlValueAccessor {
 
   datasource: Object[] = StoreLeave.Data;
 
@@ -27,7 +27,7 @@ export class StoreleaveComponent implements OnInit , ControlValueAccessor{
   @Input()
   FirstIsSelect = false;
 
-  @ViewChild('dropname', {static: false})
+  @ViewChild('dropname', {static: true})
   mystoredownlist: DropDownListComponent;
   onChange;
 
@@ -35,7 +35,7 @@ export class StoreleaveComponent implements OnInit , ControlValueAccessor{
 
   ngOnInit() {
       if (this.FirstIsSelect) {
-        this.mystoredownlist.index=0;
+        this.mystoredownlist.index = 0;
       }
   }
 

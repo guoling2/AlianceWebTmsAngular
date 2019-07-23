@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {ControlValueAccessor, DefaultValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import { CustomePaymentMethod } from '../../../modeldata/customePaymentMethod';
 import { ChangeEventArgs, DropDownListComponent } from '@syncfusion/ej2-angular-dropdowns';
 import { TihuoType } from 'src/app/modeldata/tihuotypedata';
@@ -18,17 +18,23 @@ import { TihuoType } from 'src/app/modeldata/tihuotypedata';
 })
 export class TihuoTypeComponent implements OnInit, ControlValueAccessor {
 
+  constructor() { }
+
   public logisticstorefiled: Object = TihuoType.DropDownListField;
 
   logistticstores: Object[] = TihuoType.Data;
 
   @Input()
   placeholder: string;
-  @ViewChild('mystore', {static: false})
+  @ViewChild('mystore', {static: true})
   mystoredownlist: DropDownListComponent;
   onChange;
 
-  constructor() { }
+  private _composing;
+  private _compositionMode;
+  private _elementRef;
+  private _renderer;
+  onTouched: () => void;
 
   ngOnInit() {
   }
@@ -45,7 +51,12 @@ export class TihuoTypeComponent implements OnInit, ControlValueAccessor {
   }
 
   writeValue(value: any): void {
+
+    console.log(value);
+   // this.mystoredownlist.text=value;
+    // this._renderer.setProperty(this._elementRef.nativeElement, 'value', value);
     if (value) {
+
 
       this.mystoredownlist.writeValue(value);
     } else {

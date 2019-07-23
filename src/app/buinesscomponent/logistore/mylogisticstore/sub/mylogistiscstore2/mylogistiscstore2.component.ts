@@ -25,7 +25,7 @@ export class Mylogistiscstore2Component implements OnInit , ControlValueAccessor
   placeholder: string;
 
 
-  @ViewChild('mystore', {static: false})
+  @ViewChild('mystore', {static: true})
   mystoredownlist: MatSelect;
 
   onChange;

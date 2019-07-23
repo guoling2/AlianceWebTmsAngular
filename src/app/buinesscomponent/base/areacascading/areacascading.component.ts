@@ -33,13 +33,13 @@ export class AreacascadingComponent implements OnInit, ControlValueAccessor {
   public countryWaterMark = '选择省';
   public stateWaterMark = '选择市';
   public cityWaterMark = '选择区';
-  @ViewChild('countryList', {static: false})
+  @ViewChild('countryList', {static: true})
   // country DropDownList instance
   public countryObj: DropDownListComponent;
-  @ViewChild('stateList', {static: false})
+  @ViewChild('stateList', {static: true})
   // state DropDownList instance
   public stateObj: DropDownListComponent;
-  @ViewChild('cityList', {static: false})
+  @ViewChild('cityList', {static: true})
   // city DropDownList instance
   public cityObj: DropDownListComponent;
 

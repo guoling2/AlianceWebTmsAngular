@@ -50,41 +50,41 @@
           allowPaging='true'  height='{{gridheight2}}' class="contlistbox">
   <e-columns >
     <e-column type='checkbox' width='50'></e-column>
-    <e-column field='shipplanid'  headerText='物流计划编号' isPrimaryKey='true' width='170' style="border: 1px #ccc solid">
-      <ng-template #template let-data>
-        <a routerLink="/orders/{{data.shipplanid}}">{{data.shipplanid}}</a>
-      </ng-template>
-    </e-column>
+<!--    <e-column field='shipplanid'  headerText='物流计划编号' isPrimaryKey='true' width='170' style="border: 1px #ccc solid">-->
+<!--      <ng-template #template let-data>-->
+<!--        <a routerLink="/orders/{{data.shipplanid}}">{{data.shipplanid}}</a>-->
+<!--      </ng-template>-->
+<!--    </e-column>-->
     <e-column field='serverTrackId' headerText='物流跟踪号'  width=120></e-column>
-    <e-column field='TaskType' headerText='任务类型'  width=120>
-      <ng-template #template let-data>
-        {{data.TaskType | carryingtasktypePipe :'1'}}
-      </ng-template>
-    </e-column>
+<!--    <e-column field='TaskType' headerText='任务类型'  width=120>-->
+<!--      <ng-template #template let-data>-->
+<!--        {{data.TaskType | carryingtasktypePipe :'1'}}-->
+<!--      </ng-template>-->
+<!--    </e-column>-->
     <e-column field='ShipmentPeopleDesc' headerText='运输方'  width=120></e-column>
     <e-column field='CarryingToolName' headerText='车牌号'  width=120></e-column>
-    <e-column field='CarryingStatuedId' headerText='任务状态'  width=120>
-      <ng-template #template let-data>
-        {{data.CarryingStatuedId | carryingStatuedPipe :'1'}}
-      </ng-template>
-    </e-column>
+<!--    <e-column field='CarryingStatuedId' headerText='任务状态'  width=120>-->
+<!--      <ng-template #template let-data>-->
+<!--        {{data.CarryingStatuedId | carryingStatuedPipe :'1'}}-->
+<!--      </ng-template>-->
+<!--    </e-column>-->
     <e-column field='PublishTaskCount' headerText='委托数量'  width=120></e-column>
     <e-column field='DestArea' headerText='到货地'  width=120></e-column>
-    <e-column field='PublishDateTime' headerText='委派时间' format='yMd' width=120>
-      <ng-template #template let-data>
-        {{data.PublishDateTime | date: 'yyyy-MM-dd HH:mm:ss'}}
-      </ng-template>
-    </e-column>
-    <e-column field='AcceptDateTime' headerText='接单时间' format='yMd' width=120>
-      <ng-template #template let-data>
-        {{data.AcceptDateTime | date: 'yyyy-MM-dd HH:mm:ss'}}
-      </ng-template>
-    </e-column>
-    <e-column field='FinishDateTime' headerText='完成时间' format='yMd' width=120>
-      <ng-template #template let-data>
-        {{data.FinishDatetime | date: 'yyyy-MM-dd HH:mm:ss'}}
-      </ng-template>
-    </e-column>
+<!--    <e-column field='PublishDateTime' headerText='委派时间' format='yMd' width=120>-->
+<!--      <ng-template #template let-data>-->
+<!--        {{data.PublishDateTime | date: 'yyyy-MM-dd HH:mm:ss'}}-->
+<!--      </ng-template>-->
+<!--    </e-column>-->
+<!--    <e-column field='AcceptDateTime' headerText='接单时间' format='yMd' width=120>-->
+<!--      <ng-template #template let-data>-->
+<!--        {{data.AcceptDateTime | date: 'yyyy-MM-dd HH:mm:ss'}}-->
+<!--      </ng-template>-->
+<!--    </e-column>-->
+<!--    <e-column field='FinishDateTime' headerText='完成时间' format='yMd' width=120>-->
+<!--      <ng-template #template let-data>-->
+<!--        {{data.FinishDatetime | date: 'yyyy-MM-dd HH:mm:ss'}}-->
+<!--      </ng-template>-->
+<!--    </e-column>-->
     <e-column field='OrderSendMark' headerText='托运备注' width=150></e-column>
   </e-columns>
 

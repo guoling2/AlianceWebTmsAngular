@@ -24,7 +24,7 @@ export class YunshuxingzhiComponent implements OnInit , ControlValueAccessor {
 
   @Input()
   placeholder: string;
-  @ViewChild('mystore',{static:false})
+  @ViewChild('mystore', {static: true})
   mystoredownlist: DropDownListComponent;
   onChange;
 
@@ -57,7 +57,7 @@ export class YunshuxingzhiComponent implements OnInit , ControlValueAccessor {
 
     this.onChange(event.value);
     console.log(event.value);
-    //this.onChange(event.value);
+    // this.onChange(event.value);
 
   }
 

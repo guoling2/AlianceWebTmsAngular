@@ -39,10 +39,11 @@
           allowPaging='false'  class="contlistbox">
   <e-columns >
     <e-column field='UserId' [visible]='false' headerText='系统用户编号' width='130' [isPrimaryKey]='true'></e-column>
-    <e-column field='WorkNumber' headerText='登录账号'  width=100>
+    <e-column  headerText='登录账号'  width=100>
       <ng-template #template let-data>
         <div>
           <div class="userimgs">
+
             <a [routerLink]="['/biz/user-management/users/edit', data.UserId]">
               <img height="35" width="35" src="{{data.UserHeadUrl}}?imageMogr2/thumbnail/50x50/format/webp/blur/1x0/quality/75|imageslim" alt="用户头像" />
                <span style="margin-left: 5px;">{{data.WorkNumber}}</span>

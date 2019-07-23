@@ -43,7 +43,7 @@ export class MylogisticstoreComponent implements OnInit, ControlValueAccessor   
 
 
 
-  @ViewChild('mystore', {static: false})
+  @ViewChild('mystore', {static: true})
   mystoredownlist: DropDownListComponent;
 
 
@@ -81,7 +81,7 @@ export class MylogisticstoreComponent implements OnInit, ControlValueAccessor   
 
   registerOnChange(fn) {
     console.log('registerOnChange');
-    if(fn!=null){
+    if (fn != null) {
       this.onChange = fn;
     }
 
@@ -96,7 +96,7 @@ export class MylogisticstoreComponent implements OnInit, ControlValueAccessor   
       this.onChange(event.value);
     }
      console.log(event.value);
-    //this.onChange(event.value);
+    // this.onChange(event.value);
 
   }
 }

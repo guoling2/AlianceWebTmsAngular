@@ -25,8 +25,8 @@ export class LogisticstoreallComponent implements OnInit, ControlValueAccessor {
   @Input()
   disabled: boolean;
 
-  @ViewChild('store', {static: false})
-  mystoredownlist: DropDownListComponent
+  @ViewChild('store', {static: true})
+  mystoredownlist: DropDownListComponent;
 
   onChange;
 
@@ -39,7 +39,7 @@ export class LogisticstoreallComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit() {
 
-    //this.mystoredownlist.enabled = this.disabled;
+    // this.mystoredownlist.enabled = this.disabled;
 
     this.logisticStoreServiceService.StoreQuery().subscribe((value: LogisticStore[]) => {this.logistticstores = value; });
   }
@@ -75,7 +75,7 @@ export class LogisticstoreallComponent implements OnInit, ControlValueAccessor {
     console.log(event.value);
     this.onChange(event.value);
 
-    //this.onChange(event.value);
+    // this.onChange(event.value);
 
   }
 

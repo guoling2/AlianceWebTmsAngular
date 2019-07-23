@@ -24,7 +24,7 @@ export class CustomerpaymethodComponent implements OnInit, ControlValueAccessor 
 
   @Input()
   placeholder: string;
-  @ViewChild('mystore', {static: false})
+  @ViewChild('mystore', {static: true})
   mystoredownlist: DropDownListComponent;
   onChange;
   constructor() { }
