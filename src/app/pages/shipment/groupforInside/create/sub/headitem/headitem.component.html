@@ -9,14 +9,14 @@
 
   <div>
     车牌号
-              <ejs-textbox formControlName="CarryingToolName" readonly="readonly" placeholder="点击选择车辆"></ejs-textbox>
+              <ejs-textbox formControlName="CarryingToolName" readonly="readonly" placeholder=""></ejs-textbox>
     <div style="float: right;padding-top:15px">
       <button ejs-button cssClass="e-small" (click)="selectvehicel($event,'400px','400px')"><i class="fas fa-search"></i></button>
     </div>
     司机
 
 
-              <ejs-textbox formControlName="ShipmentUserDesc" readonly="readonly"  placeholder="点击切换司机"></ejs-textbox>
+              <ejs-textbox formControlName="ShipmentUserDesc" readonly="readonly"  placeholder=""></ejs-textbox>
     <div style="float: right;padding-top:15px">
       <button ejs-button cssClass="e-small" (click)="selectdriver($event,'400px','400px')"><i class="fas fa-search"></i></button>
     </div>
@@ -26,7 +26,7 @@
 运输件数  <ejs-numerictextbox step='1' min="0" formControlName="SendOrderCount" readonly="readonly" ></ejs-numerictextbox>(件)
 运输重量  <ejs-numerictextbox step='1' min="0" formControlName="SendOrderWeight" readonly="readonly" ></ejs-numerictextbox>(T)
 运输体积  <ejs-numerictextbox step='1' min="0" formControlName="SendOrderVol" readonly="readonly" ></ejs-numerictextbox>(M3)
-  运费分摊方式  <app-biz-groupfeeblance formControlName="PriceBlaceMethod" FirstIsSelect="true"></app-biz-groupfeeblance>
+  运费分摊方式  <app-biz-groupfeeblance formControlName="PriceBlaceMethod"></app-biz-groupfeeblance>
 <!--应付合计   <ejs-numerictextbox step='1' min="0" formControlName="PackageHigh"></ejs-numerictextbox>-->
 
 运输备注

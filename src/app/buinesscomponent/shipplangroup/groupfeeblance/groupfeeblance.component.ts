@@ -29,13 +29,15 @@ export class GroupfeeblanceComponent implements OnInit, ControlValueAccessor {
 
   @ViewChild('dropname', {static: true})
   mystoredownlist: DropDownListComponent;
-  onChange;
+  onChange: (_: any) => void;
 
   constructor() { }
 
   ngOnInit() {
     if (this.FirstIsSelect) {
-      this.mystoredownlist.index = 0;
+
+      this.mystoredownlist.value = this.datasource[0]['Id'];
+
     }
   }
 
