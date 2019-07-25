@@ -20,7 +20,7 @@ export class XiecheComponent implements OnInit {
 
   ngOnInit() {
     this.searchp = this.fb.group(
-      { OrderTrackServerId: '', myselectstore: '', PlanStatuedId: 10});
+      { OrderTrackServerId: '', myselectstore: '', PlanStatuedId: 10, XiehuoType: 1});
     this.gridheight = Commonsetting.GridHeight();
   }
 
@@ -30,7 +30,25 @@ export class XiecheComponent implements OnInit {
     searchable.pageindex = pagesetting.currentPage;
     searchable.pagesize = pagesetting.pageSize;
 
-    this.service.SearchReport(Basereportconfig.Report_wuliuxieche, searchable).subscribe(result => {
+    // <option value="1">本地卸车</option>
+    //   <option value="2">中转卸车</option>
+    let  seelctreport ;
+
+    switch ( searchable.XiehuoType) {
+
+      case '1':
+        seelctreport = Basereportconfig.Report_wuliuxieche;
+        break;
+      case  '2':
+        seelctreport = Basereportconfig.Report_wuliuxiecheFortransfer;
+        break;
+      default:
+        seelctreport = Basereportconfig.Report_wuliuxieche;
+        break;
+    }
+
+
+    this.service.SearchReport(seelctreport, searchable).subscribe(result => {
 
       this.grid.dataSource = result;
 

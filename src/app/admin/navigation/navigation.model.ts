@@ -82,7 +82,7 @@ export class NavigationModel {
               'id': 'wuliu22',
               'title': '干线运输',
               'type': 'item',
-              'url': '/biz/shipment/planlist'
+              'url': '/biz/shipment/circletrip'
             },
             {
               'id': 'wuliu23',

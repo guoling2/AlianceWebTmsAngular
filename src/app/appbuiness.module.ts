@@ -4,6 +4,7 @@ import {LogistictoreModule} from './buinesscomponent/logistore/logistictore.modu
 import {SharedModule} from './shared/shared.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BasedataModule} from './buinesscomponent/base/basedata.module';
+import {ShipplangroupModule} from './buinesscomponent/shipplangroup/shipplangroup.module';
 
 @NgModule({
   declarations: [],
@@ -13,7 +14,8 @@ import {BasedataModule} from './buinesscomponent/base/basedata.module';
     FormsModule,
     ReactiveFormsModule,
     LogistictoreModule,
-    BasedataModule
+    BasedataModule,
+    ShipplangroupModule
   ]
 })
 export class AppbuinessModule { }

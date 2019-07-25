@@ -1,0 +1,15 @@
+
+<button ejs-button cssClass="e-info mat-width"  (click)="savedata()">派车</button>
+<div style="height: 600px;">
+<form [formGroup]="saveform">
+
+  <app-shipmentplan-insert-headitem [saveform]="saveform"></app-shipmentplan-insert-headitem>
+
+
+<!--<app-shipmentplan-insert-sendcarfeedetailinsert></app-shipmentplan-insert-sendcarfeedetailinsert>-->
+  <app-shipmentplan-insert-logisticitems></app-shipmentplan-insert-logisticitems>
+
+
+</form>
+</div>
+

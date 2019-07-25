@@ -21,6 +21,11 @@ export class Basereportconfig {
    * 物流卸车
    */
   public  static   Report_wuliuxieche = 'wuliuxieche';
+
+  /**
+   * 物流卸车 中转
+   */
+  public  static   Report_wuliuxiecheFortransfer = 'wuliuxiechefortransfer';
   /**
    * 异常列表
    */

@@ -21,6 +21,16 @@ import {UploaderModule} from '@syncfusion/ej2-angular-inputs';
 import { NoselectedComponent } from './signlist/noselected/noselected.component';
 import { SignViewChangeDirective } from './signlist/sign-view-change.directive';
 import { DivFlexDirective } from './signlist/div-flex.directive';
+import { InsidePlanGroupCreateComponent } from './groupforInside/create/create.component';
+import { HeaditemComponent } from './groupforInside/create/sub/headitem/headitem.component';
+import { LogisticitemsComponent } from './groupforInside/create/sub/logisticitems/logisticitems.component';
+import { SelectorderComponent } from './groupforInside/sub/selectorder/selectorder.component';
+import { SelectvehicelComponent } from './groupforInside/sub/selectvehicel/selectvehicel.component';
+import { SelectdriverComponent } from './groupforInside/sub/selectdriver/selectdriver.component';
+import { CircletriplistComponent } from './circletriplist/circletriplist.component';
+import { SendcarfeedetailinsertComponent } from './groupforInside/create/sub/sendcarfeedetailinsert/sendcarfeedetailinsert.component';
+import {ShipplangroupModule} from '../../buinesscomponent/shipplangroup/shipplangroup.module';
+import {GroundforinsideModule} from './groupforInside/groundforinside.module';
 
 
 
@@ -31,10 +41,6 @@ const routes: Routes = [
     'path': '',
     'component': ShipmentlistComponent
      },
-  {
-    'path': 'planlist',
-    'component': ShiplentplanComponent
-  },
   {
     'path': 'tglist',
     'component': TglistComponent
@@ -51,6 +57,14 @@ const routes: Routes = [
     'path': 'sign-list',
     'component': SignlistComponent
   },
+  {
+    'path': 'circletrip',
+    'component': CircletriplistComponent
+  },
+  {
+    'path': 'shipgroup-inside-create/:id',
+    'component': InsidePlanGroupCreateComponent
+  }
 ];
 
 
@@ -65,7 +79,9 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     LogistictoreModule,
     DialogModule,
-    UploaderModule
+    UploaderModule,
+    ShipplangroupModule,
+    GroundforinsideModule
   ],
   exports: [
     FormsModule,
@@ -75,7 +91,7 @@ const routes: Routes = [
 
    ],
   // tslint:disable-next-line:max-line-length
-  declarations: [ShiplentplanComponent, ShipmentlistComponent, CarryingStatuedPipePipe, CarryingTaskPipePipe, TglistComponent, XiecheComponent, CreateShipmentPlanComponent, XiechescanComponent, SignlistComponent, AddComponent, DetailComponent, NoselectedComponent, SignViewChangeDirective, DivFlexDirective],
+  declarations: [ShiplentplanComponent, ShipmentlistComponent, CarryingStatuedPipePipe, CarryingTaskPipePipe, TglistComponent, XiecheComponent, CreateShipmentPlanComponent, XiechescanComponent, SignlistComponent, AddComponent, DetailComponent, NoselectedComponent, SignViewChangeDirective, DivFlexDirective, CircletriplistComponent, SendcarfeedetailinsertComponent],
   entryComponents: [CreateShipmentPlanComponent, AddComponent, DetailComponent, NoselectedComponent]
 })
 export class ShipmentModule { }
