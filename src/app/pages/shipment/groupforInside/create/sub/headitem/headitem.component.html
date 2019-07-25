@@ -1,0 +1,35 @@
+<div>
+<form [formGroup]="saveform">
+
+<div>
+  派车单号  <ejs-textbox formControlName="ShipmentGroupId" placeholder="系统生成"></ejs-textbox>
+  车辆任务  <ejs-textbox formControlName="TaskTypeDesc" disabled></ejs-textbox>
+  派车时间  <ejs-datetimepicker format='yyyy-MM-dd HH:mm'  formControlName="SendCarTime"></ejs-datetimepicker>
+</div>
+
+  <div>
+    车牌号
+              <ejs-textbox formControlName="CarryingToolName" readonly="readonly" placeholder="点击选择车辆"></ejs-textbox>
+    <div style="float: right;padding-top:15px">
+      <button ejs-button cssClass="e-small" (click)="selectvehicel($event,'400px','400px')"><i class="fas fa-search"></i></button>
+    </div>
+    司机
+
+
+              <ejs-textbox formControlName="ShipmentUserDesc" readonly="readonly"  placeholder="点击切换司机"></ejs-textbox>
+    <div style="float: right;padding-top:15px">
+      <button ejs-button cssClass="e-small" (click)="selectdriver($event,'400px','400px')"><i class="fas fa-search"></i></button>
+    </div>
+    司机电话 <ejs-textbox formControlName="ShipmentUserLinkTel"></ejs-textbox>
+  </div>
+
+运输件数  <ejs-numerictextbox step='1' min="0" formControlName="SendOrderCount" readonly="readonly" ></ejs-numerictextbox>(件)
+运输重量  <ejs-numerictextbox step='1' min="0" formControlName="SendOrderWeight" readonly="readonly" ></ejs-numerictextbox>(T)
+运输体积  <ejs-numerictextbox step='1' min="0" formControlName="SendOrderVol" readonly="readonly" ></ejs-numerictextbox>(M3)
+  运费分摊方式  <app-biz-groupfeeblance formControlName="PriceBlaceMethod" FirstIsSelect="true"></app-biz-groupfeeblance>
+<!--应付合计   <ejs-numerictextbox step='1' min="0" formControlName="PackageHigh"></ejs-numerictextbox>-->
+
+运输备注
+  <ejs-textbox formControlName="Mark" placeholder="运输备注" multiline="true" showClearButton="true"></ejs-textbox>
+</form>
+</div>

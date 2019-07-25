@@ -14,12 +14,23 @@
     <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
   </mat-form-field>
   <mat-form-field class="col-md-3">
-    <select matNativeControl  formControlName="PlanStatuedId">
-      <option value="10">未激活</option>
-      <option value="20">等待卸车</option>
-      <option value="30">卸车完成</option>
-    </select>
+    <label>
+      <select matNativeControl  formControlName="PlanStatuedId">
+        <option value="10">未激活</option>
+        <option value="20">等待卸车</option>
+        <option value="30">卸车完成</option>
+      </select>
+    </label>
     <span  matPrefix style="color: #888">任务状态：&nbsp;</span>
+  </mat-form-field>
+  <mat-form-field class="col-md-3">
+    <label>
+      <select matNativeControl  formControlName="XiehuoType">
+        <option value="1">本地卸车</option>
+        <option value="2">中转卸车</option>
+      </select>
+    </label>
+    <span  matPrefix style="color: #888">任务类型：&nbsp;</span>
   </mat-form-field>
   <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
 </form>
@@ -40,7 +51,7 @@
 <!--        </div>-->
 <!--      </ng-template>-->
 <!--    </e-column>-->
-    <e-column field='OrderTrackServerId' headerText='物流单号'  width=150>
+    <e-column field='OrderTrackServerId' headerText='物流单号'  width=170>
       <ng-template #template let-data>
         <a routerLink="/orders/{{data.XiechePlanId}}">{{data.OrderTrackServerId}}</a>
       </ng-template>
