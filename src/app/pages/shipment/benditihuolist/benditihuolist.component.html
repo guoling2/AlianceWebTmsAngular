@@ -1,0 +1,90 @@
+
+
+<form class="listfrom" [formGroup]="searchp" >
+
+
+
+  <mat-form-field class="col-md-3">
+    <label>
+      <input matInput  formControlName="OrderTrackServerId" />
+    </label>
+    <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
+  </mat-form-field>
+  <mat-form-field class="col-md-3 col-lefty">
+    <label>
+      <select matNativeControl  formControlName="PlanStatuedId">
+        <option label="未提货"></option>
+        <option value="10">已安排</option>
+        <option value="20">提货中</option>
+        <option value="30">已提货</option>
+      </select>
+    </label>
+    <span  matPrefix style="color: #888">任务状态：&nbsp;</span>
+  </mat-form-field>
+  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+</form>
+
+<ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
+          (dataStateChange)="dataStateChange($event)"
+          [allowExcelExport]='true'  allowSorting='false'
+          [allowSelection]="true"
+          [enableHover]="false"
+          allowPaging='true'  class="contlistbox">
+  <e-columns >
+
+
+
+    <e-column field='SystemOrderId'  headerText='订单编号' [visible]='false'  width='165'></e-column>
+
+
+    <e-column field='OrderTrackServerId'  headerText='物流单号'  width='165'></e-column>
+
+
+    <e-column field='Origincustomname'  headerText='发货客户'  width='165'></e-column>
+
+
+    <e-column field='OrigincustomLinkman'  headerText='发货联系人'  width='165'></e-column>
+
+
+    <e-column field='Origintel'  headerText='发货联系电话'  width='165'></e-column>
+
+
+    <e-column field='Originarea'  headerText='发货区域'  width='165'></e-column>
+
+
+    <e-column field='OriginAddress'  headerText='提货地址'  width='165'></e-column>
+
+
+    <e-column field='DestCity'  headerText='到货城市'  width='165'></e-column>
+
+
+    <e-column field='DestAddress'  headerText='到货地址'  width='165'></e-column>
+
+
+    <e-column field='TotalCount'  headerText='总件数'  width='165'></e-column>
+
+
+    <e-column field='TotalVolume'  headerText='体积'  width='165'></e-column>
+
+
+    <e-column field='TotalWeight'  headerText='重量'  width='165'></e-column>
+
+
+    <e-column field='BeginLogisticStoreId' [visible]='false' headerText='接单网点编号'  width='165'></e-column>
+
+
+    <e-column field='BeginLogisticStoreName' [visible]='false' headerText='接单网点'  width='165'></e-column>
+
+
+    <e-column field='ShipmentId'  headerText='网点物流编号'  [visible]='false' width='165'></e-column>
+
+
+    <e-column field='PlanStatuedId'  headerText='提货状态'  width='165'></e-column>
+
+
+    <e-column field='CreateDateTime'  headerText='下达时间'  width='165'></e-column>
+
+
+
+  </e-columns>
+</ejs-grid>

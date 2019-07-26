@@ -75,17 +75,27 @@ export class MyOrderListComponent implements OnInit {
         if ( !result ) {
           return;
         }
-        this.myShpipmentOrderService.CreateMyShipment(ids).subscribe(a => {
-          this.emitService.eventEmit.emit(
-            new EmitAlertMessage(AlertMessageType.Info, '系统信息', a.Info));
-          if ( a.StatusCode === TmsresponseStatusCode.Succeed() ) {
-            console.log(a.StatusCode);
-            console.log(TmsresponseStatusCode.Succeed());
-            this.searching();
-          }
 
-          console.log(a);
-        });
+
+        for (let index = 0; index < ids.length; index++) {
+          const element = ids[index];
+
+          this.myShpipmentOrderService.CreateMyShipment(element).subscribe(a => {
+            this.emitService.eventEmit.emit(
+              new EmitAlertMessage(AlertMessageType.Info, '系统信息', a.Info));
+            if ( a.StatusCode === TmsresponseStatusCode.Succeed() ) {
+              console.log(a.StatusCode);
+              console.log(TmsresponseStatusCode.Succeed());
+              if (index === ids.length - 1) {
+                this.searching();
+              }
+
+            }
+
+            console.log(a);
+          });
+        }
+
       })};
     this.dialogx.openDialog(alerter);
 

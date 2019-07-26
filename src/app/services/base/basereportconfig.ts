@@ -47,4 +47,10 @@ export class Basereportconfig {
    * 物流发货客户资料
    */
   public  static  Report_customerprofilelist = 'customerprofilelist';
+
+  /**
+   * 物流小车提货
+   */
+  public  static  Report_localtihuolist = 'logisticlocaltihuo';
+
 }

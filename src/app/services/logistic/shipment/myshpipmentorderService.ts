@@ -19,12 +19,13 @@ export class MyShpipmentOrderService {
   /**
    * 自有订单下达
    */
-  public CreateMyShipment(data: Array<string>): Observable<TmsResponseModle> {
+  public CreateMyShipment(data: string): Observable<TmsResponseModle> {
 
     // const options = new HttpParams({ fromObject: data});
 
-    return this.httpclient.post<TmsResponseModle>(
-      this.appConfiguration.Server + '/api/Shipment/CreateShipment', data)
+
+    return this.httpclient.put<TmsResponseModle>(
+      this.appConfiguration.Server + '/api/Shipment/Create/' + data, data)
       .pipe(
         tap(response => console.log(response.Info)));
   }

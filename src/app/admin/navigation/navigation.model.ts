@@ -32,6 +32,12 @@ export class NavigationModel {
               'title': '自营订单',
               'type': 'item',
               'url': '/biz/myorder/list'
+            },
+            {
+              'id': 'wuliu24',
+              'title': '订单签收',
+              'type': 'item',
+              'url': '/biz/shipment/sign-list'
             }
             // {
             //   'id': 'date-picker2',
@@ -71,16 +77,39 @@ export class NavigationModel {
           'type': 'collapse',
           'icon': 'local_shipping',
           'children': [
-
+            {
+              'id': 'wuliu10',
+              'title': '小车提货',
+              'type': 'item',
+              'url': '/biz/shipment/benditihuoclist'
+            },
+            {
+              'id': 'wuliu10-1',
+              'title': '小车提货(外包)',
+              'type': 'item',
+              'url': '/biz/shipment/benditihuoclist'
+            },
             {
               'id': 'wuliu11',
-              'title': '同城配送',
+              'title': '网点送货',
               'type': 'item',
               'url': '/biz/shipment/tglist'
             },
             {
               'id': 'wuliu22',
-              'title': '干线运输',
+              'title': '网点转运',
+              'type': 'item',
+              'url': '/biz/shipment/circletrip'
+            },
+            {
+              'id': 'wuliu22-1',
+              'title': '大车直送',
+              'type': 'item',
+              'url': '/biz/shipment/circletrip'
+            },
+            {
+              'id': 'wuliu22-2',
+              'title': '中转外包',
               'type': 'item',
               'url': '/biz/shipment/circletrip'
             },
@@ -89,12 +118,6 @@ export class NavigationModel {
               'title': '网点卸货',
               'type': 'item',
               'url': '/biz/shipment/xieche'
-            },
-            {
-              'id': 'wuliu24',
-              'title': '网点签收',
-              'type': 'item',
-              'url': '/biz/shipment/sign-list'
             }
             // {
             //   'id': 'wuliu1',
