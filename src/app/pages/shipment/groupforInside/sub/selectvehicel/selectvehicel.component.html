@@ -1,1 +1,81 @@
-<p>selectvehicel works!</p>
+<h1>{{displaytithle}}</h1>
+<div>
+  <form [formGroup]="form" >
+    <!--CD(代号),JC（简称）,KN(客户名称),LK(联系人),LT(联系电话)-->
+
+    <div fxLayout="row" fxLayoutAlign="space-between end" class="marginT">
+      <div fxFlex="85" class="customar">
+        <mat-form-field>
+          <label><input matInput placeholder="车辆名称" formControlName="VehicelName"></label>
+        </mat-form-field>
+        <mat-form-field>
+          <label><input matInput placeholder="最小容积" formControlName="Volumecapacity"></label>
+        </mat-form-field>
+        <mat-form-field>
+          <label><input matInput placeholder="最小载重" formControlName="Weightcapacity"></label>
+        </mat-form-field>
+      </div>
+      <div fxFlex="15" class="customar" style="margin-bottom:15px;text-align:right">
+        <button   ejs-button cssClass="e-info mat-width"  (click)="search()" >查询</button>
+        <button   ejs-button cssClass="e-info mat-width"  (click)="close()" >关闭</button>
+      </div>
+    </div>
+  </form>
+
+</div>
+<div>
+  <div class="searchtit">查询结果</div>
+  <table mat-table [dataSource]="customeraddressdatasource" class="searchtable">
+    <ng-container matColumnDef="VehicelId">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element">
+        <ejs-tooltip #tooltip content='点击选择这个车辆'  position="BottomCenter" style="padding-left:0!important;padding-right:0!important;">
+          <button ejs-button cssClass="e-flat" [isPrimary]="true" style="padding-left:0!important;padding-right:0!important;"
+                  (click)="chosevehicel(element)">使用</button>
+        </ejs-tooltip>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="VehicelName">
+      <th mat-header-cell *matHeaderCellDef> 车辆名称. </th>
+      <td mat-cell *matCellDef="let element"> {{element.VehicelName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="StatuedDesc">
+      <th mat-header-cell *matHeaderCellDef> 状态. </th>
+      <td mat-cell *matCellDef="let element"> {{element.StatuedDesc}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="PrimaryDriverName">
+      <th mat-header-cell *matHeaderCellDef> 主驾驶员. </th>
+      <td mat-cell *matCellDef="let element"> {{element.PrimaryDriverName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ContainerModelName">
+      <th mat-header-cell *matHeaderCellDef> 车型. </th>
+      <td mat-cell *matCellDef="let element"> {{element.ContainerModelName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Volumecapacity">
+      <th mat-header-cell *matHeaderCellDef> 容积. </th>
+      <td mat-cell *matCellDef="let element"> {{element.Volumecapacity}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Weightcapacity">
+      <th mat-header-cell *matHeaderCellDef> 载重. </th>
+      <td mat-cell *matCellDef="let element"> {{element.Weightcapacity}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+  </table>
+  <div class="mat-table__bottom">
+
+<!--    <mat-spinner [diameter]="20" *ngIf="dataSource.loading$ | async"></mat-spinner>-->
+
+    <mat-paginator [pageIndex]="pageindex" [length]="pagelength" showFirstLastButtons></mat-paginator>
+
+<!--    <mat-paginator [pageSize]="10" [pageSizeOptions]="[3, 5, 10]" [length]="dataSource.paginatorTotal$ | async" [showFirstLastButtons]="true"></mat-paginator>-->
+  </div>
+
+</div>
+

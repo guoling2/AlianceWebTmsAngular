@@ -23,10 +23,11 @@ import { SignViewChangeDirective } from './signlist/sign-view-change.directive';
 import { DivFlexDirective } from './signlist/div-flex.directive';
 import { InsidePlanGroupCreateComponent } from './groupforInside/create/create.component';
 import { CircletriplistComponent } from './circletriplist/circletriplist.component';
-import { SendcarfeedetailinsertComponent } from './groupforInside/create/sub/sendcarfeedetailinsert/sendcarfeedetailinsert.component';
+import { SendcarfeedetailinsertComponent } from './sub/sendcarfeedetailinsert/sendcarfeedetailinsert.component';
 import {ShipplangroupModule} from '../../buinesscomponent/shipplangroup/shipplangroup.module';
 import {GroundforinsideModule} from './groupforInside/groundforinside.module';
 import { BenditihuolistComponent } from './benditihuolist/benditihuolist.component';
+import { TihuoinsertComponent } from './benditihuolist/tihuoinsert/tihuoinsert.component';
 
 
 
@@ -91,7 +92,7 @@ const routes: Routes = [
 
    ],
   // tslint:disable-next-line:max-line-length
-  declarations: [ShiplentplanComponent, ShipmentlistComponent, CarryingStatuedPipePipe, CarryingTaskPipePipe, TglistComponent, XiecheComponent, CreateShipmentPlanComponent, XiechescanComponent, SignlistComponent, AddComponent, DetailComponent, NoselectedComponent, SignViewChangeDirective, DivFlexDirective, CircletriplistComponent, SendcarfeedetailinsertComponent, BenditihuolistComponent],
+  declarations: [ShiplentplanComponent, ShipmentlistComponent, CarryingStatuedPipePipe, CarryingTaskPipePipe, TglistComponent, XiecheComponent, CreateShipmentPlanComponent, XiechescanComponent, SignlistComponent, AddComponent, DetailComponent, NoselectedComponent, SignViewChangeDirective, DivFlexDirective, CircletriplistComponent, SendcarfeedetailinsertComponent, BenditihuolistComponent, TihuoinsertComponent],
   entryComponents: [CreateShipmentPlanComponent, AddComponent, DetailComponent, NoselectedComponent]
 })
 export class ShipmentModule { }

@@ -20,7 +20,7 @@ import {
   MatInputModule,
   MatListModule,
   MatMenuModule,
-  MatNativeDateModule,
+  MatNativeDateModule, MatPaginatorIntl,
   MatPaginatorModule,
   MatProgressBarModule,
   MatProgressSpinnerModule,
@@ -40,8 +40,14 @@ import {
   MatTreeModule,
 } from '@angular/material';
 import {FontawesomemoduleModule} from './extensions/fontawesomemodule.module';
+import {ChinesePaginatorIntl} from '../mycomonent/tmspagination/mat-paginator-config';
 
 @NgModule({
+  providers: [
+
+    { provide: MatPaginatorIntl, useValue: ChinesePaginatorIntl() }
+
+  ],
   exports: [
     CdkTableModule,
     CdkTreeModule,
@@ -83,4 +89,5 @@ import {FontawesomemoduleModule} from './extensions/fontawesomemodule.module';
     FontawesomemoduleModule
   ]
 })
+
 export class MaterialComponentsModule { }

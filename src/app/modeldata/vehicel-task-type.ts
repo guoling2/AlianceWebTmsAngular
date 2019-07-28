@@ -15,7 +15,13 @@ export class VehicelTaskTypeDataSource {
     new VehicelTaskType('3', '专线配载'),
     new VehicelTaskType('4', '中转外包'), ];
 
+  /**
+   * 小车提货
+   */
+  public XieCheTihuo(): VehicelTaskType{
 
+    return  this.selecttasktype('1');
+  }
   public  selecttasktype(id: string): VehicelTaskType {
 
     return  this.VehicelTaskTypeGroup.find(t => t.TaskTypeId === id);
