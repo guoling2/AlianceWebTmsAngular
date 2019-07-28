@@ -20,6 +20,10 @@ export class Vehicelmodel {
    */
   PrimaryDriverName: string;
   /**
+   * 驾驶联系电话
+   */
+  PrimaryDriverTel: string;
+  /**
    * 车型
    */
   ContainerModelName: string;

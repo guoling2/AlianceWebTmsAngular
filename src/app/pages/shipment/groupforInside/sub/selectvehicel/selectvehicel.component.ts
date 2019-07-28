@@ -38,26 +38,26 @@ export class SelectvehicelComponent implements OnInit {
 
     this.customeraddressdatasource = [
       // tslint:disable-next-line:max-line-length
-      { VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      { VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      { VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      { VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      { VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      { VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      { VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      { VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      { VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      { VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      { VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      { VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      { VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      { VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      { VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      { VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      { VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      { VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      { VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      { VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2}
+      {PrimaryDriverTel:'15865638660' ,VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
+      { PrimaryDriverTel:'15865638660' ,VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
+      {PrimaryDriverTel:'15865638660' , VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
+      { PrimaryDriverTel:'15865638660' ,VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
+      {PrimaryDriverTel:'15865638660' , VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
+      {PrimaryDriverTel:'15865638660' , VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
+      { PrimaryDriverTel:'15865638660' ,VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
+      { PrimaryDriverTel:'15865638660' ,VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
+      {PrimaryDriverTel:'15865638660' , VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
+      { PrimaryDriverTel:'15865638660' ,VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
+      {PrimaryDriverTel:'15865638660' , VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
+      {PrimaryDriverTel:'15865638660' , VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
+      { PrimaryDriverTel:'15865638660' ,VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
+      {PrimaryDriverTel:'15865638660' , VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
+      { PrimaryDriverTel:'15865638660' ,VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
+      { PrimaryDriverTel:'15865638660' ,VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
+      { PrimaryDriverTel:'15865638660' ,VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
+      {PrimaryDriverTel:'15865638660' , VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
+      { PrimaryDriverTel:'15865638660' ,VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
+      { PrimaryDriverTel:'15865638660' ,VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2}
       ];
     this.pageindex = 0;
     this.pagelength = 25;
@@ -65,6 +65,7 @@ export class SelectvehicelComponent implements OnInit {
 
   chosevehicel(element: Vehicelmodel) {
 
+    this.dialogRef.close(element);
   }
 
   close() {

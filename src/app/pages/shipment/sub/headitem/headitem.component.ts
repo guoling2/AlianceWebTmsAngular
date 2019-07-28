@@ -14,6 +14,8 @@ import {CustomerTaxServiceService} from '../../../../services/customers/customer
 import {DialogservicesService} from '../../../../help/dialogservices.service';
 import {SelectvehicelComponent} from '../../groupforInside/sub/selectvehicel/selectvehicel.component';
 import {SelectdriverComponent} from '../../groupforInside/sub/selectdriver/selectdriver.component';
+import {Vehicelmodel} from '../../../../models/vehiclemanagement/vehicelmodel';
+import {LogisticStore} from '../../../../models/LogisticStore/logistic-store';
 
 @Component({
   selector: 'app-shipmentplan-insert-headitem',
@@ -74,8 +76,20 @@ export class HeaditemComponent implements OnInit  {
       disableClose: false,
       data: ''
     });
+   // (value: LogisticStore[])
+    dialogRef.afterClosed().subscribe((result: Vehicelmodel) => {
 
-    dialogRef.afterClosed().subscribe(result => {
+      if (result != null) {
+
+
+        this.saveform.patchValue({CarringToolId: result.VehicelId});
+        this.saveform.patchValue({CarryingToolName: result.VehicelName});
+        this.saveform.patchValue({ShipmentUserId: result.PrimaryDriverId});
+        this.saveform.patchValue({ShipmentUserDesc: result.PrimaryDriverName});
+        this.saveform.patchValue({ShipmentUserLinkTel: result.PrimaryDriverTel});
+        console.log(result);
+       // this.saveform.patchValue('CarringToolId', result);
+      }
 
 
 
