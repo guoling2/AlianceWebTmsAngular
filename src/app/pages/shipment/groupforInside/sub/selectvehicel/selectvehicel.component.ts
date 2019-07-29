@@ -1,7 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogRef, PageEvent} from '@angular/material';
 import {Vehicelmodel} from '../../../../../models/vehiclemanagement/vehicelmodel';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {BaseVehicelServiceService} from '../../../../../services/vehiclemanagement/base-vehicel-service.service';
+import {PageQueryResult} from '../../../../../models/page-query-result';
 
 @Component({
   selector: 'app-selectvehicel',
@@ -22,45 +24,31 @@ export class SelectvehicelComponent implements OnInit {
   customeraddressdatasource: Vehicelmodel[] = [];
 
   constructor(
+              private vehicelServiceService: BaseVehicelServiceService,
               private fb: FormBuilder,
               public dialogRef: MatDialogRef<SelectvehicelComponent>,
               @Inject(MAT_DIALOG_DATA) public parameter: string) { }
 
   ngOnInit() {
     this.form = this.fb.group({
-      VehicelName: '' ,
-      Volumecapacity: '',
-      Weightcapacity: ''
+      vehicelName: '' ,
+      weightcapacity: '',
+      volumecapacity: '',
+      pageindex: this.pageindex,
+      pagesize: 50
     });
   }
 
-  search() {
+  search(pageindex: number) {
 
-    this.customeraddressdatasource = [
-      // tslint:disable-next-line:max-line-length
-      {PrimaryDriverTel:'15865638660' ,VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      { PrimaryDriverTel:'15865638660' ,VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      {PrimaryDriverTel:'15865638660' , VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      { PrimaryDriverTel:'15865638660' ,VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      {PrimaryDriverTel:'15865638660' , VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      {PrimaryDriverTel:'15865638660' , VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      { PrimaryDriverTel:'15865638660' ,VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      { PrimaryDriverTel:'15865638660' ,VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      {PrimaryDriverTel:'15865638660' , VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      { PrimaryDriverTel:'15865638660' ,VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      {PrimaryDriverTel:'15865638660' , VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      {PrimaryDriverTel:'15865638660' , VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      { PrimaryDriverTel:'15865638660' ,VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      {PrimaryDriverTel:'15865638660' , VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      { PrimaryDriverTel:'15865638660' ,VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      { PrimaryDriverTel:'15865638660' ,VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      { PrimaryDriverTel:'15865638660' ,VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      {PrimaryDriverTel:'15865638660' , VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      { PrimaryDriverTel:'15865638660' ,VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2},
-      { PrimaryDriverTel:'15865638660' ,VehicelId: '1', VehicelName: '鲁F123456', StatuedDesc: '闲置', PrimaryDriverName: '郭亮', PrimaryDriverId: '12346', ContainerModelName: '2米3吨', Volumecapacity: 1, Weightcapacity: 2}
-      ];
-    this.pageindex = 0;
-    this.pagelength = 25;
+    this.form.patchValue({pageindex: pageindex+1});
+
+    this.vehicelServiceService.Search(this.form.getRawValue()).subscribe((a: PageQueryResult<Vehicelmodel[]>) => {
+      this.customeraddressdatasource = a.QueryResult;
+      this.pagelength = a.TotalCount;
+       this.pageindex = a.PageIndex -1;
+    });
+
   }
 
   chosevehicel(element: Vehicelmodel) {
@@ -70,5 +58,9 @@ export class SelectvehicelComponent implements OnInit {
 
   close() {
     this.dialogRef.close();
+  }
+
+  changepage($event: PageEvent) {
+    this.search( $event.pageIndex);
   }
 }

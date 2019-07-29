@@ -6,17 +6,17 @@
     <div fxLayout="row" fxLayoutAlign="space-between end" class="marginT">
       <div fxFlex="85" class="customar">
         <mat-form-field>
-          <label><input matInput placeholder="车辆名称" formControlName="VehicelName"></label>
+          <label><input matInput placeholder="车辆名称" formControlName="vehicelName"></label>
         </mat-form-field>
         <mat-form-field>
-          <label><input matInput placeholder="最小容积" formControlName="Volumecapacity"></label>
+          <label><input matInput placeholder="最小容积" formControlName="volumecapacity"></label>
         </mat-form-field>
         <mat-form-field>
-          <label><input matInput placeholder="最小载重" formControlName="Weightcapacity"></label>
+          <label><input matInput placeholder="最小载重" formControlName="weightcapacity"></label>
         </mat-form-field>
       </div>
       <div fxFlex="15" class="customar" style="margin-bottom:15px;text-align:right">
-        <button   ejs-button cssClass="e-info mat-width"  (click)="search()" >查询</button>
+        <button   ejs-button cssClass="e-info mat-width"  (click)="search(0)" >查询</button>
         <button   ejs-button cssClass="e-info mat-width"  (click)="close()" >关闭</button>
       </div>
     </div>
@@ -31,7 +31,7 @@
       <td mat-cell *matCellDef="let element">
         <ejs-tooltip #tooltip content='点击选择这个车辆'  position="BottomCenter" style="padding-left:0!important;padding-right:0!important;">
           <button ejs-button cssClass="e-flat" [isPrimary]="true" style="padding-left:0!important;padding-right:0!important;"
-                  (click)="chosevehicel(element)">使用</button>
+                  (click)="chosevehicel(element)">{{element.VehicelId}}</button>
         </ejs-tooltip>
       </td>
     </ng-container>
@@ -72,7 +72,7 @@
 
 <!--    <mat-spinner [diameter]="20" *ngIf="dataSource.loading$ | async"></mat-spinner>-->
 
-    <mat-paginator [pageIndex]="pageindex" [length]="pagelength" showFirstLastButtons></mat-paginator>
+    <mat-paginator (page)="changepage($event)" [pageIndex]="pageindex" [length]="pagelength" showFirstLastButtons></mat-paginator>
 
 <!--    <mat-paginator [pageSize]="10" [pageSizeOptions]="[3, 5, 10]" [length]="dataSource.paginatorTotal$ | async" [showFirstLastButtons]="true"></mat-paginator>-->
   </div>

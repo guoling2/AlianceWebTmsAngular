@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {BehaviorSubject} from 'rxjs';
 import {LogisticStore} from '../../../../models/LogisticStore/logistic-store';
 import {ActivatedRoute} from '@angular/router';
 import {VehicelTaskTypeDataSource} from '../../../../modeldata/vehicel-task-type';
+import {GroupOrderAtionModel} from '../group-order-ation-model';
 
 @Component({
   selector: 'app-app-shipmentinsidegroup-create',
@@ -14,6 +15,10 @@ export class InsidePlanGroupCreateComponent implements OnInit {
 
   public saveform: FormGroup;
   vehicelTaskTypeDataSource = new VehicelTaskTypeDataSource();
+
+
+
+
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute) { }
 
