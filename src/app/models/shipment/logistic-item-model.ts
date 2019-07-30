@@ -1,8 +1,8 @@
-import {TmsDataEntity} from '../../../../models/tms-data-entity';
+import {TmsDataEntity} from '../tms-data-entity';
 
 export class LogisticItemModel extends TmsDataEntity{
 
-  ShipmentId:string;
+  ShipmentId: string;
 
   ShipmentPlanId: string;
 
@@ -22,9 +22,9 @@ export class LogisticItemModel extends TmsDataEntity{
 
   ActionStoreName: string;
 
-  EndArea: string;
+  NextArea: string;
 
-  EndStoreName: string;
+  NextStoreName: string;
 
   PlanOrderItemCount: number;
 

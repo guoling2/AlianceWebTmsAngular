@@ -169,26 +169,22 @@ export class BenditihuolistComponent implements OnInit {
 
     if ($event.checked === false) {
 
+      if ($event.selectedRowIndexes.length === 0) {
+        this.alreadyloadshipmentdatasource = [];
+      }
       const deleteindex = [];
 
-      selectredord.forEach(a => {
 
-        const dele = this.alreadyloadshipmentdatasource.findIndex(t => t.ShipmentId === a);
+      this.alreadyloadshipmentdatasource.forEach((item, index) => {
 
-        alert(dele);
-        if (dele !== -1) {
-          deleteindex.push(dele);
+        if (selectredord.findIndex(a => a === item.ShipmentId) === -1) {
+          deleteindex.push(index);
         }
-
-
-        });
+      });
 
       if (deleteindex.length !== 0) {
            deleteindex.forEach(a => {
-
-             alert(a);
              this.alreadyloadshipmentdatasource.splice(a, 1);
-
            });
          }
 
@@ -201,7 +197,7 @@ export class BenditihuolistComponent implements OnInit {
         const add = this.alreadyloadshipmentdatasource.findIndex(t => t.ShipmentId === a);
 
         if (add === -1) {
-        addindexs.push(add);
+        addindexs.push(a);
         }
 
       });
@@ -209,10 +205,15 @@ export class BenditihuolistComponent implements OnInit {
       if (addindexs.length > 0) {
 
         addindexs.forEach(a => {
-          this.alreadyloadshipmentdatasource.push({ShipmentId: a, UpdateModelType: UpdateModelType.Attach });
+         if ( this.alreadyloadshipmentdatasource.findIndex(t => t.ShipmentId === a) === -1) {
+           this.alreadyloadshipmentdatasource.push({ShipmentId: a, UpdateModelType: UpdateModelType.Attach });
+         }
+
         });
 
       }
     }
+
+    console.log(this.alreadyloadshipmentdatasource);
   }
 }

@@ -6,13 +6,13 @@
 <div>
   <ejs-grid #logitsticitemgrid  [editSettings]='editSettings'  allowPaging="true" >
     <e-columns>
-      <e-column field='SquenceId' headerText='序号' width='150'></e-column>
-      <e-column field='TrackServerId' headerText='物流单号' width='150'></e-column>
-      <e-column field='Origincustomname' headerText='发货客户/联系人' width='180' textAlign='Right'></e-column>
-      <e-column field='DesctcustomName' headerText=' 收货客户/联系人' width='150' textAlign='Right'></e-column>
+      <e-column field='SquenceId' headerText='序号' width='30'></e-column>
+      <e-column field='TrackServerId' headerText='物流单号' width='180'></e-column>
+      <e-column  field='OrigincustomLinkman' headerText='发货联系人' width='180' textAlign='Right'></e-column>
+      <e-column field='DestLinkman' headerText=' 收货联系人' width='150' textAlign='Right'></e-column>
       <e-column field='ActionStoreName' headerText='当前站点' width='150' textAlign='Right'></e-column>
-      <e-column field='EndStoreName' headerText='下一站' width='150' textAlign='Right'></e-column>
-      <e-column field='EndArea' headerText='到货城区' width='150' textAlign='Right'></e-column>
+      <e-column field='NextStoreName' headerText='下一站' width='150' textAlign='Right'></e-column>
+      <e-column field='NextArea' headerText='到货城区' width='150' textAlign='Right'></e-column>
       <e-column field='LogisticFee' headerText='费用' width='150' textAlign='Right'></e-column>
       <e-column field='PlanOrderItemCount' headerText='装车件数' width='150' textAlign='Right'></e-column>
       <e-column field='PlanOrderItemWeight' headerText='装车重量' width='150' textAlign='Right'></e-column>

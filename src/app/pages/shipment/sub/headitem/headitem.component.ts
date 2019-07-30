@@ -16,6 +16,7 @@ import {SelectvehicelComponent} from '../../groupforInside/sub/selectvehicel/sel
 import {SelectdriverComponent} from '../../groupforInside/sub/selectdriver/selectdriver.component';
 import {Vehicelmodel} from '../../../../models/vehiclemanagement/vehicelmodel';
 import {LogisticStore} from '../../../../models/LogisticStore/logistic-store';
+import {LogisticItemComponentService} from '../../../../services/logistic/shipment/logistic-item-service.component';
 
 @Component({
   selector: 'app-shipmentplan-insert-headitem',
@@ -34,7 +35,9 @@ export class HeaditemComponent implements OnInit  {
   public saveform: FormGroup;
 
 
-  constructor( private fb: FormBuilder,
+  constructor(
+               private itemServiceService: LogisticItemComponentService,
+               private fb: FormBuilder,
                private dialog: MatDialog,
                public emitService: EmitService,
                private  dialogx: DialogservicesService) { }
@@ -58,11 +61,30 @@ export class HeaditemComponent implements OnInit  {
 
     this.saveform.addControl('ShipmentUserLinkTel', new FormControl());
 
-    this.saveform.addControl('SendOrderCount', new FormControl(0));
-    this.saveform.addControl('SendOrderWeight', new FormControl(0));
-    this.saveform.addControl('SendOrderVol', new FormControl(0));
+    this.saveform.addControl('SendOrderCount', new FormControl({value: 0, disabled: false}));
+    this.saveform.addControl('SendOrderWeight', new FormControl({value: 0, disabled: false}));
+    this.saveform.addControl('SendOrderVol', new FormControl({value: 0, disabled: false}));
 
     this.saveform.addControl('Mark', new FormControl());
+
+    this.itemServiceService.LogisiticItemAddBehavior.subscribe(next => {
+
+      if (next == null) {
+        return;
+      }
+        console.log('headitem');
+        const ordercount = <number>this.saveform.controls['SendOrderCount'].value;
+
+        console.log(ordercount);
+      console.log(next);
+        this.saveform.patchValue({SendOrderCount: next.PlanOrderItemCount + ordercount});
+
+      this.saveform.addControl('SendOrderCount', new FormControl(0));
+      this.saveform.addControl('SendOrderWeight', new FormControl(0));
+      this.saveform.addControl('SendOrderVol', new FormControl(0));
+
+
+    });
   }
 
   /**
