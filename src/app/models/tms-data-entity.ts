@@ -13,5 +13,8 @@ export enum UpdateModelType {
   Insert = 1,
   Update = 2,
   Delete = 3,
-  Attach= 4
+  //附加
+  Attach= 4,
+  //取消附加
+  CancelAttach
 }

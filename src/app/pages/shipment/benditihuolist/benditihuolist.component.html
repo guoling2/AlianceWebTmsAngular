@@ -27,15 +27,18 @@
       </mat-form-field>
       <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
       <button ejs-button cssClass="e-info mat-width" (click)="opentihuo()">安排提货</button>
+      已选择{{alreadyloadshipmentdatasource.length}}条数据
     </form>
 
-    <ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
+    <ejs-grid #grid
+              height="{{gridheight}}"
               [pageSettings]='pageSettings'
               (dataStateChange)="dataStateChange($event)"
               [allowExcelExport]='true'  allowSorting='false'
               [allowSelection]="true"
               [enableHover]="false"
-              (rowSelected)="senditemselected($event)"
+              [selectionSettings]="selectOptions"
+              (checkBoxChange)="checkboxchanged($event)"
               allowPaging='true'  class="contlistbox">
       <e-columns >
 
