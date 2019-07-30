@@ -36,7 +36,7 @@ export function loadConfig(oidcConfigService: OidcConfigService) {
   console.log(environment.production);
 
 
- // return () => oidcConfigService.load(`https://aliance.trandawl.cn/api/OidcSecurity/config`);
+  return () => oidcConfigService.load(`https://aliance.trandawl.cn/api/OidcSecurity/config`);
 
   if (environment.production) {
 

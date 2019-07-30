@@ -72,16 +72,14 @@ export class HeaditemComponent implements OnInit  {
       if (next == null) {
         return;
       }
-        console.log('headitem');
+
         const ordercount = <number>this.saveform.controls['SendOrderCount'].value;
+        const SendOrderWeight = <number>this.saveform.controls['SendOrderWeight'].value;
+        const SendOrderVol = <number>this.saveform.controls['SendOrderVol'].value;
 
-        console.log(ordercount);
-      console.log(next);
         this.saveform.patchValue({SendOrderCount: next.PlanOrderItemCount + ordercount});
-
-      this.saveform.addControl('SendOrderCount', new FormControl(0));
-      this.saveform.addControl('SendOrderWeight', new FormControl(0));
-      this.saveform.addControl('SendOrderVol', new FormControl(0));
+        this.saveform.patchValue({SendOrderWeight: next.PlanOrderItemWeight + SendOrderWeight});
+        this.saveform.patchValue({SendOrderVol: next.PlanOrderItemVol + SendOrderVol});
 
 
     });
