@@ -105,6 +105,9 @@ export class HeaditemComponent implements OnInit  {
    */
   selectvehicel($event: MouseEvent, height: string, width: string) {
 
+    if($event.clientX==0){
+      return;
+    }
     const dialogRef = this.dialog.open(SelectvehicelComponent, {
       height: height,
       width: width,
