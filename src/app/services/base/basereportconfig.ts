@@ -52,5 +52,10 @@ export class Basereportconfig {
    * 物流小车提货
    */
   public  static  Report_localtihuolist = 'logisticlocaltihuo';
+  /**
+   * 派车运输
+   */
+  public  static  Report_senditemlist = 'logisticsenditem';
+
 
 }

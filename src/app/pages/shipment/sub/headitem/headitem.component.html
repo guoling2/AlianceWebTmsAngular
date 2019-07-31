@@ -1,35 +1,51 @@
 <div>
-<form [formGroup]="saveform">
-
-<div>
-  派车单号  <ejs-textbox formControlName="ShipmentGroupId" placeholder="系统生成"></ejs-textbox>
-  车辆任务  <ejs-textbox formControlName="TaskTypeDesc" disabled></ejs-textbox>
-  派车时间  <ejs-datetimepicker format='yyyy-MM-dd HH:mm'  formControlName="SendCarTime"></ejs-datetimepicker>
-</div>
-
-  <div>
-    车牌号
-              <ejs-textbox formControlName="CarryingToolName" readonly="readonly" placeholder=""></ejs-textbox>
-    <div style="float: right;padding-top:15px">
-      <button ejs-button cssClass="e-small" (click)="selectvehicel($event,'600px','600px')"><i class="fas fa-search"></i></button>
+  <form [formGroup]="saveform">
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+      <div fxFlex="32">派车单号  <ejs-textbox formControlName="ShipmentGroupId" placeholder="系统生成" readonly="readonly"></ejs-textbox></div>
+      <div fxFlex="32">车辆任务  <ejs-textbox formControlName="TaskTypeDesc"  readonly="readonly"></ejs-textbox></div>
+      <div fxFlex="32">派车时间  <ejs-datetimepicker format='yyyy-MM-dd HH:mm'  formControlName="SendCarTime"></ejs-datetimepicker></div>
     </div>
-    司机
-
-
-              <ejs-textbox formControlName="ShipmentUserDesc" readonly="readonly"  placeholder=""></ejs-textbox>
-    <div style="float: right;padding-top:15px">
-      <button style="display: none;" ejs-button cssClass="e-small" (click)="selectdriver($event,'400px','400px')"><i class="fas fa-search"></i></button>
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+      <div fxFlex="32">
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div fxFlex="88">车牌号<ejs-textbox formControlName="CarryingToolName" readonly="readonly" placeholder=""></ejs-textbox></div>
+          <div fxFlex="9" style="float:right;padding-top:15px">
+            <button ejs-button cssClass="e-small" (click)="selectvehicel($event,'600px','600px')"><i class="fas fa-search"></i></button>
+          </div>
+        </div>
+      </div>
+      <div fxFlex="32">
+        司机<ejs-textbox formControlName="ShipmentUserDesc" readonly="readonly"  placeholder=""></ejs-textbox>
+        <div style="float: right;padding-top:15px">
+          <button style="display: none;" ejs-button cssClass="e-small" (click)="selectdriver($event,'400px','400px')"><i class="fas fa-search"></i></button>
+        </div>
+      </div>
+      <div fxFlex="32">司机电话 <ejs-textbox formControlName="ShipmentUserLinkTel"></ejs-textbox></div>
     </div>
-    司机电话 <ejs-textbox formControlName="ShipmentUserLinkTel"></ejs-textbox>
-  </div>
-
-运输件数  <ejs-numerictextbox step='1' min="0" formControlName="SendOrderCount" readonly="readonly" ></ejs-numerictextbox>(件)
-运输重量  <ejs-numerictextbox step='1' min="0" formControlName="SendOrderWeight" readonly="readonly" ></ejs-numerictextbox>(T)
-运输体积  <ejs-numerictextbox step='1' min="0" formControlName="SendOrderVol" readonly="readonly" ></ejs-numerictextbox>(M3)
-  运费分摊方式  <app-biz-groupfeeblance formControlName="PriceBlaceMethod"></app-biz-groupfeeblance>
-<!--应付合计   <ejs-numerictextbox step='1' min="0" formControlName="PackageHigh"></ejs-numerictextbox>-->
-
-运输备注
-  <ejs-textbox formControlName="Mark" placeholder="运输备注" multiline="true" showClearButton="true"></ejs-textbox>
-</form>
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+      <div fxFlex="32">
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div fxFlex="92">运输件数  <ejs-numerictextbox step='1' min="0" formControlName="SendOrderCount" readonly="readonly" ></ejs-numerictextbox></div>
+          <div fxFlex="8" style="text-align: right">(件)</div>
+        </div>
+      </div>
+      <div fxFlex="32">
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div fxFlex="92">运输重量  <ejs-numerictextbox step='1' min="0" formControlName="SendOrderWeight" readonly="readonly" ></ejs-numerictextbox></div>
+          <div fxFlex="8" style="text-align: right">(T)</div>
+        </div>
+      </div>
+      <div fxFlex="32">
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div fxFlex="90">运输体积  <ejs-numerictextbox step='1' min="0" formControlName="SendOrderVol" readonly="readonly" ></ejs-numerictextbox></div>
+          <div fxFlex="10" style="text-align: right">(M3)</div>
+        </div>
+      </div>
+    <!--应付合计   <ejs-numerictextbox step='1' min="0" formControlName="PackageHigh"></ejs-numerictextbox>-->
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+      <div fxFlex="32" style="margin-top:20px;vertical-align:bottom"> 运费分摊方式  <app-biz-groupfeeblance formControlName="PriceBlaceMethod"></app-biz-groupfeeblance></div>
+      <div fxFlex="66">运输备注<ejs-textbox formControlName="Mark" placeholder="运输备注" multiline="true" showClearButton="true"></ejs-textbox></div>
+    </div>
+  </form>
 </div>

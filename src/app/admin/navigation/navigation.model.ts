@@ -85,7 +85,7 @@ export class NavigationModel {
             },
             {
               'id': 'wuliu10-1',
-              'title': '小车提货(外包)',
+              'title': '提货外包',
               'type': 'item',
               'url': '/biz/shipment/benditihuoclist'
             },
@@ -93,25 +93,25 @@ export class NavigationModel {
               'id': 'wuliu11',
               'title': '网点送货',
               'type': 'item',
-              'url': '/biz/shipment/tglist'
+              'url': '/biz/shipment/songhuo'
             },
             {
               'id': 'wuliu22',
               'title': '网点转运',
               'type': 'item',
-              'url': '/biz/shipment/circletrip'
+              'url': '/biz/shipment/transfer'
             },
             {
               'id': 'wuliu22-1',
               'title': '大车直送',
               'type': 'item',
-              'url': '/biz/shipment/circletrip'
+              'url': '/biz/shipment/circletriptrip'
             },
             {
               'id': 'wuliu22-2',
               'title': '中转外包',
               'type': 'item',
-              'url': '/biz/shipment/circletrip'
+              'url': '/biz/shipment/outer'
             },
             {
               'id': 'wuliu23',

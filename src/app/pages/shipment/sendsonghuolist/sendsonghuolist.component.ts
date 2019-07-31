@@ -1,32 +1,33 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {
   CheckBoxChangeEventArgs,
   DataStateChangeEventArgs,
-  PageSettingsModel,
-  RowDeselectEventArgs,
+  GridComponent,
+  PageSettingsModel, RowDeselectEventArgs,
   RowSelectEventArgs,
   SelectionSettingsModel
-} from '@syncfusion/ej2-grids';
-import {Commonsetting} from '../../../help/commonsetting';
-import {Basereportconfig} from '../../../services/base/basereportconfig';
+} from '@syncfusion/ej2-angular-grids';
+import {BehaviorSubject} from 'rxjs';
+import {GroupOrderAtionModel} from '../groupforInside/group-order-ation-model';
 import {ShipplanService} from '../../../services/logistic/shipment/shipplan.service';
 import {DialogservicesService} from '../../../help/dialogservices.service';
 import {MyShpipmentOrderService} from '../../../services/logistic/shipment/myshpipmentorderService';
 import {EmitService} from '../../../help/emit-service';
-import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {MatDialog} from '@angular/material';
 import {Basereportservice} from '../../../services/base/basereportservice';
-import {GridComponent} from '@syncfusion/ej2-angular-grids';
-import {BehaviorSubject} from 'rxjs';
-import {GroupOrderAtionModel} from '../groupforInside/group-order-ation-model';
-import {UpdateModelType} from 'src/app/models/tms-data-entity';
+import {Commonsetting} from '../../../help/commonsetting';
+import {Basereportconfig} from '../../../services/base/basereportconfig';
+import {UpdateModelType} from '../../../models/tms-data-entity';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
-  selector: 'app-benditihuolist',
-  templateUrl: './benditihuolist.component.html',
-  styleUrls: ['./benditihuolist.component.css']
+  selector: 'app-biz-sendsonghuolist',
+  templateUrl: './sendsonghuolist.component.html',
+  styleUrls: ['./sendsonghuolist.component.css']
 })
-export class BenditihuolistComponent implements OnInit {
+export class SendsonghuolistComponent implements OnInit {
+
   gridheight: number;
   searchp: FormGroup;
   @ViewChild('grid', {static: false})
@@ -39,21 +40,53 @@ export class BenditihuolistComponent implements OnInit {
 
   public alreadyloadshipmentdatasource: GroupOrderAtionModel[] = [];
 
+  public  Title: string;
 
-  constructor(private  shipplanService: ShipplanService,
+  @Input()
+  public taskType: string;
+
+
+  constructor(
+              private route: ActivatedRoute,
+              private  shipplanService: ShipplanService,
               private  dialogx: DialogservicesService,
               private  myShpipmentOrderService: MyShpipmentOrderService,
               public emitService: EmitService, private fb: FormBuilder, public dialog: MatDialog, private service: Basereportservice) { }
 
   ngOnInit() {
 
+
     this.selectOptions = { persistSelection: true };
 
     this.pageSettings = {pageSize: 50};
-   // this.grid.pageSettings.pageSize = 100;
+    // this.grid.pageSettings.pageSize = 100;
     this.searchp = this.fb.group(
-      { OrderTrackServerId: '', PlanStatuedId: ''});
+      { OrderTrackServerId: '', PlanStatuedId: '', TaskType: this.taskType});
     this.gridheight = Commonsetting.GridHeight3();
+
+
+    switch ( this.taskType) {
+      case 'songhuo': // 网点送货
+        this.Title = '网点送货';
+        break;
+      case 'transfer': // 网点转运
+        this.Title = '网点转运';
+        break;
+      case 'circletriptrip': // 大车直送
+        this.Title = '大车直送';
+        break;
+      case 'outer':  // 中转外包
+        this.Title = '中转外包';
+        break;
+      default:
+        break;
+    }
+
+    this.searchp.patchValue({TaskType: this.taskType});
+
+
+    this.searching();
+
     // this.grid.pageSettings={currentPage:1,pageSize:2};
   }
 
@@ -64,7 +97,7 @@ export class BenditihuolistComponent implements OnInit {
     searchable.pageindex = pagesetting.currentPage;
     searchable.pagesize = pagesetting.pageSize;
 
-    this.service.SearchReport(Basereportconfig.Report_localtihuolist, searchable).subscribe(result => {
+    this.service.SearchReport(Basereportconfig.Report_senditemlist, searchable).subscribe(result => {
 
       this.grid.dataSource = result;
       console.log('加载数据了');
@@ -92,7 +125,7 @@ export class BenditihuolistComponent implements OnInit {
     if (selectedrows.length === 0) {
       return;
     }
-   // this.tabselected.setValue(1);
+    this.tabselected.setValue(1);
 
     for (let index = 0; index < selectedrows.length; index++) {
 
@@ -106,8 +139,6 @@ export class BenditihuolistComponent implements OnInit {
       }
 
     }
-
-    alert('添加完成');
 
 
   }
@@ -123,7 +154,7 @@ export class BenditihuolistComponent implements OnInit {
     if ($event.data === undefined) {
       return;
     }
-   // this.orderStoreSubject.next({ShipmentId: $event.data['ShipmentId'], UpdateModelType: UpdateModelType.Attach});
+    // this.orderStoreSubject.next({ShipmentId: $event.data['ShipmentId'], UpdateModelType: UpdateModelType.Attach});
 
     const shipmentId = $event.data['ShipmentId'];
 
@@ -185,10 +216,10 @@ export class BenditihuolistComponent implements OnInit {
       });
 
       if (deleteindex.length !== 0) {
-           deleteindex.forEach(a => {
-             this.alreadyloadshipmentdatasource.splice(a, 1);
-           });
-         }
+        deleteindex.forEach(a => {
+          this.alreadyloadshipmentdatasource.splice(a, 1);
+        });
+      }
 
     } else {
 
@@ -199,7 +230,7 @@ export class BenditihuolistComponent implements OnInit {
         const add = this.alreadyloadshipmentdatasource.findIndex(t => t.ShipmentId === a);
 
         if (add === -1) {
-        addindexs.push(a);
+          addindexs.push(a);
         }
 
       });
@@ -207,9 +238,9 @@ export class BenditihuolistComponent implements OnInit {
       if (addindexs.length > 0) {
 
         addindexs.forEach(a => {
-         if ( this.alreadyloadshipmentdatasource.findIndex(t => t.ShipmentId === a) === -1) {
-           this.alreadyloadshipmentdatasource.push({ShipmentId: a, UpdateModelType: UpdateModelType.Attach });
-         }
+          if ( this.alreadyloadshipmentdatasource.findIndex(t => t.ShipmentId === a) === -1) {
+            this.alreadyloadshipmentdatasource.push({ShipmentId: a, UpdateModelType: UpdateModelType.Attach });
+          }
 
         });
 
@@ -218,4 +249,5 @@ export class BenditihuolistComponent implements OnInit {
 
     console.log(this.alreadyloadshipmentdatasource);
   }
+
 }

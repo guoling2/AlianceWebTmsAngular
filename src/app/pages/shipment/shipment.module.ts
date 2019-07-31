@@ -28,6 +28,11 @@ import {ShipplangroupModule} from '../../buinesscomponent/shipplangroup/shipplan
 import {GroundforinsideModule} from './groupforInside/groundforinside.module';
 import { BenditihuolistComponent } from './benditihuolist/benditihuolist.component';
 import { TihuoinsertComponent } from './benditihuolist/tihuoinsert/tihuoinsert.component';
+import { SendsonghuolistComponent } from './sendsonghuolist/sendsonghuolist.component';
+import { SendsonghuolistforsonghuoComponent } from './sendsonghuolistforsonghuo/sendsonghuolistforsonghuo.component';
+import { SendsonghuolistfortransferComponent } from './sendsonghuolistfortransfer/sendsonghuolistfortransfer.component';
+import { SendsonghuolistforcircleriptripComponent } from './sendsonghuolistforcircleriptrip/sendsonghuolistforcircleriptrip.component';
+import { SendsonghuolistforouterComponent } from './sendsonghuolistforouter/sendsonghuolistforouter.component';
 
 
 
@@ -59,9 +64,35 @@ const routes: Routes = [
     'component': SignlistComponent
   },
   {
-    'path': 'circletrip',
-    'component': CircletriplistComponent
+    'path': 'songhuo',
+    'pathMatch': 'full',
+    'component': SendsonghuolistforsonghuoComponent
   },
+  {
+    'path': 'circletriptrip',
+    'pathMatch': 'full',
+    'component': SendsonghuolistforcircleriptripComponent
+  },
+  {
+    'path': 'transfer',
+    'pathMatch': 'full',
+    'component': SendsonghuolistfortransferComponent
+  },
+  {
+    'path': 'outer',
+    'pathMatch': 'full',
+    'component': SendsonghuolistforouterComponent
+  },
+  //
+  // {
+  //   'path': 'send/:id',
+  //
+  //   children: [
+  //    { path: 'songhuo', component: SendsonghuolistforsonghuoComponent },
+  //    { path: 'transfer', component: SendsonghuolistforcircleriptripComponent },
+  //     { path: 'outer', component: SendsonghuolistforouterComponent }
+  //      ]
+  //   },
   {
     'path': 'shipgroup-inside-create/:id',
     'component': InsidePlanGroupCreateComponent
@@ -92,7 +123,7 @@ const routes: Routes = [
 
    ],
   // tslint:disable-next-line:max-line-length
-  declarations: [ShiplentplanComponent, ShipmentlistComponent, CarryingStatuedPipePipe, CarryingTaskPipePipe, TglistComponent, XiecheComponent, CreateShipmentPlanComponent, XiechescanComponent, SignlistComponent, AddComponent, DetailComponent, NoselectedComponent, SignViewChangeDirective, DivFlexDirective, CircletriplistComponent, SendcarfeedetailinsertComponent, BenditihuolistComponent, TihuoinsertComponent],
+  declarations: [ShiplentplanComponent, ShipmentlistComponent, CarryingStatuedPipePipe, CarryingTaskPipePipe, TglistComponent, XiecheComponent, CreateShipmentPlanComponent, XiechescanComponent, SignlistComponent, AddComponent, DetailComponent, NoselectedComponent, SignViewChangeDirective, DivFlexDirective, CircletriplistComponent, SendcarfeedetailinsertComponent, BenditihuolistComponent, TihuoinsertComponent, SendsonghuolistComponent, SendsonghuolistforsonghuoComponent, SendsonghuolistfortransferComponent, SendsonghuolistforcircleriptripComponent, SendsonghuolistforouterComponent],
   entryComponents: [CreateShipmentPlanComponent, AddComponent, DetailComponent, NoselectedComponent]
 })
 export class ShipmentModule { }

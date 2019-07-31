@@ -34,6 +34,8 @@ export class HeaditemComponent implements OnInit  {
   @Input()
   public saveform: FormGroup;
 
+  @Input()
+  public tasktype:string;
 
   constructor(
                private itemServiceService: LogisticItemComponentService,
@@ -49,10 +51,10 @@ export class HeaditemComponent implements OnInit  {
     //   ShipmentUserLinkTel: ''
     // });
     // first: new FormControl({value: 'Nancy', disabled: true}, Validators.required),
-    this.saveform.addControl('ShipmentGroupId', new FormControl({value: '', disabled: true}));
+    this.saveform.addControl('ShipmentGroupId', new FormControl({value: '', disabled: false}));
     this.saveform.addControl('PriceBlaceMethod', new FormControl());
 
-
+    this.saveform.addControl('TaskTypeName' , new FormControl({value: this.tasktype, disabled: false})),
 
     this.saveform.addControl('CarringToolId', new FormControl({value: '', disabled: true}, Validators.required));
     this.saveform.addControl('CarryingToolName', new FormControl({value: '', disabled: false}, Validators.required));

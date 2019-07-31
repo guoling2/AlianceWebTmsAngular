@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {EditSettingsModel, ToolbarItems} from '@syncfusion/ej2-grids';
 import {GridComponent} from '@syncfusion/ej2-angular-grids';
 import {LogisticItemComponentService} from '../../../../services/logistic/shipment/logistic-item-service.component';
@@ -16,7 +16,14 @@ export class LogisticitemsComponent implements OnInit {
   //   { id: 'Bottom', newRowPosition: 'Bottom' }
   // ];
   //
+  @Input()
+  public showdelbtn = false;
 
+  @Input()
+  public showaddbtn = false;
+
+  @Input()
+  public showspliter = false;
 
   @ViewChild('logitsticitemgrid', {static: true})
   public grid: GridComponent;

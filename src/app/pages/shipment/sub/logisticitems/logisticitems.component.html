@@ -1,22 +1,22 @@
-
-<button ejs-button cssClass="e-info mat-width" (click)="reload()">添单</button>
-<button ejs-button cssClass="e-info mat-width">删单</button>
-<button ejs-button cssClass="e-info mat-width">拆单</button>
-
+<div class="itemsbtn">
+<button ejs-button cssClass="e-info mat-width" class="mat-green" (click)="reload()" *ngIf="showaddbtn" >添单</button>
+<button ejs-button cssClass="e-info mat-width" class="mat-reject" *ngIf="showdelbtn">删单</button>
+<button ejs-button cssClass="e-info mat-width" class="mat-deepblue" *ngIf="showspliter">拆单</button>
+</div>
 <div>
   <ejs-grid #logitsticitemgrid  [editSettings]='editSettings'  allowPaging="true" >
     <e-columns>
-      <e-column field='SquenceId' headerText='序号' width='30'></e-column>
-      <e-column field='TrackServerId' headerText='物流单号' width='180'></e-column>
-      <e-column  field='OrigincustomLinkman' headerText='发货联系人' width='180' textAlign='Right'></e-column>
-      <e-column field='DestLinkman' headerText=' 收货联系人' width='150' textAlign='Right'></e-column>
+      <e-column field='SquenceId' headerText='序号' width='70'></e-column>
+      <e-column field='TrackServerId' headerText='物流单号' width='160'></e-column>
+      <e-column  field='OrigincustomLinkman' headerText='发货联系人' width='120' textAlign='Right'></e-column>
+      <e-column field='DestLinkman' headerText=' 收货联系人' width='120' textAlign='Right'></e-column>
       <e-column field='ActionStoreName' headerText='当前站点' width='150' textAlign='Right'></e-column>
       <e-column field='NextStoreName' headerText='下一站' width='150' textAlign='Right'></e-column>
       <e-column field='NextArea' headerText='到货城区' width='150' textAlign='Right'></e-column>
-      <e-column field='LogisticFee' headerText='费用' width='150' textAlign='Right'></e-column>
-      <e-column field='PlanOrderItemCount' headerText='装车件数' width='150' textAlign='Right'></e-column>
-      <e-column field='PlanOrderItemWeight' headerText='装车重量' width='150' textAlign='Right'></e-column>
-      <e-column field='PlanOrderItemVol' headerText='装车体积' width='150' textAlign='Right'></e-column>
+      <e-column field='LogisticFee' headerText='费用' width='120' textAlign='Right'></e-column>
+      <e-column field='PlanOrderItemCount' headerText='装车件数' width='120' textAlign='Right'></e-column>
+      <e-column field='PlanOrderItemWeight' headerText='装车重量' width='120' textAlign='Right'></e-column>
+      <e-column field='PlanOrderItemVol' headerText='装车体积' width='120' textAlign='Right'></e-column>
     </e-columns>
   </ejs-grid>
 

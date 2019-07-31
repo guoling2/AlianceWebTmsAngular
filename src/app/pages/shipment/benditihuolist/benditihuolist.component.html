@@ -1,33 +1,33 @@
-
-
-
-
-<mat-tab-group [selectedIndex]="tabselected.value">
+<div class="contentbox">
+  <div class="contentit-l">
+    <div><i class="fas fa-compass"></i> 当前位置：<a>小车提货列表</a></div>
+  </div>
+  <div class="contenttex-r"></div>
+</div>
+<div class="bendbox">
+  <mat-tab-group [selectedIndex]="tabselected.value">
   <mat-tab label="提货列表">
     <form class="listfrom" [formGroup]="searchp" >
-
-
-
-      <mat-form-field class="col-md-3">
-        <label>
-          <input matInput  formControlName="OrderTrackServerId" />
-        </label>
-        <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
-      </mat-form-field>
-      <mat-form-field class="col-md-3 col-lefty">
-        <label>
-          <select matNativeControl  formControlName="PlanStatuedId">
-            <option label="未提货"></option>
-            <option value="10">已安排</option>
-            <option value="20">提货中</option>
-            <option value="30">已提货</option>
-          </select>
-        </label>
-        <span  matPrefix style="color: #888">任务状态：&nbsp;</span>
-      </mat-form-field>
-      <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
-      <button ejs-button cssClass="e-info mat-width" (click)="opentihuo()">安排提货</button>
-      已选择{{alreadyloadshipmentdatasource.length}}条数据
+        <mat-form-field class="col-md-3">
+          <label>
+            <input matInput  formControlName="OrderTrackServerId" />
+          </label>
+          <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
+        </mat-form-field>
+        <mat-form-field class="col-md-3 col-lefty">
+          <label>
+            <select matNativeControl  formControlName="PlanStatuedId">
+              <option label="未提货"></option>
+              <option value="10">已安排</option>
+              <option value="20">提货中</option>
+              <option value="30">已提货</option>
+            </select>
+          </label>
+          <span  matPrefix style="color: #888">任务状态：&nbsp;</span>
+        </mat-form-field>
+        <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+        <button ejs-button cssClass="e-info mat-width" class="mat-green" (click)="opentihuo()">安排提货</button>
+      <span class="sourcelength">已选择 <b>{{alreadyloadshipmentdatasource.length}}</b> 条数据</span>
     </form>
 
     <ejs-grid #grid
@@ -104,6 +104,7 @@
 
   </mat-tab>
   <mat-tab label="提货调度">
-<app-biz-tihuoinsert [orderStoreSubject]="orderStoreSubject"></app-biz-tihuoinsert>
+  <app-biz-tihuoinsert [orderStoreSubject]="orderStoreSubject"></app-biz-tihuoinsert>
   </mat-tab>
-</mat-tab-group>
+  </mat-tab-group>
+</div>
