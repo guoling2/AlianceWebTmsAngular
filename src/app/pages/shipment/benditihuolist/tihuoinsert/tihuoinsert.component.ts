@@ -21,15 +21,16 @@ export class TihuoinsertComponent implements OnInit {
   public saveform: FormGroup;
   vehicelTaskTypeDataSource = new VehicelTaskTypeDataSource();
   @Input() orderStoreSubject: BehaviorSubject<GroupOrderAtionModel>;
+
+  public tasktype: string;
   constructor( public emitService: EmitService, private logisticItemService: LogisticItemService, private itemServiceService: LogisticItemComponentService, private fb: FormBuilder, private route: ActivatedRoute) { }
 
 
   ngOnInit() {
 
-    this.saveform = this.fb.group({
-      // TaskTypeDesc: [{ value: this.vehicelTaskTypeDataSource.XieCheTihuo().TaskTypeName, disabled: false }],
-      SendCarTime: new Date()
-    });
+   // this.tasktype = this.vehicelTaskTypeDataSource.XieCheTihuo().TaskTypeName;
+
+    this.saveform = this.fb.group({});
 
 
     this.orderStoreSubject.subscribe((a: GroupOrderAtionModel) => {

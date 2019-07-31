@@ -1,7 +1,7 @@
 <div style="height:auto;padding-top:10px">
   <form [formGroup]="saveform">
 
-    <app-shipmentplan-insert-headitem [saveform]="saveform" [tasktype]="vehicelTaskTypeDataSource.XieCheTihuo()"></app-shipmentplan-insert-headitem>
+    <app-shipmentplan-insert-headitem [saveform]="saveform" tasktype="localtihuo"></app-shipmentplan-insert-headitem>
 
     <div class="tihuobtn"><button ejs-button cssClass="e-info mat-width"  (click)="savedata()">保存</button></div>
     <!--<app-shipmentplan-insert-sendcarfeedetailinsert></app-shipmentplan-insert-sendcarfeedetailinsert>-->
