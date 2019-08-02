@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { GridModule } from '@syncfusion/ej2-angular-grids';
+import {Edit, GridModule, Page} from '@syncfusion/ej2-angular-grids';
 import { ButtonModule, CheckBoxModule, RadioButtonModule} from '@syncfusion/ej2-angular-buttons';
 import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
 import { DetailRowService, PageService } from '@syncfusion/ej2-angular-grids';
@@ -50,7 +50,8 @@ export class SyncfusionModule {
 
 
   constructor() {
-    Grid.Inject(Toolbar, PdfExport, ExcelExport);
+    Grid.Inject(Edit, Toolbar, Page, PdfExport, ExcelExport);
+   // Grid.Inject(Toolbar, PdfExport, ExcelExport);
   }
 
 }

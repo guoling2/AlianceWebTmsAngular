@@ -33,6 +33,7 @@ import { SendsonghuolistforsonghuoComponent } from './sendsonghuolistforsonghuo/
 import { SendsonghuolistfortransferComponent } from './sendsonghuolistfortransfer/sendsonghuolistfortransfer.component';
 import { SendsonghuolistforcircleriptripComponent } from './sendsonghuolistforcircleriptrip/sendsonghuolistforcircleriptrip.component';
 import { SendsonghuolistforouterComponent } from './sendsonghuolistforouter/sendsonghuolistforouter.component';
+import { ShipplangroudattchlistComponent } from './sub/shipplangroudattchlist/shipplangroudattchlist.component';
 
 
 
@@ -123,7 +124,7 @@ const routes: Routes = [
 
    ],
   // tslint:disable-next-line:max-line-length
-  declarations: [ShiplentplanComponent, ShipmentlistComponent, CarryingStatuedPipePipe, CarryingTaskPipePipe, TglistComponent, XiecheComponent, CreateShipmentPlanComponent, XiechescanComponent, SignlistComponent, AddComponent, DetailComponent, NoselectedComponent, SignViewChangeDirective, DivFlexDirective, CircletriplistComponent, SendcarfeedetailinsertComponent, BenditihuolistComponent, TihuoinsertComponent, SendsonghuolistComponent, SendsonghuolistforsonghuoComponent, SendsonghuolistfortransferComponent, SendsonghuolistforcircleriptripComponent, SendsonghuolistforouterComponent],
-  entryComponents: [CreateShipmentPlanComponent, AddComponent, DetailComponent, NoselectedComponent]
+  declarations: [ShiplentplanComponent, ShipmentlistComponent, CarryingStatuedPipePipe, CarryingTaskPipePipe, TglistComponent, XiecheComponent, CreateShipmentPlanComponent, XiechescanComponent, SignlistComponent, AddComponent, DetailComponent, NoselectedComponent, SignViewChangeDirective, DivFlexDirective, CircletriplistComponent, SendcarfeedetailinsertComponent, BenditihuolistComponent, TihuoinsertComponent, SendsonghuolistComponent, SendsonghuolistforsonghuoComponent, SendsonghuolistfortransferComponent, SendsonghuolistforcircleriptripComponent, SendsonghuolistforouterComponent, ShipplangroudattchlistComponent],
+  entryComponents: [CreateShipmentPlanComponent, AddComponent, DetailComponent, NoselectedComponent, ShipplangroudattchlistComponent]
 })
 export class ShipmentModule { }

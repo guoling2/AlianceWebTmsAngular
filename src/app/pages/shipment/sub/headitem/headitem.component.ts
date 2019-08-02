@@ -62,8 +62,12 @@ export class HeaditemComponent implements OnInit  {
         break;
     }
 
+
+
+
+    this.saveform.addControl('LogisticFeeBlanceMethod', new FormControl({value: '10', disabled: false}));
+
     this.saveform.addControl('ShipmentGroupId', new FormControl({value: '', disabled: false}));
-    this.saveform.addControl('PriceBlaceMethod', new FormControl());
 
     this.saveform.addControl('SendCarTime', new FormControl({value: new Date(), disabled: false}));
 

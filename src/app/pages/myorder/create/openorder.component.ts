@@ -102,7 +102,7 @@ export class OpenMyorderComponent implements OnInit {
 
   ngOnInit() {
 
-     
+
 
     console.log(CustomePaymentMethod.Data);
     this.logisticStoreServiceService.StoreQuery().subscribe((value: LogisticStore[]) => {

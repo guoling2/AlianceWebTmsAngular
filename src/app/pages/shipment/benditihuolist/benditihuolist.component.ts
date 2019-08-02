@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {
   CheckBoxChangeEventArgs,
-  DataStateChangeEventArgs,
+  DataStateChangeEventArgs, EditSettingsModel,
   PageSettingsModel,
   RowDeselectEventArgs,
   RowSelectEventArgs,
@@ -20,7 +20,15 @@ import {GridComponent} from '@syncfusion/ej2-angular-grids';
 import {BehaviorSubject} from 'rxjs';
 import {GroupOrderAtionModel} from '../groupforInside/group-order-ation-model';
 import {UpdateModelType} from 'src/app/models/tms-data-entity';
-
+import {ej} from '@syncfusion/ej2-data/dist/global';
+import data = ej.data;
+import {AlertMessageType, EmitAlertMessage, MessageShowType} from '../../../help/emit-alert-message';
+import {SelectvehicelComponent} from '../groupforInside/sub/selectvehicel/selectvehicel.component';
+import {Vehicelmodel} from '../../../models/vehiclemanagement/vehicelmodel';
+import {ShipplangroudattchlistComponent} from '../sub/shipplangroudattchlist/shipplangroudattchlist.component';
+import {ShimentNoSendGroupView} from '../../../models/shipplangroup/shiment-no-send-group-view';
+import {ShipplanGroupInsideServiceService} from '../../../services/shiipplangroup/shipplan-group-inside-service.service';
+import { Grid, Edit, Toolbar, Page, NewRowPosition } from '@syncfusion/ej2-grids';
 @Component({
   selector: 'app-benditihuolist',
   templateUrl: './benditihuolist.component.html',
@@ -34,13 +42,16 @@ export class BenditihuolistComponent implements OnInit {
   public pageSettings: PageSettingsModel;
   tabselected = new FormControl(0);
   public selectOptions: SelectionSettingsModel;
-
+  editSettings: EditSettingsModel;
+  toolbar: [];
   orderStoreSubject: BehaviorSubject<GroupOrderAtionModel> = new BehaviorSubject<GroupOrderAtionModel>(null);
 
   public alreadyloadshipmentdatasource: GroupOrderAtionModel[] = [];
 
 
-  constructor(private  shipplanService: ShipplanService,
+  constructor(
+              private shipplanGroupInsideServiceService: ShipplanGroupInsideServiceService,
+              private  shipplanService: ShipplanService,
               private  dialogx: DialogservicesService,
               private  myShpipmentOrderService: MyShpipmentOrderService,
               public emitService: EmitService, private fb: FormBuilder, public dialog: MatDialog, private service: Basereportservice) { }
@@ -54,6 +65,12 @@ export class BenditihuolistComponent implements OnInit {
     this.searchp = this.fb.group(
       { OrderTrackServerId: '', PlanStatuedId: ''});
     this.gridheight = Commonsetting.GridHeight3();
+
+    this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Normal', newRowPosition: 'Top' };
+
+    // this.toolbar =  [ 'Delete'];
+   // this.grid.tool
+   //  toolbar: [ 'Delete']
     // this.grid.pageSettings={currentPage:1,pageSize:2};
   }
 
@@ -217,5 +234,68 @@ export class BenditihuolistComponent implements OnInit {
     }
 
     console.log(this.alreadyloadshipmentdatasource);
+  }
+
+  // 添加运单服务
+  attchitem(height, width) {
+     const datas = this.grid.getSelectedRecords();
+      if (datas.length === 0) {
+        this.emitService.eventEmit.emit(
+          new EmitAlertMessage(AlertMessageType.Error, '系统信息', '请添加运单在继续操作', MessageShowType.Toast));
+
+        return;
+      }
+
+    const dialogRef = this.dialog.open(ShipplangroudattchlistComponent, {
+      height: height,
+      width: width,
+      disableClose: false,
+      data: 'inside'
+    });
+    // (value: LogisticStore[])
+    dialogRef.afterClosed().subscribe((result: ShimentNoSendGroupView) => {
+
+      if (result != null) {
+
+
+       // shipplanGroupInsideServiceService
+
+
+
+        let resultindex = 0;
+
+
+
+
+        datas.forEach(a => {
+
+
+         resultindex++;
+
+
+               this.shipplanGroupInsideServiceService.AttchShipmentItem({
+            TaskType: '',
+            ShipmentId: a['ShipmentId'],
+            ShipmentGrpupId: result.PlanGroupId
+          }).subscribe(resultx => {
+
+
+            this.emitService.eventEmit.emit(
+              new EmitAlertMessage(AlertMessageType.Succeed, '系统信息',   resultx.Info, MessageShowType.Toast));
+
+            if (resultindex === datas.length) {
+              this.emitService.eventEmit.emit(
+                new EmitAlertMessage(AlertMessageType.Info, '系统信息',   '请手动刷新数据，技术原因', MessageShowType.Alert));
+            }
+
+
+          });
+
+          });
+
+
+      }
+
+    });
   }
 }

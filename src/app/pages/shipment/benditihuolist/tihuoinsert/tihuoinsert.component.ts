@@ -9,6 +9,10 @@ import {LogisticItemService} from '../../../../services/logistic/shipment/logist
 import {LogisticItemComponentService} from '../../../../services/logistic/shipment/logistic-item-service.component';
 import {EmitService} from '../../../../help/emit-service';
 import {AlertMessageType, EmitAlertMessage, MessageShowType} from '../../../../help/emit-alert-message';
+import {ShipplanGroupInsideServiceService} from '../../../../services/shiipplangroup/shipplan-group-inside-service.service';
+import {InsideShipmentGroupModel} from '../../../../models/shipplangroup/inside-shipment-group-model';
+import {TmsresponseStatusCode} from '../../../../models/tms-response.module';
+import {DialogservicesService} from '../../../../help/dialogservices.service';
 
 @Component({
   selector: 'app-biz-tihuoinsert',
@@ -23,7 +27,7 @@ export class TihuoinsertComponent implements OnInit {
   @Input() orderStoreSubject: BehaviorSubject<GroupOrderAtionModel>;
 
   public tasktype: string;
-  constructor( public emitService: EmitService, private logisticItemService: LogisticItemService, private itemServiceService: LogisticItemComponentService, private fb: FormBuilder, private route: ActivatedRoute) { }
+  constructor( private  dialogx: DialogservicesService, private groupInsideServiceService: ShipplanGroupInsideServiceService,  public emitService: EmitService, private logisticItemService: LogisticItemService, private itemServiceService: LogisticItemComponentService, private fb: FormBuilder, private route: ActivatedRoute) { }
 
 
   ngOnInit() {
@@ -53,7 +57,63 @@ export class TihuoinsertComponent implements OnInit {
 
   savedata() {
 
+
     console.log(this.saveform.getRawValue());
+
+
+    if( this.itemServiceService.LogisticItemSource.length===0){
+      this.emitService.eventEmit.emit(
+        new EmitAlertMessage(AlertMessageType.Error, '系统信息', '没有可以派车的托运单', MessageShowType.Toast));
+    }
+
+    const bm = this.saveform.controls['LogisticFeeBlanceMethod'].value;
+
+    if (bm === null) {
+      this.saveform.patchValue({LogisticFeeBlanceMethod: 0});
+    }
+
+    const alerter = {
+      Title: '确认',
+      Message: '是否创建派车单？',
+      ConfirmModel: true,
+      Callback: ((result: boolean) => {
+
+        if ( !result ) {
+          return;
+        }
+        try {
+           this.savedata2();
+        } finally {
+
+        }
+
+      })};
+    this.dialogx.openDialog(alerter);
+
+
+
+  }
+
+
+  savedata2() {
+
+    if (this.saveform.valid === true) {
+      this.emitService.eventEmit.emit(
+        new EmitAlertMessage(AlertMessageType.Info, '系统信息', '开始创建派车单', MessageShowType.Toast));
+
+      const model = <InsideShipmentGroupModel>this.saveform.getRawValue();
+      this.groupInsideServiceService.CreateShipplanGroup(model).subscribe(a => {
+        if (a.StatusCode === TmsresponseStatusCode.Succeed()) {
+          this.emitService.eventEmit.emit(
+            new EmitAlertMessage(AlertMessageType.Info, '系统信息', '派车单运输信息创建成功', MessageShowType.Toast));
+          this.emitService.eventEmit.emit(
+            new EmitAlertMessage(AlertMessageType.Info, '系统信息', '开始附加托运单', MessageShowType.Toast));
+        }
+      });
+    } else {
+      this.emitService.eventEmit.emit(
+        new EmitAlertMessage(AlertMessageType.Error, '系统信息', '验证失败', MessageShowType.Toast));
+    }
   }
 
 }

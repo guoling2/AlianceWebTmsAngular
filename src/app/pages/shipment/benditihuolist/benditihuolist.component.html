@@ -16,8 +16,8 @@
         </mat-form-field>
         <mat-form-field class="col-md-3 col-lefty">
           <label>
-            <select matNativeControl  formControlName="PlanStatuedId">
-              <option label="未提货"></option>
+            <select matNativeControl  formControlName="PlanStatuedId" readonly="readonly">
+              <option label="未安排"></option>
               <option value="10">已安排</option>
               <option value="20">提货中</option>
               <option value="30">已提货</option>
@@ -26,7 +26,10 @@
           <span  matPrefix style="color: #888">任务状态：&nbsp;</span>
         </mat-form-field>
         <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
-        <button ejs-button cssClass="e-info mat-width" class="mat-green" (click)="opentihuo()">安排提货</button>
+
+        <button ejs-button cssClass="e-info mat-width" class="mat-green" (click)="opentihuo()">新增派车单</button>
+        <button ejs-button cssClass="e-info mat-width" class="mat-green" (click)="attchitem('400px','600px')">添加运单</button>
+
       <span class="sourcelength">已选择 <b>{{alreadyloadshipmentdatasource.length}}</b> 条数据</span>
     </form>
 
@@ -37,20 +40,24 @@
               [allowExcelExport]='true'  allowSorting='false'
               [allowSelection]="true"
               [enableHover]="false"
+              [editSettings]="editSettings"
               [selectionSettings]="selectOptions"
               (checkBoxChange)="checkboxchanged($event)"
+              [toolbar]="toolbar"
               allowPaging='true'  class="contlistbox">
       <e-columns >
 
 
         <e-column type='checkbox' width='50'></e-column>
 
-        <e-column field='ShipmentId'  headerText='网点物流编号'   isPrimaryKey='true' width='165'></e-column>
+        <e-column field='ShipmentId'  headerText='网点物流编号'  [visible]='false'  isPrimaryKey='true' width='165'></e-column>
 
         <e-column field='SystemOrderId'  headerText='订单编号'  [visible]='false'  width='165'></e-column>
 
 
         <e-column field='OrderTrackServerId'  headerText='物流单号'  width='165'></e-column>
+
+<!--        <e-column field='ShipmentGroupId'  headerText='派车单号'  width='165'></e-column>-->
 
 
         <e-column field='Origincustomname'  headerText='发货客户'  width='165'></e-column>
