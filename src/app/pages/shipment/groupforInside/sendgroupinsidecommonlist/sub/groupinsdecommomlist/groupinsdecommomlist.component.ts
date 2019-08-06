@@ -60,7 +60,7 @@ export class GroupinsdecommomlistComponent implements OnInit {
 
     this.selectOptions = { persistSelection: true };
 
-    this.pageSettings = {pageSize: 50};
+    this.pageSettings = {pageSize: 100};
     // this.grid.pageSettings.pageSize = 100;
     this.searchp = this.fb.group(
       { OrderTrackServerId: '', PlanStatuedId: ''});

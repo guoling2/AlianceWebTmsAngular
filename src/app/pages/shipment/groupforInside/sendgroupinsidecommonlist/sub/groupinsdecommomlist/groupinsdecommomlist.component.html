@@ -18,8 +18,16 @@
   </mat-form-field>
   <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
 
-  <button ejs-button cssClass="e-info mat-width" class="mat-green" (click)="opentihuo()">新增派车单</button>
-  <button ejs-button cssClass="e-info mat-width" class="mat-green" (click)="attchitem('400px','600px')">添加运单</button>
+  <ng-container *ngIf="GroupSubItemType!='localtihuo'">
+    <button ejs-button cssClass="e-info"  (click)="opentihuo()" >新增派车单</button>
+  </ng-container>
+  <ng-container *ngIf="GroupSubItemType=='localtihuo'">
+    <button ejs-button cssClass="e-info"  (click)="opentihuo()">新增提货返仓派车单</button>
+    <button ejs-button cssClass="e-info" (click)="opentihuo()">新增直提直发派车单</button>
+  </ng-container>
+
+
+<!--  <button ejs-button cssClass="e-info" (click)="attchitem('400px','600px')">添加运单</button>-->
 
   <span class="sourcelength">已选择 <b>{{alreadyloadshipmentdatasource.length}}</b> 条数据</span>
 </form>
