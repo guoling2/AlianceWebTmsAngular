@@ -1,7 +1,7 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {EditSettingsModel, ToolbarItems} from '@syncfusion/ej2-grids';
 import {GridComponent} from '@syncfusion/ej2-angular-grids';
-import {LogisticItemComponentService} from '../../../../services/logistic/shipment/logistic-item-service.component';
+import {LogisticItemComponentService} from '../../../../../../services/logistic/shipment/logistic-item-service.component';
 
 @Component({
   selector: 'app-shipmentplan-insert-logisticitems',

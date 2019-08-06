@@ -53,6 +53,10 @@ export class Basereportconfig {
    */
   public  static  Report_localtihuolist = 'logisticlocaltihuo';
   /**
+   * 物流网点转运
+   */
+  public  static  Report_logistictransfer ='logistictransfer';
+  /**
    * 派车运输
    */
   public  static  Report_senditemlist = 'logisticsenditem';

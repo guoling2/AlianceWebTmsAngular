@@ -23,5 +23,5 @@ export class TmsResponseModle {
 
      public  StatusCode: number;
      public  Info: string;
-     public  Data ?: object[];
+     public  Data ?: any;
 }

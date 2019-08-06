@@ -1,22 +1,22 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ControlValueAccessor, FormBuilder, FormControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
-import {VehicelTaskTypeDataSource} from '../../../../modeldata/vehicel-task-type';
-import {OrderrouteplanComponent} from '../../../myorder/_sub/orderrouteplan/orderrouteplan.component';
+import {VehicelTaskTypeDataSource} from '../../../../../../modeldata/vehicel-task-type';
+import {OrderrouteplanComponent} from '../../../../../myorder/_sub/orderrouteplan/orderrouteplan.component';
 import {MatDialog} from '@angular/material';
-import {EmitService} from '../../../../help/emit-service';
+import {EmitService} from '../../../../../../help/emit-service';
 import {HttpClient} from '@angular/common/http';
-import {BusAreaService} from '../../../../services/base/bus-area.service';
-import {FormsControlServiceService} from '../../../../services/forms-control-service.service';
-import {ShipmentOrderService} from '../../../../services/logistic/order/shipment-order.service';
-import {LogisticStoreServiceService} from '../../../../services/logisticstore/logisticstoreservice';
-import {LogisticStoreAuthorizeServiceService} from '../../../../services/logisticstore/logistic-store-authorize-service.service';
-import {CustomerTaxServiceService} from '../../../../services/customers/customer-tax-service.service';
-import {DialogservicesService} from '../../../../help/dialogservices.service';
-import {SelectvehicelComponent} from '../../groupforInside/sub/selectvehicel/selectvehicel.component';
-import {SelectdriverComponent} from '../../groupforInside/sub/selectdriver/selectdriver.component';
-import {Vehicelmodel} from '../../../../models/vehiclemanagement/vehicelmodel';
-import {LogisticStore} from '../../../../models/LogisticStore/logistic-store';
-import {LogisticItemComponentService} from '../../../../services/logistic/shipment/logistic-item-service.component';
+import {BusAreaService} from '../../../../../../services/base/bus-area.service';
+import {FormsControlServiceService} from '../../../../../../services/forms-control-service.service';
+import {ShipmentOrderService} from '../../../../../../services/logistic/order/shipment-order.service';
+import {LogisticStoreServiceService} from '../../../../../../services/logisticstore/logisticstoreservice';
+import {LogisticStoreAuthorizeServiceService} from '../../../../../../services/logisticstore/logistic-store-authorize-service.service';
+import {CustomerTaxServiceService} from '../../../../../../services/customers/customer-tax-service.service';
+import {DialogservicesService} from '../../../../../../help/dialogservices.service';
+import {SelectvehicelComponent} from '../../../sub/selectvehicel/selectvehicel.component';
+import {SelectdriverComponent} from '../../../sub/selectdriver/selectdriver.component';
+import {Vehicelmodel} from '../../../../../../models/vehiclemanagement/vehicelmodel';
+import {LogisticStore} from '../../../../../../models/LogisticStore/logistic-store';
+import {LogisticItemComponentService} from '../../../../../../services/logistic/shipment/logistic-item-service.component';
 
 @Component({
   selector: 'app-shipmentplan-insert-headitem',
@@ -56,6 +56,9 @@ export class HeaditemComponent implements OnInit  {
 
       case 'localtihuo':
         this.saveform.addControl('TaskTypeDesc' , new FormControl({value: '小车提货', disabled: false}));
+        break;
+      case 'transfer':
+        this.saveform.addControl('TaskTypeDesc' , new FormControl({value: '干线运输', disabled: false}));
         break;
       default:
         this.saveform.addControl('TaskTypeDesc' , new FormControl({value: '未知', disabled: false}));

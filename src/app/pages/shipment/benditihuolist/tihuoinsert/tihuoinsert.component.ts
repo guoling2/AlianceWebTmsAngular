@@ -61,7 +61,7 @@ export class TihuoinsertComponent implements OnInit {
     console.log(this.saveform.getRawValue());
 
 
-    if( this.itemServiceService.LogisticItemSource.length===0){
+    if( this.itemServiceService.LogisticItemSource.length === 0) {
       this.emitService.eventEmit.emit(
         new EmitAlertMessage(AlertMessageType.Error, '系统信息', '没有可以派车的托运单', MessageShowType.Toast));
     }

@@ -1,10 +1,10 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {ShipplanGroupInsideServiceService} from '../../../../services/shiipplangroup/shipplan-group-inside-service.service';
-import {Vehicelmodel} from '../../../../models/vehiclemanagement/vehicelmodel';
-import {ShimentNoSendGroupView} from '../../../../models/shipplangroup/shiment-no-send-group-view';
+import {ShipplanGroupInsideServiceService} from '../../../../../../services/shiipplangroup/shipplan-group-inside-service.service';
+import {Vehicelmodel} from '../../../../../../models/vehiclemanagement/vehicelmodel';
+import {ShimentNoSendGroupView} from '../../../../../../models/shipplangroup/shiment-no-send-group-view';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {PageQueryResult} from '../../../../models/page-query-result';
+import {PageQueryResult} from '../../../../../../models/page-query-result';
 
 @Component({
   selector: 'app-shipplangroudattchlist',

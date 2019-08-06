@@ -23,17 +23,23 @@ import { SignViewChangeDirective } from './signlist/sign-view-change.directive';
 import { DivFlexDirective } from './signlist/div-flex.directive';
 import { InsidePlanGroupCreateComponent } from './groupforInside/create/create.component';
 import { CircletriplistComponent } from './circletriplist/circletriplist.component';
-import { SendcarfeedetailinsertComponent } from './sub/sendcarfeedetailinsert/sendcarfeedetailinsert.component';
 import {ShipplangroupModule} from '../../buinesscomponent/shipplangroup/shipplangroup.module';
-import {GroundforinsideModule} from './groupforInside/groundforinside.module';
 import { BenditihuolistComponent } from './benditihuolist/benditihuolist.component';
 import { TihuoinsertComponent } from './benditihuolist/tihuoinsert/tihuoinsert.component';
-import { SendsonghuolistComponent } from './sendsonghuolist/sendsonghuolist.component';
-import { SendsonghuolistforsonghuoComponent } from './sendsonghuolistforsonghuo/sendsonghuolistforsonghuo.component';
-import { SendsonghuolistfortransferComponent } from './sendsonghuolistfortransfer/sendsonghuolistfortransfer.component';
-import { SendsonghuolistforcircleriptripComponent } from './sendsonghuolistforcircleriptrip/sendsonghuolistforcircleriptrip.component';
-import { SendsonghuolistforouterComponent } from './sendsonghuolistforouter/sendsonghuolistforouter.component';
-import { ShipplangroudattchlistComponent } from './sub/shipplangroudattchlist/shipplangroudattchlist.component';
+import { GroupinsdecommomlistComponent } from './groupforInside/sendgroupinsidecommonlist/sub/groupinsdecommomlist/groupinsdecommomlist.component';
+import { SendsonghuolistforsonghuoComponent } from './groupforInside/sendsonghuolistforsonghuo/sendsonghuolistforsonghuo.component';
+import { SendsonghuolistfortransferComponent } from './groupforInside/sendsonghuolistfortransfer/sendsonghuolistfortransfer.component';
+// tslint:disable-next-line:max-line-length
+import { SendsonghuolistforcircleriptripComponent } from './groupforInside/sendsonghuolistforcircleriptrip/sendsonghuolistforcircleriptrip.component';
+import { SendsonghuolistforouterComponent } from './groupforoutside/sendsonghuolistforouter/sendsonghuolistforouter.component';
+import { ShipplangroudattchlistComponent } from './groupforInside/sendgroupinsidecommonlist/sub/shipplangroudattchlist/shipplangroudattchlist.component';
+import {SelectdriverComponent} from './groupforInside/sub/selectdriver/selectdriver.component';
+import {SelectorderComponent} from './groupforInside/sub/selectorder/selectorder.component';
+import {SelectvehicelComponent} from './groupforInside/sub/selectvehicel/selectvehicel.component';
+import {HeaditemComponent} from './groupforInside/create/sub/headitem/headitem.component';
+import {LogisticitemsComponent} from './groupforInside/create/sub/logisticitems/logisticitems.component';
+import {SendsonghuolistfortihuoComponent} from './groupforInside/sendsonghuolistfortihuo/sendsonghuolistfortihuo.component';
+import { SgroupinsidelistComponent } from './groupforInside/sendgroupinsidecommonlist/sgroupinsidelist.component';
 
 
 
@@ -44,10 +50,7 @@ const routes: Routes = [
     'path': '',
     'component': ShipmentlistComponent
      },
-  {
-    'path': 'benditihuoclist',
-    'component': BenditihuolistComponent
-  },
+
   {
     'path': 'tglist',
     'component': TglistComponent
@@ -65,22 +68,26 @@ const routes: Routes = [
     'component': SignlistComponent
   },
   {
-    'path': 'songhuo',
+    'path': 'benditihuoclist', // 提货
+    'component': SendsonghuolistfortihuoComponent
+  },
+  {
+    'path': 'songhuo', // 送货
     'pathMatch': 'full',
     'component': SendsonghuolistforsonghuoComponent
   },
   {
-    'path': 'circletriptrip',
+    'path': 'circletriptrip', // 干线运输
     'pathMatch': 'full',
     'component': SendsonghuolistforcircleriptripComponent
   },
   {
-    'path': 'transfer',
+    'path': 'transfer', // 网点转运
     'pathMatch': 'full',
     'component': SendsonghuolistfortransferComponent
   },
   {
-    'path': 'outer',
+    'path': 'outer', // 外包
     'pathMatch': 'full',
     'component': SendsonghuolistforouterComponent
   },
@@ -113,8 +120,7 @@ const routes: Routes = [
     LogistictoreModule,
     DialogModule,
     UploaderModule,
-    ShipplangroupModule,
-    GroundforinsideModule
+    ShipplangroupModule
   ],
   exports: [
     FormsModule,
@@ -124,7 +130,41 @@ const routes: Routes = [
 
    ],
   // tslint:disable-next-line:max-line-length
-  declarations: [ShiplentplanComponent, ShipmentlistComponent, CarryingStatuedPipePipe, CarryingTaskPipePipe, TglistComponent, XiecheComponent, CreateShipmentPlanComponent, XiechescanComponent, SignlistComponent, AddComponent, DetailComponent, NoselectedComponent, SignViewChangeDirective, DivFlexDirective, CircletriplistComponent, SendcarfeedetailinsertComponent, BenditihuolistComponent, TihuoinsertComponent, SendsonghuolistComponent, SendsonghuolistforsonghuoComponent, SendsonghuolistfortransferComponent, SendsonghuolistforcircleriptripComponent, SendsonghuolistforouterComponent, ShipplangroudattchlistComponent],
-  entryComponents: [CreateShipmentPlanComponent, AddComponent, DetailComponent, NoselectedComponent, ShipplangroudattchlistComponent]
+  declarations: [
+    SelectdriverComponent,
+    SelectorderComponent,
+    SelectvehicelComponent,
+    InsidePlanGroupCreateComponent,
+    HeaditemComponent,
+    LogisticitemsComponent,
+    LogisticitemsComponent,
+    SendsonghuolistfortihuoComponent,
+    // tslint:disable-next-line:max-line-length
+    ShiplentplanComponent,
+    ShipmentlistComponent,
+    CarryingStatuedPipePipe,
+    CarryingTaskPipePipe,
+    TglistComponent,
+    XiecheComponent,
+    CreateShipmentPlanComponent,
+    XiechescanComponent,
+    SignlistComponent,
+    AddComponent,
+    DetailComponent,
+    NoselectedComponent,
+    SignViewChangeDirective,
+    DivFlexDirective,
+    CircletriplistComponent,
+    BenditihuolistComponent,
+    TihuoinsertComponent,
+    GroupinsdecommomlistComponent,
+    SendsonghuolistforsonghuoComponent,
+    SendsonghuolistfortransferComponent,
+    SendsonghuolistforcircleriptripComponent,
+    SendsonghuolistforouterComponent,
+    ShipplangroudattchlistComponent,
+    SgroupinsidelistComponent],
+  entryComponents: [CreateShipmentPlanComponent, AddComponent, DetailComponent, NoselectedComponent, ShipplangroudattchlistComponent,
+    SelectdriverComponent, SelectorderComponent, SelectvehicelComponent]
 })
 export class ShipmentModule { }

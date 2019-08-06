@@ -2,31 +2,35 @@ import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {
   CheckBoxChangeEventArgs,
-  DataStateChangeEventArgs,
+  DataStateChangeEventArgs, EditSettingsModel,
   GridComponent,
   PageSettingsModel, RowDeselectEventArgs,
   RowSelectEventArgs,
   SelectionSettingsModel
 } from '@syncfusion/ej2-angular-grids';
 import {BehaviorSubject} from 'rxjs';
-import {GroupOrderAtionModel} from '../groupforInside/group-order-ation-model';
-import {ShipplanService} from '../../../services/logistic/shipment/shipplan.service';
-import {DialogservicesService} from '../../../help/dialogservices.service';
-import {MyShpipmentOrderService} from '../../../services/logistic/shipment/myshpipmentorderService';
-import {EmitService} from '../../../help/emit-service';
+import {GroupOrderAtionModel} from '../../../group-order-ation-model';
+import {ShipplanService} from '../../../../../../services/logistic/shipment/shipplan.service';
+import {DialogservicesService} from '../../../../../../help/dialogservices.service';
+import {MyShpipmentOrderService} from '../../../../../../services/logistic/shipment/myshpipmentorderService';
+import {EmitService} from '../../../../../../help/emit-service';
 import {MatDialog} from '@angular/material';
-import {Basereportservice} from '../../../services/base/basereportservice';
-import {Commonsetting} from '../../../help/commonsetting';
-import {Basereportconfig} from '../../../services/base/basereportconfig';
-import {UpdateModelType} from '../../../models/tms-data-entity';
+import {Basereportservice} from '../../../../../../services/base/basereportservice';
+import {Commonsetting} from '../../../../../../help/commonsetting';
+import {Basereportconfig} from '../../../../../../services/base/basereportconfig';
+import {UpdateModelType} from '../../../../../../models/tms-data-entity';
 import {ActivatedRoute} from '@angular/router';
+import {ShipplanGroupInsideServiceService} from '../../../../../../services/shiipplangroup/shipplan-group-inside-service.service';
+import {AlertMessageType, EmitAlertMessage, MessageShowType} from '../../../../../../help/emit-alert-message';
+import {ShipplangroudattchlistComponent} from '../shipplangroudattchlist/shipplangroudattchlist.component';
+import {ShimentNoSendGroupView} from '../../../../../../models/shipplangroup/shiment-no-send-group-view';
 
 @Component({
-  selector: 'app-biz-sendsonghuolist',
-  templateUrl: './sendsonghuolist.component.html',
-  styleUrls: ['./sendsonghuolist.component.css']
+  selector: 'app-biz-groupinsdecommomlist',
+  templateUrl: './groupinsdecommomlist.component.html',
+  styleUrls: ['./groupinsdecommomlist.component.css']
 })
-export class SendsonghuolistComponent implements OnInit {
+export class GroupinsdecommomlistComponent implements OnInit {
 
   gridheight: number;
   searchp: FormGroup;
@@ -35,58 +39,38 @@ export class SendsonghuolistComponent implements OnInit {
   public pageSettings: PageSettingsModel;
   tabselected = new FormControl(0);
   public selectOptions: SelectionSettingsModel;
-
-  orderStoreSubject: BehaviorSubject<GroupOrderAtionModel> = new BehaviorSubject<GroupOrderAtionModel>(null);
-
-  public alreadyloadshipmentdatasource: GroupOrderAtionModel[] = [];
-
-  public  Title: string;
+  editSettings: EditSettingsModel;
+  toolbar: [];
 
   @Input()
-  public taskType: string;
+  public orderStoreSubject: BehaviorSubject<GroupOrderAtionModel>;
+  @Input()
+  public GroupSubItemType: string;
+  public alreadyloadshipmentdatasource: GroupOrderAtionModel[] = [];
 
 
   constructor(
-              private route: ActivatedRoute,
-              private  shipplanService: ShipplanService,
-              private  dialogx: DialogservicesService,
-              private  myShpipmentOrderService: MyShpipmentOrderService,
-              public emitService: EmitService, private fb: FormBuilder, public dialog: MatDialog, private service: Basereportservice) { }
+    private shipplanGroupInsideServiceService: ShipplanGroupInsideServiceService,
+    private  shipplanService: ShipplanService,
+    private  dialogx: DialogservicesService,
+    private  myShpipmentOrderService: MyShpipmentOrderService,
+    public emitService: EmitService, private fb: FormBuilder, public dialog: MatDialog, private service: Basereportservice) { }
 
   ngOnInit() {
-
 
     this.selectOptions = { persistSelection: true };
 
     this.pageSettings = {pageSize: 50};
     // this.grid.pageSettings.pageSize = 100;
     this.searchp = this.fb.group(
-      { OrderTrackServerId: '', PlanStatuedId: '', TaskType: this.taskType});
+      { OrderTrackServerId: '', PlanStatuedId: ''});
     this.gridheight = Commonsetting.GridHeight3();
 
+    this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Normal', newRowPosition: 'Top' };
 
-    switch ( this.taskType) {
-      case 'songhuo': // 网点送货
-        this.Title = '网点送货';
-        break;
-      case 'transfer': // 网点转运
-        this.Title = '网点转运';
-        break;
-      case 'circletriptrip': // 大车直送
-        this.Title = '大车直送';
-        break;
-      case 'outer':  // 中转外包
-        this.Title = '中转外包';
-        break;
-      default:
-        break;
-    }
-
-    this.searchp.patchValue({TaskType: this.taskType});
-
-
-    this.searching();
-
+    // this.toolbar =  [ 'Delete'];
+    // this.grid.tool
+    //  toolbar: [ 'Delete']
     // this.grid.pageSettings={currentPage:1,pageSize:2};
   }
 
@@ -97,7 +81,21 @@ export class SendsonghuolistComponent implements OnInit {
     searchable.pageindex = pagesetting.currentPage;
     searchable.pagesize = pagesetting.pageSize;
 
-    this.service.SearchReport(Basereportconfig.Report_senditemlist, searchable).subscribe(result => {
+
+    let reportId = '';
+     switch (this.GroupSubItemType) {
+
+       case 'localtihuo':
+         reportId = Basereportconfig.Report_localtihuolist; // 本地提货
+         break;
+       case  'transfer':
+         reportId = Basereportconfig.Report_logistictransfer; // 网点转运
+         break;
+       default:
+         break;
+     }
+   //  alert(this.GroupSubItemType);
+    this.service.SearchReport(reportId, searchable).subscribe(result => {
 
       this.grid.dataSource = result;
       console.log('加载数据了');
@@ -125,7 +123,7 @@ export class SendsonghuolistComponent implements OnInit {
     if (selectedrows.length === 0) {
       return;
     }
-    this.tabselected.setValue(1);
+    // this.tabselected.setValue(1);
 
     for (let index = 0; index < selectedrows.length; index++) {
 
@@ -139,6 +137,8 @@ export class SendsonghuolistComponent implements OnInit {
       }
 
     }
+
+    alert('添加完成');
 
 
   }
@@ -249,5 +249,69 @@ export class SendsonghuolistComponent implements OnInit {
 
     console.log(this.alreadyloadshipmentdatasource);
   }
+
+  // 添加运单服务
+  attchitem(height, width) {
+    const datas = this.grid.getSelectedRecords();
+    if (datas.length === 0) {
+      this.emitService.eventEmit.emit(
+        new EmitAlertMessage(AlertMessageType.Error, '系统信息', '请添加运单在继续操作', MessageShowType.Toast));
+
+      return;
+    }
+
+    const dialogRef = this.dialog.open(ShipplangroudattchlistComponent, {
+      height: height,
+      width: width,
+      disableClose: false,
+      data: 'inside'
+    });
+    // (value: LogisticStore[])
+    dialogRef.afterClosed().subscribe((result: ShimentNoSendGroupView) => {
+
+      if (result != null) {
+
+
+        // shipplanGroupInsideServiceService
+
+
+
+        let resultindex = 0;
+
+
+
+
+        datas.forEach(a => {
+
+
+          resultindex++;
+
+
+          this.shipplanGroupInsideServiceService.AttchShipmentItem({
+            TaskType: '',
+            ShipmentId: a['ShipmentId'],
+            ShipmentGrpupId: result.PlanGroupId
+          }).subscribe(resultx => {
+
+
+            this.emitService.eventEmit.emit(
+              new EmitAlertMessage(AlertMessageType.Succeed, '系统信息',   resultx.Info, MessageShowType.Toast));
+
+            if (resultindex === datas.length) {
+              this.emitService.eventEmit.emit(
+                new EmitAlertMessage(AlertMessageType.Info, '系统信息',   '请手动刷新数据，技术原因', MessageShowType.Alert));
+            }
+
+
+          });
+
+        });
+
+
+      }
+
+    });
+  }
+
 
 }

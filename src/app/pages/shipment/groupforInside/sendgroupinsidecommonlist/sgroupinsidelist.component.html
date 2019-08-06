@@ -1,0 +1,18 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <div><i class="fas fa-compass"></i> 当前位置：<a>{{Title}}</a></div>
+  </div>
+  <div class="contenttex-r"></div>
+</div>
+<div class="bendbox">
+  <mat-tab-group >
+    <mat-tab label="待派车列表">
+
+     <app-biz-groupinsdecommomlist [orderStoreSubject]="orderStoreSubject" [GroupSubItemType]="GroupSubItemType"></app-biz-groupinsdecommomlist>
+    </mat-tab>
+    <mat-tab label="新派车单">
+      <app-shipmentinsidegroup-create [orderStoreSubject]="orderStoreSubject" [inputtasktype]="GroupSubItemType"></app-shipmentinsidegroup-create>
+
+    </mat-tab>
+  </mat-tab-group>
+</div>

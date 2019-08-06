@@ -25,7 +25,7 @@ import data = ej.data;
 import {AlertMessageType, EmitAlertMessage, MessageShowType} from '../../../help/emit-alert-message';
 import {SelectvehicelComponent} from '../groupforInside/sub/selectvehicel/selectvehicel.component';
 import {Vehicelmodel} from '../../../models/vehiclemanagement/vehicelmodel';
-import {ShipplangroudattchlistComponent} from '../sub/shipplangroudattchlist/shipplangroudattchlist.component';
+import {ShipplangroudattchlistComponent} from '../groupforInside/sendgroupinsidecommonlist/sub/shipplangroudattchlist/shipplangroudattchlist.component';
 import {ShimentNoSendGroupView} from '../../../models/shipplangroup/shiment-no-send-group-view';
 import {ShipplanGroupInsideServiceService} from '../../../services/shiipplangroup/shipplan-group-inside-service.service';
 import { Grid, Edit, Toolbar, Page, NewRowPosition } from '@syncfusion/ej2-grids';
