@@ -1,0 +1,44 @@
+@import '~@angular/material/_theming';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import './app/component/core/theming/all-theme';
+@include mat-core();
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-pink, A200, A100, A400);
+$warn: mat-palette($mat-red);
+$theme: mat-light-theme($primary, $accent, $warn);
+
+@import "scss/index";
+@import "scss/_theming";
+@include angular-material-theme($theme);
+@include stbui-theme($theme);
+@include stbui-theme-color();
+.stbui-message-wrapper {padding: 0px 5px 0px 5px!important;height:auto;min-height:48px!important;line-height:normal}
+.stbui-message-icon {margin-top:4px;margin-right:10px!important;}
+.stbui-message-wrapper .mat-icon-button {margin-top:4px}
+.stbui-message-wrapper .stbui-message-label {line-height:15px!important;}
+.stbui-message-labels {margin-top:3px;}
+.greenlab {background:#dcf8d6!important;color:#50c236!important;}
+.green {color:#dcf8d6}
+html,
+body {
+  min-height: 100%;
+  height: 100%;
+  line-height: normal;
+  font-family: Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+mat-sidenav-container {
+  height: 100%;
+}
+.cdk-overlay-pane {height:auto!important;max-height:40em!important;}
+.mat-dialog-content {
+  padding: 0px 24px 10px 24px!important;
+  max-height: 78%!important;}
+.stbui-message {background:#dcf8d6;color:#50c236;border:1px #96e285 solid}
