@@ -76,7 +76,7 @@
     "@syncfusion/ej2-angular-pivotview": "17.2.35",
     "@syncfusion/ej2-angular-schedule": "17.2.35",
     "@syncfusion/ej2-angular-layouts": "17.2.34",
-    "ajv": "^6.10.1",
+    "ajv": "^6.12.3",
     "angular-auth-oidc-client": "8.0.3",
     "core-js": "^3.1.4",
     "hammerjs": "^2.0.8",
